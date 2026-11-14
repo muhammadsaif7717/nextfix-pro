@@ -1,19 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  ShieldCheck,
-  Zap,
-  CheckCircle2,
-  Clock,
-  Sparkles,
-  MapPin,
-  Flame,
-  Award,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, ShieldCheck, Zap, Award } from "lucide-react";
 
 interface WeFixHeroSliderProps {
   onBookRepair: () => void;
@@ -24,264 +14,120 @@ export default function WeFixHeroSlider({
   onBookRepair,
   onGetQuote,
 }: WeFixHeroSliderProps) {
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  const slides = [
-    {
-      subtitle: "⚡ Certified OEM Device Restoration",
-      title: "Cracked Screen or Dead Battery?",
-      highlight: "Fixed in Under 28 Minutes.",
-      desc: "Top-rated electronic cleanroom laboratory in New York. We restore iPhones, MacBooks, Samsung, and consoles with 100% genuine OEM components and zero data loss.",
-      bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=1920",
-    },
-    {
-      subtitle: "🔬 Micro-Soldering & Logic Board Lab",
-      title: "Water Damage or Motherboard Short?",
-      highlight: "Revived with Zero Data Loss.",
-      desc: "Stereomicroscope chip-level diagnostics, BGA rework, and ultrasonic deoxidation baths. Where other shops declare devices unfixable, our master engineers restore them.",
-      bgImage: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1920",
-    },
-    {
-      subtitle: "🛡️ Lifetime Workmanship Warranty",
-      title: "Fast, Honest & Transparent Repair.",
-      highlight: "No Fix = Zero Fee Guarantee.",
-      desc: "Transparent upfront pricing with zero diagnostic fees. If your hardware cannot be fully restored to factory specifications, you pay absolutely nothing.",
-      bgImage: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=1920",
-    },
-  ];
-
-  // Smooth automatic crossfade every 6.5s
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 6500);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const active = slides[currentSlide];
-
   return (
     <section
       id="home"
-      className="relative w-full min-h-[calc(100vh-116px)] min-h-[calc(100dvh-116px)] flex items-center overflow-hidden bg-[#1F1F1F]"
+      className="relative w-full min-h-[calc(100vh-116px)] min-h-[calc(100dvh-116px)] flex items-center justify-center overflow-hidden bg-slate-950"
     >
-      {/* 1. Next.js Optimized Background Image with Smooth Crossfade */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active.bgImage}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={active.bgImage}
-            alt={active.title}
-            fill
-            priority={currentSlide === 0}
-            sizes="100vw"
-            className="object-cover object-center filter brightness-90"
-          />
-        </motion.div>
-      </AnimatePresence>
-
-      {/* 2. Filmic High-Contrast Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 z-10 pointer-events-none" />
-
-      {/* 3. Hero Content Container: High-Converting 2-Column Grid */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column: Bold Value Hook & Primary Actions (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* Live Store Status & Subtitle Badge */}
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-                <span>Open Now Until 8:00 PM</span>
-              </span>
-
-              <motion.div
-                key={`badge-${currentSlide}`}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2563EB] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg"
-              >
-                <span>{active.subtitle}</span>
-              </motion.div>
-            </div>
-
-            {/* Dynamic Grand Heading */}
-            <motion.div
-              key={`title-${currentSlide}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="space-y-1"
-            >
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] font-heading drop-shadow-md">
-                {active.title}
-              </h1>
-              <span className="block text-2xl sm:text-4xl lg:text-5xl font-black text-[#2563EB] tracking-tight font-heading leading-tight drop-shadow-md">
-                {active.highlight}
-              </span>
-            </motion.div>
-
-            {/* Description */}
-            <motion.p
-              key={`desc-${currentSlide}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal drop-shadow"
-            >
-              {active.desc}
-            </motion.p>
-
-            {/* Primary Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
-              <button
-                onClick={onBookRepair}
-                className="px-8 py-4 min-h-[50px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-xl flex items-center justify-center gap-2 text-center"
-              >
-                <span>Book 30-Min Repair Slot</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <button
-                onClick={onGetQuote}
-                className="px-8 py-4 min-h-[50px] rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white text-white hover:text-[#1F1F1F] border border-white/30 backdrop-blur-md transition-all shadow-md flex items-center justify-center gap-2 text-center"
-              >
-                <span>Instant Cost Calculator</span>
-              </button>
-            </div>
-
-            {/* Trust Badges Strip */}
-            <div className="pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-[11px] text-slate-300 font-semibold">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <span>1-Yr Warranty</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <span>28-Min Turnaround</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <span>100% Data Safe</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <span>No Fix = $0 Fee</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Live Lab Bench & Fast-Track Drop-Off Card (5 Cols) */}
-          <div className="lg:col-span-5">
-            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl space-y-6 text-white">
-              {/* Card Header */}
-              <div className="flex items-center justify-between pb-4 border-b border-white/15">
-                <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
-                    Fast-Track Walk-In
-                  </span>
-                  <h3 className="text-lg font-bold font-heading text-white mt-0.5">
-                    Live Lab Availability
-                  </h3>
-                </div>
-                <div className="text-right">
-                  <div className="text-xs font-black text-emerald-400">
-                    Est. Wait: 4 Mins
-                  </div>
-                  <div className="text-[10px] text-slate-400 font-medium">
-                    2 Master Techs Free
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Repair Menu Items */}
-              <div className="space-y-2.5 text-xs">
-                {[
-                  {
-                    name: "iPhone OLED Screen",
-                    time: "20–30 Mins",
-                    price: "From $59",
-                    badge: "Most Popular",
-                  },
-                  {
-                    name: "MacBook Battery / Board",
-                    time: "Same-Day",
-                    price: "From $99",
-                    badge: "Apple Certified",
-                  },
-                  {
-                    name: "Samsung Galaxy OLED",
-                    time: "25–40 Mins",
-                    price: "From $69",
-                    badge: "OEM Calibrated",
-                  },
-                  {
-                    name: "PS5 / Console HDMI 2.1",
-                    time: "40 Mins",
-                    price: "From $89",
-                    badge: "Micro-Solder",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    onClick={onGetQuote}
-                    className="p-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#2563EB]/50 flex items-center justify-between transition-all cursor-pointer group"
-                  >
-                    <div>
-                      <div className="font-bold text-white group-hover:text-[#2563EB] transition-colors">
-                        {item.name}
-                      </div>
-                      <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                        <Clock className="w-3 h-3 text-[#2563EB]" />
-                        <span>{item.time}</span>
-                        <span>•</span>
-                        <span className="text-emerald-400 font-semibold">
-                          {item.badge}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="text-xs font-black text-white bg-white/10 px-2.5 py-1 rounded-lg">
-                      {item.price}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Bottom Quick Reserve Button */}
-              <button
-                onClick={onBookRepair}
-                className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary flex items-center justify-center gap-2 shadow-lg"
-              >
-                <span>Reserve Priority Bench Slot</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
+      {/* 1. Authentic High-Resolution Workshop Background Image (Clearly Visible) */}
+      <div className="absolute inset-0 select-none pointer-events-none">
+        <Image
+          src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=85&w=2000"
+          alt="Electronics Repair Laboratory"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center filter brightness-[0.78] contrast-[1.05]"
+        />
       </div>
 
-      {/* Scroll Down Indicator */}
+      {/* 2. Soft, Balanced Overlay — allows background image to be clearly seen */}
+      <div className="absolute inset-0 bg-slate-950/40 backdrop-brightness-[0.85] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 pointer-events-none" />
+
+      {/* 3. Minimal, High-Impact Centered Hero Content */}
+      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+        {/* Subtle Eyebrow Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/40 border border-white/20 text-white text-xs font-semibold tracking-wide backdrop-blur-md mb-6 shadow-sm"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Open Now • 30-Minute Certified Repairs</span>
+        </motion.div>
+
+        {/* Grand Headline (Punchy, Clean, Few Words) */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.1] font-heading drop-shadow-lg"
+        >
+          Precision Tech Repair.
+          <span className="block text-[#3B82F6] mt-2">Restored in Minutes.</span>
+        </motion.h1>
+
+        {/* Short, Simple One-Sentence Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-6 text-base sm:text-lg md:text-xl text-slate-200/95 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-md"
+        >
+          Expert care for iPhone, Mac, and Galaxy. Genuine OEM components, factory seals, and zero data loss.
+        </motion.p>
+
+        {/* Minimal Action Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4"
+        >
+          <button
+            onClick={onBookRepair}
+            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-[#2563EB] hover:bg-[#1D4ED8] text-white shadow-lg shadow-[#2563EB]/40 flex items-center justify-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
+          >
+            <span>Book a Repair</span>
+            <ArrowRight className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={onGetQuote}
+            className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/10 hover:bg-white text-white hover:text-slate-900 border border-white/30 backdrop-blur-md transition-all duration-200 shadow-md flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px]"
+          >
+            <span>Price Calculator</span>
+          </button>
+        </motion.div>
+
+        {/* Subtle, Minimal Trust Strip */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 sm:mt-16 flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-200/90 font-medium drop-shadow"
+        >
+          <div className="flex items-center gap-2">
+            <Zap className="w-4 h-4 text-[#3B82F6]" />
+            <span>30-Min Fast Turnaround</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
+            <span>1-Year Warranty</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <Award className="w-4 h-4 text-[#3B82F6]" />
+            <span>No Fix, No Fee Guarantee</span>
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Subtle Scroll Down Cue */}
       <a
         href="#about"
         aria-label="Scroll down to About section"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-1.5 text-white/60 hover:text-white transition-colors group"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-1.5 text-white/70 hover:text-white transition-colors"
       >
-        <span className="text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white transition-colors">
+        <span className="text-[10px] uppercase font-bold tracking-widest text-white/60">
           Scroll
         </span>
-        <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1 group-hover:border-[#2563EB] transition-colors">
+        <div className="w-5 h-8 rounded-full border-2 border-white/40 flex items-start justify-center p-1">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"
+            className="w-1.5 h-1.5 rounded-full bg-[#3B82F6]"
           />
         </div>
       </a>
