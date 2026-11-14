@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import NextFixLogo from "@/components/NextFixLogo";
 import {
   Wrench,
   MapPin,
@@ -51,19 +52,7 @@ export default function WeFixFooter() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#EF644C] flex items-center justify-center text-white shadow-md">
-                <Wrench className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-2xl font-black text-white tracking-tight font-heading">
-                  WeFix<span className="text-[#EF644C]">.</span>
-                </div>
-                <div className="text-[10px] font-bold text-[#888888] uppercase tracking-wider -mt-1">
-                  Smart Gadget Repair
-                </div>
-              </div>
-            </div>
+            <NextFixLogo inverted size="md" />
 
             <p className="text-[#a0a0a0] leading-relaxed text-xs sm:text-sm">
               Expert gadget repair, maintenance services, keeping your devices running smoothly with certified components and master craftsmanship.
@@ -263,7 +252,7 @@ export default function WeFixFooter() {
 
         {/* 3. Bottom Copyright Bar */}
         <div className="mt-12 pt-6 border-t border-[#2e2e2e] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888888]">
-          <p>© 2026 WeFix – Smart Device & Gadget Repair. All rights reserved.</p>
+          <p>© 2026 NextFix Pro – Smart Device & Gadget Repair. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs">
             <a href="#" className="hover:text-[#EF644C] transition-colors py-1">
               Terms & Conditions

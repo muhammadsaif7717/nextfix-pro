@@ -1,17 +1,17 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import NextFixLogo from "@/components/NextFixLogo";
 import {
   MapPin,
   Mail,
-  Phone,
+  Clock,
   Search,
   Menu,
   X,
-  Wrench,
-  Clock,
   ChevronRight,
   ArrowRight,
+  Sparkles,
 } from "lucide-react";
 
 interface WeFixNavbarProps {
@@ -29,13 +29,13 @@ export default function WeFixNavbar({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close search on escape
+  // Close modal/drawer on Escape
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -48,118 +48,74 @@ export default function WeFixNavbar({
   }, []);
 
   return (
-    <header className="w-full bg-white z-40 relative">
-      {/* 1. WeFix Top Bar */}
-      <div className="bg-[#f8f9fa] border-b border-[#e8e8e8] text-xs text-[#636363] py-2 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          {/* Left contact info */}
-          <div className="flex items-center gap-4 sm:gap-6 text-xs font-medium whitespace-nowrap overflow-hidden">
-            <span className="flex items-center gap-1.5 text-[#636363] whitespace-nowrap">
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* 1. Slim Translucent Top Bar (Fades away gracefully on scroll) */}
+      <div
+        className={`transition-all duration-300 overflow-hidden ${
+          scrolled
+            ? "max-h-0 opacity-0 pointer-events-none"
+            : "max-h-12 opacity-100 bg-white/70 backdrop-blur-md border-b border-black/5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between text-[11px] sm:text-xs text-[#555555]">
+          {/* Left info items */}
+          <div className="flex items-center gap-4 sm:gap-6 whitespace-nowrap overflow-hidden">
+            <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
               <MapPin className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
               <span>25 Main St, NY 10001</span>
             </span>
 
             <a
-              href="mailto:example@gmail.com"
-              className="hidden sm:flex items-center gap-1.5 text-[#636363] hover:text-[#EF644C] transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded"
+              href="mailto:support@nextfixpro.com"
+              className="hidden sm:flex items-center gap-1.5 font-medium hover:text-[#EF644C] transition-colors whitespace-nowrap"
             >
               <Mail className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
-              <span>example@gmail.com</span>
+              <span>support@nextfixpro.com</span>
             </a>
 
-            <span className="hidden md:flex items-center gap-1.5 text-[#636363] whitespace-nowrap">
+            <span className="hidden md:flex items-center gap-1.5 font-medium whitespace-nowrap">
               <Clock className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
               <span>Mon - Sat: 8:00 AM - 8:00 PM</span>
             </span>
           </div>
 
-          {/* Right social info & quick actions */}
-          <div className="flex items-center gap-4 text-xs font-medium whitespace-nowrap flex-shrink-0">
-            <span className="text-[#1f1f1f] font-semibold hidden md:inline">
-              Follow Us:
+          {/* Right quick track action */}
+          <div className="flex items-center gap-4 whitespace-nowrap flex-shrink-0">
+            <span className="hidden sm:inline-block text-[11px] font-semibold text-[#888888]">
+              ⚡ Avg. Screen Repair: 28 Mins
             </span>
-            <div className="hidden sm:flex items-center gap-2 text-[#636363] whitespace-nowrap">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="hover:text-[#EF644C] transition-colors font-semibold"
-              >
-                Fb
-              </a>
-              <span>/</span>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Twitter X"
-                className="hover:text-[#EF644C] transition-colors font-semibold"
-              >
-                Tw
-              </a>
-              <span>/</span>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="hover:text-[#EF644C] transition-colors font-semibold"
-              >
-                In
-              </a>
-              <span>/</span>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="hover:text-[#EF644C] transition-colors font-semibold"
-              >
-                Li
-              </a>
-            </div>
-
-            <div className="h-3 w-[1px] bg-[#d5d5d5] hidden sm:block"></div>
 
             <button
               onClick={onOpenTracker}
               className="text-[#EF644C] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded px-1.5 py-0.5 whitespace-nowrap"
             >
               <Search className="w-3.5 h-3.5 flex-shrink-0" />
-              <span>Track Repair</span>
+              <span>Track Ticket</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar */}
+      {/* 2. Main Navigation Bar with Glassmorphic Translucent Effect */}
       <nav
-        className={`bg-white border-b border-[#e8e8e8] transition-all duration-300 sticky top-0 z-30 ${
-          scrolled ? "shadow-md py-1" : ""
+        className={`w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-white/90 backdrop-blur-xl shadow-md border-b border-[#e8e8e8]"
+            : "bg-white/75 backdrop-blur-lg border-b border-black/5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between gap-4">
-          {/* Brand Logo (Exact WeFix Style) */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-22 flex items-center justify-between gap-4">
+          {/* Bespoke NextFix Pro Logo */}
           <a
             href="#"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded-lg p-1 flex-shrink-0"
+            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded-xl flex-shrink-0"
+            aria-label="NextFix Pro Home"
           >
-            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#EF644C] flex items-center justify-center text-white shadow-md group-hover:bg-[#1f1f1f] transition-colors duration-300 flex-shrink-0">
-              <Wrench className="w-6 h-6" />
-            </div>
-            <div className="whitespace-nowrap">
-              <div className="text-2xl sm:text-3xl font-black text-[#1F1F1F] tracking-tight font-heading leading-tight">
-                WeFix<span className="text-[#EF644C]">.</span>
-              </div>
-              <div className="text-[10px] sm:text-[11px] font-semibold text-[#888888] tracking-wider uppercase">
-                Smart Gadget Repair
-              </div>
-            </div>
+            <NextFixLogo size="md" />
           </a>
 
-          {/* Desktop Nav Links - with STRICT whitespace-nowrap */}
-          <div className="hidden xl:flex items-center gap-6 2xl:gap-8 text-[15px] font-bold text-[#1f1f1f] whitespace-nowrap">
+          {/* Desktop Nav Links - STRICT whitespace-nowrap */}
+          <div className="hidden xl:flex items-center gap-7 2xl:gap-8 text-[15px] font-bold text-[#1f1f1f] whitespace-nowrap">
             <a
               href="#home"
               className="text-[#EF644C] hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
@@ -180,7 +136,7 @@ export default function WeFixNavbar({
             </a>
             <a
               href="#estimator"
-              className="hover:text-[#EF644C] transition-colors py-1 text-[#EF644C] whitespace-nowrap"
+              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
             >
               Price Calculator
             </a>
@@ -210,46 +166,29 @@ export default function WeFixNavbar({
             </a>
           </div>
 
-          {/* Right Action Column */}
-          <div className="hidden sm:flex items-center gap-4 2xl:gap-5 flex-shrink-0">
-            {/* Phone Widget with STRICT whitespace-nowrap */}
-            <div className="flex items-center gap-2.5 whitespace-nowrap">
-              <div className="w-10 h-10 rounded-full bg-[#f6f6f6] border border-[#e8e8e8] flex items-center justify-center text-[#EF644C] flex-shrink-0">
-                <Phone className="w-4 h-4" />
-              </div>
-              <div className="text-left whitespace-nowrap">
-                <span className="block text-[11px] font-medium text-[#888888] whitespace-nowrap">
-                  Ask Questions?
-                </span>
-                <a
-                  href="tel:18006578963"
-                  className="text-sm font-extrabold text-[#1f1f1f] hover:text-[#EF644C] transition-colors font-heading whitespace-nowrap inline-block"
-                >
-                  +1 (800) 657-8963
-                </a>
-              </div>
-            </div>
-
+          {/* Right Actions: Search + Get A Quote CTA (Phone widget completely removed) */}
+          <div className="hidden sm:flex items-center gap-3.5 flex-shrink-0">
             {/* Search Icon */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="w-10 h-10 rounded-full hover:bg-[#f6f6f6] flex items-center justify-center text-[#1f1f1f] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="w-10 h-10 rounded-full bg-white/80 hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               aria-label="Open search"
             >
               <Search className="w-4 h-4" />
             </button>
 
-            {/* Get A Quote Button */}
+            {/* High-Converting Get A Quote Button */}
             <button
               onClick={onOpenQuote}
-              className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-sm whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md hover:shadow-lg whitespace-nowrap flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
             >
-              Get A Quote
+              <span>Get A Quote</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {/* Mobile / Tablet Hamburger Toggle */}
-          <div className="flex xl:hidden items-center gap-2 flex-shrink-0">
+          {/* Mobile / Tablet Actions */}
+          <div className="flex xl:hidden items-center gap-2.5 flex-shrink-0">
             <button
               onClick={onOpenQuote}
               className="px-4 py-2 min-h-[40px] rounded-full text-[11px] font-bold uppercase tracking-wider btn-wefix-primary sm:hidden whitespace-nowrap"
@@ -258,7 +197,7 @@ export default function WeFixNavbar({
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 min-h-[44px] min-w-[44px] rounded-lg bg-[#f6f6f6] text-[#1f1f1f] hover:bg-[#eaeaea] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-white/80 border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#f6f6f6] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -268,7 +207,7 @@ export default function WeFixNavbar({
 
         {/* Search Bar Flyout */}
         {searchOpen && (
-          <div className="bg-[#f6f6f6] border-b border-[#e8e8e8] px-4 py-3">
+          <div className="bg-white/95 backdrop-blur-md border-t border-[#e8e8e8] px-4 py-3">
             <div className="max-w-xl mx-auto flex items-center gap-2">
               <label htmlFor="search-input" className="sr-only">
                 Search
@@ -278,13 +217,13 @@ export default function WeFixNavbar({
                 type="text"
                 autoFocus
                 placeholder="Search repair services, devices or guides..."
-                className="w-full px-4 py-2.5 rounded-lg bg-white border border-[#d5d5d5] text-sm text-[#1f1f1f] focus:outline-none focus:border-[#EF644C]"
+                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-[#f6f6f6] border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#EF644C]"
               />
               <button
                 onClick={() => setSearchOpen(false)}
-                className="px-4 py-2.5 min-h-[40px] rounded-lg bg-[#1f1f1f] text-white text-xs font-bold uppercase whitespace-nowrap"
+                className="p-2 text-[#888888] hover:text-[#1f1f1f]"
               >
-                Close
+                <X className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -292,12 +231,12 @@ export default function WeFixNavbar({
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="xl:hidden bg-white border-b border-[#e8e8e8] px-4 pt-3 pb-6 space-y-2 shadow-xl">
-            <div className="flex flex-col space-y-1 font-bold text-sm text-[#1f1f1f]">
+          <div className="xl:hidden bg-white/95 backdrop-blur-xl border-b border-[#e8e8e8] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top-4 duration-300">
+            <div className="flex flex-col space-y-3 font-bold text-base text-[#1f1f1f]">
               <a
                 href="#home"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] text-[#EF644C] min-h-[44px] whitespace-nowrap"
+                className="text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>Home</span>
                 <ChevronRight className="w-4 h-4" />
@@ -305,78 +244,83 @@ export default function WeFixNavbar({
               <a
                 href="#about"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>About Us</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>Services</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#estimator"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] text-[#EF644C] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>Price Calculator</span>
-                <ChevronRight className="w-4 h-4 text-[#EF644C]" />
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#options"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>Repair Options</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#reviews"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
                 <span>Testimonials</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#blogs"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
-                <span>Our Blogs</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <span>Blog</span>
+                <ChevronRight className="w-4 h-4" />
               </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between p-3 rounded-lg hover:bg-[#f6f6f6] min-h-[44px] whitespace-nowrap"
+                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
               >
-                <span>Contact Us</span>
-                <ChevronRight className="w-4 h-4 text-[#888]" />
+                <span>Contact</span>
+                <ChevronRight className="w-4 h-4" />
               </a>
             </div>
 
-            <div className="pt-3 border-t border-[#e8e8e8] space-y-2">
+            <div className="pt-4 border-t border-[#e8e8e8] space-y-3">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenQuote();
                 }}
-                className="w-full py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary text-center block whitespace-nowrap"
+                className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md text-center flex items-center justify-center gap-2"
               >
-                Get A Quote
+                <span>Book A Repair</span>
+                <ArrowRight className="w-4 h-4" />
               </button>
-              <a
-                href="tel:18006578963"
-                className="w-full py-3 min-h-[44px] rounded-full text-xs font-bold text-[#1f1f1f] bg-[#f6f6f6] border border-[#e8e8e8] text-center flex items-center justify-center gap-2 whitespace-nowrap"
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenTracker();
+                }}
+                className="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#f6f6f6] text-[#1F1F1F] hover:bg-[#eaeaea] text-center flex items-center justify-center gap-2"
               >
-                <Phone className="w-4 h-4 text-[#EF644C]" />
-                <span>Call +1 (800) 657-8963</span>
-              </a>
+                <Search className="w-3.5 h-3.5" />
+                <span>Track Repair Status</span>
+              </button>
             </div>
           </div>
         )}

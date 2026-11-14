@@ -95,7 +95,7 @@ export default function WeFixHeroSlider({
       id="home"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full min-h-[580px] sm:min-h-[660px] lg:min-h-[720px] flex items-center overflow-hidden bg-[#1F1F1F]"
+      className="relative w-full min-h-[660px] sm:min-h-[740px] lg:min-h-[820px] flex items-center overflow-hidden bg-[#1F1F1F]"
     >
       {/* 1. Background Image with AnimatePresence & Ken-Burns Zoom */}
       <AnimatePresence mode="wait">
@@ -115,7 +115,7 @@ export default function WeFixHeroSlider({
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-10 pointer-events-none" />
 
       {/* 3. Hero Content Layered Over Background */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-24 w-full">
         <div className="max-w-3xl space-y-6">
           {/* Subtitle Badge */}
           <motion.div

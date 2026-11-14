@@ -100,7 +100,7 @@ export default function WeFixQuoteModal({
         <div className="bg-[#f6f6f6] p-4 sm:p-6 border-b border-[#e8e8e8] flex items-center justify-between flex-shrink-0">
           <div>
             <span className="text-[11px] font-bold text-[#EF644C] uppercase tracking-wider block">
-              WeFix Service Appointment
+              NextFix Pro Service Appointment
             </span>
             <h3 id="quote-modal-title" className="text-lg sm:text-xl font-bold text-[#1F1F1F] font-heading mt-0.5">
               {isSubmitted ? "Appointment Confirmed!" : "Book A Device Repair"}

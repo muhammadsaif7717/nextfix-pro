@@ -110,7 +110,7 @@ export default function WeFixMilestoneSection({
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#e8e8e8] aspect-[4/5] bg-[#f6f6f6]">
               <Image
                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
-                alt="WeFix Certified Master Technician"
+                alt="NextFix Pro Certified Master Technician"
                 width={800}
                 height={1000}
                 className="w-full h-full object-cover object-center filter brightness-95"
