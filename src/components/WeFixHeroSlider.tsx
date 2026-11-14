@@ -107,7 +107,7 @@ export default function WeFixHeroSlider({
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EF644C] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#2563EB] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg"
               >
                 <span>{active.subtitle}</span>
               </motion.div>
@@ -124,7 +124,7 @@ export default function WeFixHeroSlider({
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] font-heading drop-shadow-md">
                 {active.title}
               </h1>
-              <span className="block text-2xl sm:text-4xl lg:text-5xl font-black text-[#EF644C] tracking-tight font-heading leading-tight drop-shadow-md">
+              <span className="block text-2xl sm:text-4xl lg:text-5xl font-black text-[#2563EB] tracking-tight font-heading leading-tight drop-shadow-md">
                 {active.highlight}
               </span>
             </motion.div>
@@ -161,19 +161,19 @@ export default function WeFixHeroSlider({
             {/* Trust Badges Strip */}
             <div className="pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-[11px] text-slate-300 font-semibold">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                 <span>1-Yr Warranty</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <Zap className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                 <span>28-Min Turnaround</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <CheckCircle2 className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                 <span>100% Data Safe</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <Award className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                 <span>No Fix = $0 Fee</span>
               </div>
             </div>
@@ -185,7 +185,7 @@ export default function WeFixHeroSlider({
               {/* Card Header */}
               <div className="flex items-center justify-between pb-4 border-b border-white/15">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#EF644C] block">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#2563EB] block">
                     Fast-Track Walk-In
                   </span>
                   <h3 className="text-lg font-bold font-heading text-white mt-0.5">
@@ -233,14 +233,14 @@ export default function WeFixHeroSlider({
                   <div
                     key={i}
                     onClick={onGetQuote}
-                    className="p-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#EF644C]/50 flex items-center justify-between transition-all cursor-pointer group"
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#2563EB]/50 flex items-center justify-between transition-all cursor-pointer group"
                   >
                     <div>
-                      <div className="font-bold text-white group-hover:text-[#EF644C] transition-colors">
+                      <div className="font-bold text-white group-hover:text-[#2563EB] transition-colors">
                         {item.name}
                       </div>
                       <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
-                        <Clock className="w-3 h-3 text-[#EF644C]" />
+                        <Clock className="w-3 h-3 text-[#2563EB]" />
                         <span>{item.time}</span>
                         <span>•</span>
                         <span className="text-emerald-400 font-semibold">
@@ -277,11 +277,11 @@ export default function WeFixHeroSlider({
         <span className="text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white transition-colors">
           Scroll
         </span>
-        <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1 group-hover:border-[#EF644C] transition-colors">
+        <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1 group-hover:border-[#2563EB] transition-colors">
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-[#EF644C]"
+            className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"
           />
         </div>
       </a>

@@ -100,7 +100,7 @@ export default function WeFixSafeguardSection({
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
             Safeguard Device
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -123,7 +123,7 @@ export default function WeFixSafeguardSection({
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C]">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB]">
                   Interactive Architecture
                 </span>
                 <span className="text-xs font-medium text-[#888888]">
@@ -147,10 +147,10 @@ export default function WeFixSafeguardSection({
                     key={pin.id}
                     onClick={() => setActivePin(pin.id)}
                     style={{ top: pin.y, left: pin.x }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
                       activePin === pin.id
-                        ? "bg-[#EF644C] text-white scale-125 z-20 ring-4 ring-white"
-                        : "bg-white/90 text-[#1f1f1f] hover:bg-[#EF644C] hover:text-white z-10"
+                        ? "bg-[#2563EB] text-white scale-125 z-20 ring-4 ring-white"
+                        : "bg-white/90 text-[#1f1f1f] hover:bg-[#2563EB] hover:text-white z-10"
                     }`}
                     aria-label={`Inspect ${pin.title}`}
                   >
@@ -162,7 +162,7 @@ export default function WeFixSafeguardSection({
               {/* Active Hotspot Detail Card */}
               <div className="mt-6 p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] transition-all duration-300">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-[#EF644C] text-white text-[11px] font-bold flex items-center justify-center">
+                  <span className="w-5 h-5 rounded-full bg-[#2563EB] text-white text-[11px] font-bold flex items-center justify-center">
                     {activePin + 1}
                   </span>
                   <h4 className="text-sm font-bold text-[#1f1f1f] font-heading">
@@ -178,11 +178,11 @@ export default function WeFixSafeguardSection({
             {/* Micro Badges */}
             <div className="mt-6 pt-4 border-t border-[#e8e8e8] flex items-center justify-around text-center text-xs text-[#636363] font-semibold">
               <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
+                <ShieldCheck className="w-4 h-4 text-[#2563EB]" />
                 ESD Cleanroom
               </span>
               <span className="flex items-center gap-1">
-                <Zap className="w-4 h-4 text-[#EF644C]" />
+                <Zap className="w-4 h-4 text-[#2563EB]" />
                 OEM Calibrated
               </span>
             </div>
@@ -198,7 +198,7 @@ export default function WeFixSafeguardSection({
           >
             <div className="flex items-center justify-between pb-6 border-b border-[#e8e8e8] mb-8">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C] block mb-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#2563EB] block mb-1">
                   Step-by-Step Diagnostic
                 </span>
                 <h3 className="text-2xl font-black text-[#1F1F1F] font-heading">
@@ -206,7 +206,7 @@ export default function WeFixSafeguardSection({
                 </h3>
               </div>
               <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f6] border border-[#e8e8e8] text-xs font-bold text-[#1F1F1F]">
-                <Clock className="w-3.5 h-3.5 text-[#EF644C]" />
+                <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
                 <span>Live Estimates</span>
               </div>
             </div>
@@ -222,9 +222,9 @@ export default function WeFixSafeguardSection({
                     <button
                       key={cat.id}
                       onClick={() => handleCategoryChange(cat)}
-                      className={`py-3 px-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                      className={`py-3 px-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
                         selectedCategory.id === cat.id
-                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold shadow-sm"
+                          ? "border-[#2563EB] bg-[#2563EB]/5 text-[#2563EB] font-bold shadow-sm"
                           : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
                       }`}
                     >
@@ -244,9 +244,9 @@ export default function WeFixSafeguardSection({
                     <button
                       key={model.id}
                       onClick={() => setSelectedModel(model)}
-                      className={`py-2.5 px-3 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                      className={`py-2.5 px-3 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
                         selectedModel?.id === model.id
-                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold"
+                          ? "border-[#2563EB] bg-[#2563EB]/5 text-[#2563EB] font-bold"
                           : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
                       }`}
                     >
@@ -269,9 +269,9 @@ export default function WeFixSafeguardSection({
                     <button
                       key={issue.id}
                       onClick={() => setSelectedIssue(issue)}
-                      className={`p-3 rounded-xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                      className={`p-3 rounded-xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
                         selectedIssue?.id === issue.id
-                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold shadow-sm"
+                          ? "border-[#2563EB] bg-[#2563EB]/5 text-[#2563EB] font-bold shadow-sm"
                           : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
                       }`}
                     >
@@ -282,7 +282,7 @@ export default function WeFixSafeguardSection({
                         </div>
                       </div>
                       {selectedIssue?.id === issue.id && (
-                        <Check className="w-4 h-4 text-[#EF644C] flex-shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-[#2563EB] flex-shrink-0 mt-0.5" />
                       )}
                     </button>
                   ))}
@@ -308,14 +308,14 @@ export default function WeFixSafeguardSection({
 
                   <div className="flex flex-col sm:items-end text-xs font-semibold text-[#636363] space-y-1">
                     <span className="flex items-center gap-1.5 text-[#1F1F1F]">
-                      <Clock className="w-4 h-4 text-[#EF644C]" />
+                      <Clock className="w-4 h-4 text-[#2563EB]" />
                       Turnaround:{" "}
-                      <strong className="text-[#EF644C]">
+                      <strong className="text-[#2563EB]">
                         {calculatedQuote.turnaround}
                       </strong>
                     </span>
                     <span className="flex items-center gap-1.5">
-                      <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
+                      <ShieldCheck className="w-4 h-4 text-[#2563EB]" />
                       Warranty: {calculatedQuote.warranty}
                     </span>
                   </div>
@@ -324,7 +324,7 @@ export default function WeFixSafeguardSection({
                 {/* Book Action Button */}
                 <div className="mt-6 pt-5 border-t border-[#e8e8e8] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                   <div className="text-xs text-[#888888] flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
                     <span>Free diagnostic. Pay nothing until verified complete.</span>
                   </div>
 
@@ -338,7 +338,7 @@ export default function WeFixSafeguardSection({
                         turnaround: calculatedQuote.turnaround,
                       })
                     }
-                    className="px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+                    className="px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
                   >
                     <Calendar className="w-4 h-4" />
                     <span>Book Repair Slot</span>

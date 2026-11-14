@@ -63,7 +63,7 @@ export default function WeFixIdentitySection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
             Our Identity
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -86,22 +86,22 @@ export default function WeFixIdentitySection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EF644C]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#2563EB]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
               >
                 {/* Decorative Top Accent Bar on Hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-[#EF644C] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-[#e8e8e8] group-hover:bg-[#EF644C] group-hover:border-[#EF644C] text-[#EF644C] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-[#e8e8e8] group-hover:bg-[#2563EB] group-hover:border-[#2563EB] text-[#2563EB] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
                       <Icon className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
                     </div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white border border-[#e8e8e8] text-[#888888] group-hover:text-[#EF644C] group-hover:border-[#EF644C]/30 transition-colors">
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white border border-[#e8e8e8] text-[#888888] group-hover:text-[#2563EB] group-hover:border-[#2563EB]/30 transition-colors">
                       {item.tag}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#1F1F1F] mb-3 font-heading group-hover:text-[#EF644C] transition-colors">
+                  <h3 className="text-xl font-bold text-[#1F1F1F] mb-3 font-heading group-hover:text-[#2563EB] transition-colors">
                     {item.title}
                   </h3>
 
@@ -111,9 +111,9 @@ export default function WeFixIdentitySection() {
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-[#e8e8e8]/80 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#1F1F1F] group-hover:text-[#EF644C] transition-colors flex items-center gap-1.5">
+                  <span className="text-xs font-bold text-[#1F1F1F] group-hover:text-[#2563EB] transition-colors flex items-center gap-1.5">
                     <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#EF644C] group-hover:translate-x-1.5 transition-all duration-300" />
+                    <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#2563EB] group-hover:translate-x-1.5 transition-all duration-300" />
                   </span>
                   <span className="text-[11px] font-mono font-semibold text-[#888888]">
                     0{idx + 1}

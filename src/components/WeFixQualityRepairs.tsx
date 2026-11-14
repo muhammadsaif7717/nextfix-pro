@@ -95,7 +95,7 @@ export default function WeFixQualityRepairs({
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
             Issues We Solve
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -118,7 +118,7 @@ export default function WeFixQualityRepairs({
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EF644C]/40 shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#2563EB]/40 shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div>
                   {/* Card Image */}
@@ -136,17 +136,17 @@ export default function WeFixQualityRepairs({
                     </div>
 
                     {/* Icon Circle */}
-                    <div className="absolute -bottom-5 right-6 w-12 h-12 rounded-xl bg-[#EF644C] text-white flex items-center justify-center shadow-lg border-2 border-white group-hover:bg-[#1f1f1f] transition-colors duration-300">
+                    <div className="absolute -bottom-5 right-6 w-12 h-12 rounded-xl bg-[#2563EB] text-white flex items-center justify-center shadow-lg border-2 border-white group-hover:bg-[#1f1f1f] transition-colors duration-300">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
 
                   {/* Card Content */}
                   <div className="p-6 pt-8">
-                    <span className="text-[11px] font-bold text-[#EF644C] uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block mb-1">
                       {item.category}
                     </span>
-                    <h3 className="text-xl font-bold text-[#1F1F1F] font-heading group-hover:text-[#EF644C] transition-colors">
+                    <h3 className="text-xl font-bold text-[#1F1F1F] font-heading group-hover:text-[#2563EB] transition-colors">
                       {item.title}
                     </h3>
                     <p className="mt-2.5 text-xs sm:text-sm text-[#636363] leading-relaxed">
@@ -160,13 +160,13 @@ export default function WeFixQualityRepairs({
                   <div className="pt-4 border-t border-[#f0f0f0] flex items-center justify-between">
                     <button
                       onClick={() => onSelectRepair(item.title)}
-                      className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F] group-hover:text-[#EF644C] flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded"
+                      className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F] group-hover:text-[#2563EB] flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded"
                     >
                       <span>Book Service</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
                     </button>
                     <span className="text-[11px] text-[#888888] font-medium flex items-center gap-1">
-                      <Clock className="w-3 h-3 text-[#EF644C]" />
+                      <Clock className="w-3 h-3 text-[#2563EB]" />
                       <span>{item.turnaround}</span>
                     </span>
                   </div>

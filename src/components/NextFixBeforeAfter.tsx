@@ -92,7 +92,7 @@ export default function NextFixBeforeAfter() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
             Visual Proof of Quality
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -109,9 +109,9 @@ export default function NextFixBeforeAfter() {
             <button
               key={item.id}
               onClick={() => setActivePreset(i)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
                 activePreset === i
-                  ? "bg-[#EF644C] text-white shadow-md shadow-[#EF644C]/30"
+                  ? "bg-[#2563EB] text-white shadow-md shadow-[#2563EB]/30"
                   : "bg-white text-[#636363] border border-[#e8e8e8] hover:bg-[#f6f6f6]"
               }`}
             >
@@ -166,7 +166,7 @@ export default function NextFixBeforeAfter() {
             </div>
 
             {/* After Badge (Right) */}
-            <div className="absolute top-4 right-4 bg-[#EF644C] text-white px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg pointer-events-none">
+            <div className="absolute top-4 right-4 bg-[#2563EB] text-white px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg pointer-events-none">
               AFTER: {current.afterText}
             </div>
 
@@ -175,8 +175,8 @@ export default function NextFixBeforeAfter() {
               style={{ left: `${sliderPosition}%` }}
               className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl -translate-x-1/2 flex items-center justify-center pointer-events-none"
             >
-              <div className="w-10 h-10 rounded-full bg-white text-[#1F1F1F] shadow-2xl flex items-center justify-center border-2 border-[#EF644C] pointer-events-auto">
-                <MoveHorizontal className="w-5 h-5 text-[#EF644C]" />
+              <div className="w-10 h-10 rounded-full bg-white text-[#1F1F1F] shadow-2xl flex items-center justify-center border-2 border-[#2563EB] pointer-events-auto">
+                <MoveHorizontal className="w-5 h-5 text-[#2563EB]" />
               </div>
             </div>
           </div>
@@ -185,12 +185,12 @@ export default function NextFixBeforeAfter() {
           <div className="mt-6 pt-5 border-t border-[#f0f0f0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-semibold text-[#636363]">
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1.5 text-[#1F1F1F]">
-                <Clock className="w-4 h-4 text-[#EF644C]" />
+                <Clock className="w-4 h-4 text-[#2563EB]" />
                 <span>{current.time}</span>
               </span>
               <span>•</span>
               <span className="flex items-center gap-1.5 text-[#1F1F1F]">
-                <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
+                <ShieldCheck className="w-4 h-4 text-[#2563EB]" />
                 <span>{current.warranty}</span>
               </span>
             </div>

@@ -148,20 +148,20 @@ export default function WeFixNavbar({
           {/* Left info items */}
           <div className="flex items-center gap-4 sm:gap-6 whitespace-nowrap overflow-hidden">
             <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
-              <MapPin className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
+              <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
               <span>25 Main St, NY 10001</span>
             </span>
 
             <a
               href="mailto:support@nextfixpro.com"
-              className="hidden sm:flex items-center gap-1.5 font-medium hover:text-[#EF644C] transition-colors whitespace-nowrap"
+              className="hidden sm:flex items-center gap-1.5 font-medium hover:text-[#2563EB] transition-colors whitespace-nowrap"
             >
-              <Mail className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
+              <Mail className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
               <span>support@nextfixpro.com</span>
             </a>
 
             <span className="hidden md:flex items-center gap-1.5 font-medium whitespace-nowrap">
-              <Clock className="w-3.5 h-3.5 text-[#EF644C] flex-shrink-0" />
+              <Clock className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
               <span>Mon - Sat: 8:00 AM - 8:00 PM</span>
             </span>
           </div>
@@ -174,7 +174,7 @@ export default function WeFixNavbar({
 
             <button
               onClick={onOpenTracker}
-              className="text-[#EF644C] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded px-1.5 py-0.5 whitespace-nowrap"
+              className="text-[#2563EB] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded px-1.5 py-0.5 whitespace-nowrap"
             >
               <Search className="w-3.5 h-3.5 flex-shrink-0" />
               <span>Track Ticket</span>
@@ -196,7 +196,7 @@ export default function WeFixNavbar({
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded-xl flex-shrink-0"
+            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-xl flex-shrink-0"
             aria-label="NextFix Pro Home"
           >
             <NextFixLogo size="md" />
@@ -213,8 +213,8 @@ export default function WeFixNavbar({
                   onClick={(e) => handleNavClick(e, item.id)}
                   className={`relative py-2 whitespace-nowrap font-bold transition-colors duration-200 ${
                     isActive
-                      ? "text-[#EF644C]"
-                      : "text-[#1F1F1F] hover:text-[#EF644C]"
+                      ? "text-[#2563EB]"
+                      : "text-[#1F1F1F] hover:text-[#2563EB]"
                   }`}
                 >
                   <span>{item.label}</span>
@@ -223,7 +223,7 @@ export default function WeFixNavbar({
                   {isActive && (
                     <motion.span
                       layoutId="navbar-active-pill"
-                      className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#EF644C] rounded-full shadow-xs"
+                      className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#2563EB] rounded-full shadow-xs"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -237,7 +237,7 @@ export default function WeFixNavbar({
             {/* Search Icon */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#2563EB] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
               aria-label="Open search"
             >
               <Search className="w-4 h-4" />
@@ -246,7 +246,7 @@ export default function WeFixNavbar({
             {/* High-Converting Get A Quote Button */}
             <button
               onClick={onOpenQuote}
-              className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md hover:shadow-lg whitespace-nowrap flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md hover:shadow-lg whitespace-nowrap flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
             >
               <span>Get A Quote</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -263,7 +263,7 @@ export default function WeFixNavbar({
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#eaeaea] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#eaeaea] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -283,7 +283,7 @@ export default function WeFixNavbar({
                 type="text"
                 autoFocus
                 placeholder="Search repair services, devices or guides..."
-                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-white border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#EF644C]"
+                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-white border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#2563EB]"
               />
               <button
                 onClick={() => setSearchOpen(false)}
@@ -308,14 +308,14 @@ export default function WeFixNavbar({
                     onClick={(e) => handleNavClick(e, item.id)}
                     className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-bold transition-all ${
                       isActive
-                        ? "bg-[#EF644C]/10 border-[#EF644C]/30 text-[#EF644C]"
+                        ? "bg-[#2563EB]/10 border-[#2563EB]/30 text-[#2563EB]"
                         : "border-transparent text-[#1F1F1F] hover:bg-[#f6f6f6]"
                     }`}
                   >
                     <span>{item.label}</span>
                     <ChevronRight
                       className={`w-4 h-4 ${
-                        isActive ? "text-[#EF644C]" : "text-[#888888]"
+                        isActive ? "text-[#2563EB]" : "text-[#888888]"
                       }`}
                     />
                   </a>
