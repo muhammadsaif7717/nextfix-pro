@@ -126,7 +126,7 @@ export default function WeFixHeroSlider({
             transition={{ duration: 0.55, ease: "easeOut" }}
             className="space-y-4"
           >
-            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] font-heading drop-shadow-2xl">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-[1.08] font-heading drop-shadow-2xl">
               {active.title}
               <span className="block mt-2 sm:mt-3 bg-gradient-to-r from-amber-400 via-orange-400 to-rose-400 bg-clip-text text-transparent drop-shadow-lg">
                 {active.highlight}
@@ -134,17 +134,17 @@ export default function WeFixHeroSlider({
             </h1>
 
             {/* Minimal High-Impact Subtitle */}
-            <p className="mt-6 text-base sm:text-lg md:text-xl text-slate-200/90 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-md">
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-200/90 max-w-2xl mx-auto leading-relaxed font-normal drop-shadow-md">
               {active.desc}
             </p>
           </motion.div>
         </AnimatePresence>
 
         {/* High-Contrast Luxury Action Row */}
-        <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3.5 sm:gap-4">
+        <div className="mt-7 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <button
             onClick={onBookRepair}
-            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white shadow-xl shadow-[#EA580C]/35 hover:shadow-[#EA580C]/50 flex items-center justify-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[50px] active:scale-95"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white shadow-xl shadow-[#EA580C]/35 hover:shadow-[#EA580C]/50 flex items-center justify-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] active:scale-95 whitespace-nowrap"
           >
             <span>Book Priority Repair</span>
             <ArrowRight className="w-4 h-4" />
@@ -152,14 +152,14 @@ export default function WeFixHeroSlider({
 
           <button
             onClick={onGetQuote}
-            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-xl transition-all duration-200 shadow-lg flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[50px] active:scale-95"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-white/10 hover:bg-white/20 text-white border border-white/25 backdrop-blur-xl transition-all duration-200 shadow-lg flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[48px] active:scale-95 whitespace-nowrap"
           >
             <span>Price Calculator</span>
           </button>
         </div>
 
         {/* Dynamic Frosted Trust Strip with Slide Context */}
-        <div className="mt-12 sm:mt-16 inline-flex flex-wrap items-center justify-center gap-4 sm:gap-8 px-6 py-3 rounded-full bg-slate-900/60 border border-white/10 backdrop-blur-md text-xs sm:text-sm text-slate-200/90 font-medium shadow-lg">
+        <div className="mt-8 sm:mt-14 inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-slate-900/60 border border-white/10 backdrop-blur-md text-[11px] sm:text-xs text-slate-200/90 font-medium shadow-lg max-w-full">
           {active.pills.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -167,8 +167,8 @@ export default function WeFixHeroSlider({
                 {idx > 0 && (
                   <span className="hidden sm:inline text-white/20">•</span>
                 )}
-                <div className="flex items-center gap-2">
-                  <Icon className="w-4 h-4 text-[#FB923C]" />
+                <div className="flex items-center gap-1.5 sm:gap-2">
+                  <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FB923C]" />
                   <span>{item.label}</span>
                 </div>
               </React.Fragment>

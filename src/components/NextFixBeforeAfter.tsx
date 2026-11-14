@@ -89,10 +89,10 @@ export default function NextFixBeforeAfter() {
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Minimal, Human-Crafted Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Visual Proof
           </span>
@@ -105,8 +105,8 @@ export default function NextFixBeforeAfter() {
         </div>
 
         {/* Clean Segmented Device Tabs */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="inline-flex p-1 rounded-full bg-white border border-[#e2e8f0] shadow-sm">
+        <div className="flex items-center justify-center mb-8">
+          <div className="inline-flex flex-wrap items-center justify-center p-1 rounded-full sm:rounded-full bg-white border border-[#e2e8f0] shadow-sm max-w-full">
             {presets.map((item, i) => (
               <button
                 key={item.id}
@@ -114,7 +114,7 @@ export default function NextFixBeforeAfter() {
                   setActivePreset(i);
                   setSliderPosition(50);
                 }}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+                className={`px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold transition-all duration-200 whitespace-nowrap ${
                   activePreset === i
                     ? "bg-[#EA580C] text-white shadow-md shadow-[#EA580C]/25"
                     : "text-[#64748B] hover:text-[#0F172A] hover:bg-slate-50"
@@ -135,7 +135,7 @@ export default function NextFixBeforeAfter() {
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
             style={{ touchAction: "none" }}
-            className={`relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl sm:rounded-3xl overflow-hidden select-none bg-slate-950 border border-slate-200/80 shadow-2xl cursor-ew-resize ${
+            className={`relative aspect-[4/3] sm:aspect-[16/9] w-full rounded-2xl sm:rounded-3xl overflow-hidden select-none bg-slate-950 border border-slate-200/80 shadow-2xl cursor-ew-resize ${
               isDragging ? "cursor-grabbing" : ""
             }`}
           >

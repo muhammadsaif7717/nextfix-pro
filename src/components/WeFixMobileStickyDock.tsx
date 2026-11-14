@@ -15,7 +15,7 @@ export default function WeFixMobileStickyDock({
       <div className="grid grid-cols-3 gap-2 max-w-md mx-auto">
         {/* Call Shop */}
         <a
-          href="tel:18006578963"
+          href="tel:18006398349"
           className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] active:bg-[#eaeaea] transition-colors"
         >
           <Phone className="w-4 h-4 text-[#EA580C] mb-0.5" />

@@ -96,7 +96,7 @@ export default function WeFixRepairOptions({
       : options.filter((item) => item.category === activeTab);
 
   return (
-    <section id="options" className="py-20 sm:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section id="options" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
         <motion.div

@@ -51,7 +51,7 @@ export default function RootLayout({
       className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
     >
       <body
-        className={`${plusJakartaSans.className} min-h-screen bg-white text-[#636363] antialiased selection:bg-[#EA580C] selection:text-white min-w-[360px] overflow-x-hidden`}
+        className={`${plusJakartaSans.className} min-h-screen bg-white text-[#636363] antialiased selection:bg-[#EA580C] selection:text-white w-full max-w-full overflow-x-hidden`}
       >
         {children}
       </body>

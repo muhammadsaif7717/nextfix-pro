@@ -59,7 +59,7 @@ export default function WeFixSafeguardSection({
   );
 
   return (
-    <section id="estimator" className="py-20 sm:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section id="estimator" className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
         <motion.div
@@ -67,7 +67,7 @@ export default function WeFixSafeguardSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
+          className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
         >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Transparent Pricing
@@ -75,7 +75,7 @@ export default function WeFixSafeguardSection({
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight font-heading wdt-spaced-heading">
             Instant Cost & Turnaround Calculator
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#64748B] max-w-2xl mx-auto">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-[#64748B] max-w-2xl mx-auto">
             Select your device and hardware fault for an immediate upfront quote with genuine parts and zero diagnostic fees.
           </p>
         </motion.div>
@@ -86,42 +86,42 @@ export default function WeFixSafeguardSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto bg-white p-6 sm:p-10 lg:p-12 rounded-3xl border border-[#e2e8f0] shadow-sm"
+          className="max-w-5xl mx-auto bg-white p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border border-[#e2e8f0] shadow-sm"
         >
           {/* Top Header Strip */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#e2e8f0] mb-8 gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 sm:pb-6 border-b border-[#e2e8f0] mb-6 sm:mb-8 gap-3">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
                 Step-by-Step Diagnostic
               </span>
-              <h3 className="text-xl sm:text-2xl font-black text-[#0F172A] font-heading">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-[#0F172A] font-heading">
                 Calculate Exact Repair Total
               </h3>
             </div>
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-xs font-bold text-[#0F172A] self-start sm:self-auto">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-[11px] sm:text-xs font-bold text-[#0F172A] self-start sm:self-auto">
               <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
               <span>Real-Time Parts & Labor Estimation</span>
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* 1. Device Category Selection */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-2.5 sm:mb-3">
                 1. Select Device Family
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 sm:gap-3">
                 {DEVICE_CATEGORIES.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => handleCategoryChange(cat)}
-                    className={`py-3.5 px-4 rounded-2xl border text-center transition-all duration-200 flex flex-col items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                    className={`py-2.5 sm:py-3.5 px-2.5 sm:px-4 rounded-xl sm:rounded-2xl border text-center transition-all duration-200 flex flex-col items-center justify-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                       selectedCategory.id === cat.id
                         ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
                         : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
                     }`}
                   >
-                    <span className="text-xs font-bold">{cat.name}</span>
+                    <span className="text-[11px] sm:text-xs font-bold truncate w-full">{cat.name}</span>
                   </button>
                 ))}
               </div>
@@ -129,22 +129,22 @@ export default function WeFixSafeguardSection({
 
             {/* 2. Device Model Selection */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-2.5 sm:mb-3">
                 2. Select Exact Model
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 max-h-56 overflow-y-auto pr-1">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 sm:gap-2.5 max-h-56 overflow-y-auto pr-1">
                 {modelsForCat.map((model: DeviceModel) => (
                   <button
                     key={model.id}
                     onClick={() => setSelectedModel(model)}
-                    className={`py-3 px-3.5 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                    className={`py-2.5 sm:py-3 px-3 sm:px-3.5 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                       selectedModel?.id === model.id
                         ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
                         : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
                     }`}
                   >
-                    <div className="truncate font-semibold">{model.name}</div>
-                    <div className="text-[10px] text-[#94A3B8] font-normal mt-0.5">
+                    <div className="truncate font-semibold text-[11px] sm:text-xs">{model.name}</div>
+                    <div className="text-[10px] text-[#94A3B8] font-normal mt-0.5 truncate">
                       {model.brand}
                     </div>
                   </button>
@@ -154,15 +154,15 @@ export default function WeFixSafeguardSection({
 
             {/* 3. Issue Selection */}
             <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-2.5 sm:mb-3">
                 3. Select Hardware Issue
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
                 {issuesForCat.map((issue: RepairIssue) => (
                   <button
                     key={issue.id}
                     onClick={() => setSelectedIssue(issue)}
-                    className={`p-3.5 rounded-2xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                    className={`p-3 sm:p-3.5 rounded-xl sm:rounded-2xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                       selectedIssue?.id === issue.id
                         ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
                         : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
@@ -183,46 +183,46 @@ export default function WeFixSafeguardSection({
             </div>
 
             {/* 4. Full-Width Live Quote Result Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] mt-8">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="p-4 sm:p-8 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] mt-6 sm:mt-8">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 sm:gap-6">
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8]">
                     All-Inclusive Quoted Total
                   </span>
-                  <div className="flex items-baseline gap-2.5 mt-1">
-                    <span className="text-3xl sm:text-5xl font-black text-[#0F172A] font-heading">
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] font-heading">
                       ${calculatedQuote.selectedPrice}
                     </span>
                     <span className="text-xs sm:text-sm font-semibold text-[#64748B]">
-                      / Genuine Parts + Micro-Soldering Labor
+                      / Genuine Parts + Labor
                     </span>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 text-xs font-semibold text-[#64748B]">
-                  <div className="p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2">
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-6 text-xs font-semibold text-[#64748B]">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2 flex-1 sm:flex-initial">
                     <Clock className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                     <div>
                       <div className="text-[10px] text-[#94A3B8] uppercase font-bold">Turnaround</div>
-                      <div className="text-xs font-bold text-[#0F172A]">{calculatedQuote.turnaround}</div>
+                      <div className="text-xs font-bold text-[#0F172A] whitespace-nowrap">{calculatedQuote.turnaround}</div>
                     </div>
                   </div>
 
-                  <div className="p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2 flex-1 sm:flex-initial">
                     <ShieldCheck className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                     <div>
                       <div className="text-[10px] text-[#94A3B8] uppercase font-bold">Warranty</div>
-                      <div className="text-xs font-bold text-[#0F172A]">{calculatedQuote.warranty}</div>
+                      <div className="text-xs font-bold text-[#0F172A] whitespace-nowrap">{calculatedQuote.warranty}</div>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Book Action Button */}
-              <div className="mt-6 pt-6 border-t border-[#e2e8f0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+              <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-[#e2e8f0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
                 <div className="text-xs text-[#64748B] flex items-center gap-2 font-medium">
                   <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
-                  <span>Free microscopic inspection. Pay $0 if we cannot repair your hardware.</span>
+                  <span>Free microscopic inspection. Pay $0 if not repaired.</span>
                 </div>
 
                 <button
@@ -235,7 +235,7 @@ export default function WeFixSafeguardSection({
                       turnaround: calculatedQuote.turnaround,
                     })
                   }
-                  className="px-8 py-3.5 min-h-[48px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
+                  className="px-6 sm:px-8 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Book Repair Slot</span>

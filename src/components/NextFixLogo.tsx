@@ -15,24 +15,24 @@ export default function NextFixLogo({
 }: NextFixLogoProps) {
   const iconDimensions = {
     sm: "w-8 h-8",
-    md: "w-11 h-11 sm:w-12 sm:h-12",
-    lg: "w-14 h-14",
+    md: "w-9 h-9 sm:w-11 sm:h-11",
+    lg: "w-12 h-12 sm:w-14 sm:h-14",
   }[size];
 
   const titleSizes = {
-    sm: "text-lg",
-    md: "text-2xl sm:text-[26px]",
-    lg: "text-3xl",
+    sm: "text-base sm:text-lg",
+    md: "text-xl sm:text-2xl",
+    lg: "text-2xl sm:text-3xl",
   }[size];
 
   const subtitleSizes = {
-    sm: "text-[9px]",
-    md: "text-[10px] sm:text-[11px]",
-    lg: "text-xs",
+    sm: "text-[8px] sm:text-[9px]",
+    md: "text-[9px] sm:text-[10px]",
+    lg: "text-[10px] sm:text-xs",
   }[size];
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none ${className}`}>
       {/* Bespoke NextFix Vector Emblem */}
       <div
         className={`relative ${iconDimensions} rounded-xl sm:rounded-2xl p-[2px] shadow-lg flex-shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}

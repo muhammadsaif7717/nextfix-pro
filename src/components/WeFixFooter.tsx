@@ -197,18 +197,18 @@ export default function WeFixFooter() {
             <div className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#EA580C] flex-shrink-0 mt-0.5" />
-                <span>863 Hope Street, Irving, TX 59080</span>
+                <span>25 Main Street, Suite 400, Manhattan, New York, NY 10001</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
-                <a href="tel:18006578963" className="hover:text-[#EA580C] transition-colors">
-                  +1 (800) 657-8963
+                <a href="tel:18006398349" className="hover:text-[#EA580C] transition-colors">
+                  +1 (800) 639-FIX (349)
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
-                <a href="mailto:info@example.com" className="hover:text-[#EA580C] transition-colors">
-                  info@example.com
+                <a href="mailto:support@nextfixpro.com" className="hover:text-[#EA580C] transition-colors">
+                  support@nextfixpro.com
                 </a>
               </div>
             </div>

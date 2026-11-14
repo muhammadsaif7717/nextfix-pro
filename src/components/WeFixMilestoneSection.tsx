@@ -76,7 +76,7 @@ export default function WeFixMilestoneSection({
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header with Motion */}
         <motion.div
@@ -201,7 +201,7 @@ export default function WeFixMilestoneSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 p-8 rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm"
         >
           {[
             { target: 20, suffix: "+", label: "Years Experience", icon: Award },

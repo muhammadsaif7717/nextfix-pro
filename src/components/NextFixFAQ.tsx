@@ -35,7 +35,7 @@ export default function NextFixFAQ() {
   ];
 
   return (
-    <section className="py-20 sm:py-28 bg-[#fafafa] border-b border-[#e8e8e8] overflow-hidden">
+    <section className="py-16 sm:py-20 lg:py-28 bg-[#fafafa] border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
