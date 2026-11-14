@@ -30,7 +30,7 @@ export default function WeFixHeroSlider({
       highlight: "Factory Perfection.",
       desc: "Specialized same-day repairs for iPhone, MacBook, and Galaxy. Genuine OEM components, factory seals, and zero data loss.",
       bgImage:
-        "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=85&w=2000",
+        "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=85&w=2000",
       pills: [
         { icon: Zap, label: "28-Min Turnaround" },
         { icon: ShieldCheck, label: "Lifetime Warranty" },
@@ -44,7 +44,7 @@ export default function WeFixHeroSlider({
       highlight: "Fixed in Under 28 Mins.",
       desc: "Precision laser cold-pressed screen replacements with factory color calibration and original touch sensitivity.",
       bgImage:
-        "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&q=85&w=2000",
+        "https://images.unsplash.com/photo-1526738549149-8e07eca6c147?auto=format&fit=crop&q=85&w=2000",
       pills: [
         { icon: Zap, label: "OEM Super Retina" },
         { icon: ShieldCheck, label: "TrueTone Retained" },
@@ -58,7 +58,7 @@ export default function WeFixHeroSlider({
       highlight: "Revived with Zero Data Loss.",
       desc: "Micro-soldering, stereomicroscope diagnostics, and ultrasonic deoxidation baths for completely dead devices.",
       bgImage:
-        "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=85&w=2000",
+        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=85&w=2000",
       pills: [
         { icon: Zap, label: "Chip-Level Rework" },
         { icon: ShieldCheck, label: "Ultrasonic Bath" },

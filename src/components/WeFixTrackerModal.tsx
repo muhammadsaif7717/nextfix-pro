@@ -165,7 +165,7 @@ export default function WeFixTrackerModal({
                           step.completed
                             ? "bg-emerald-600 text-white"
                             : step.active
-                            ? "bg-[#EA580C] text-white animate-pulse"
+                            ? "bg-[#EA580C] text-white shadow-sm ring-2 ring-[#EA580C]/30"
                             : "bg-[#e0e0e0] text-[#888888]"
                         }`}
                       >
