@@ -17,9 +17,11 @@ import {
   Calendar,
   Sparkles,
   ArrowRight,
-  Lock,
-  BadgeDollarSign,
-  Award,
+  Smartphone,
+  Laptop,
+  Tablet,
+  Watch,
+  Gamepad2,
 } from "lucide-react";
 
 interface WeFixSafeguardSectionProps {
@@ -65,306 +67,184 @@ export default function WeFixSafeguardSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-14"
+          className="text-center max-w-3xl mx-auto mb-12 sm:mb-14"
         >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Transparent Pricing
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight font-heading wdt-spaced-heading">
-            Instant Cost Calculator & Standards
+            Instant Cost & Turnaround Calculator
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#64748B] max-w-2xl mx-auto">
-            Select your device and repair type for an immediate upfront quote with genuine parts and zero diagnostic fees.
+            Select your device and hardware fault for an immediate upfront quote with genuine parts and zero diagnostic fees.
           </p>
         </motion.div>
 
-        {/* 2-Column Split: Clean Light Assurance Panel & Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          {/* Left Column: Redesigned Clean Light Diagnostic Standards Card (5 Cols) - NO BLACK BOXES */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 bg-white p-7 sm:p-9 rounded-3xl border border-[#e2e8f0] shadow-sm flex flex-col justify-between space-y-8"
-          >
+        {/* Full-Width Calculator Container (Left Panel Removed As Requested) */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6 }}
+          className="max-w-5xl mx-auto bg-white p-6 sm:p-10 lg:p-12 rounded-3xl border border-[#e2e8f0] shadow-sm"
+        >
+          {/* Top Header Strip */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-[#e2e8f0] mb-8 gap-3">
             <div>
-              {/* Pill Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/20 text-xs font-semibold text-[#EA580C] mb-5">
-                <Sparkles className="w-3.5 h-3.5 text-[#EA580C]" />
-                <span>The NextFix Pro Standard</span>
-              </div>
-
-              {/* Title & Subtitle */}
-              <h3 className="text-2xl sm:text-3xl font-black font-heading text-[#0F172A] tracking-tight">
-                Upfront Pricing,
-                <span className="block text-[#EA580C] mt-1">Zero Hidden Surprises.</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
+                Step-by-Step Diagnostic
+              </span>
+              <h3 className="text-xl sm:text-2xl font-black text-[#0F172A] font-heading">
+                Calculate Exact Repair Total
               </h3>
-
-              <p className="mt-3 text-sm text-[#64748B] leading-relaxed font-normal">
-                Every repair estimate calculated here includes factory-spec hardware, cleanroom technician labor, and our lifetime workmanship guarantee.
-              </p>
-
-              {/* 4 Core Value Proposition Cards (Light & Clean) */}
-              <div className="mt-7 space-y-3">
-                {[
-                  {
-                    icon: ShieldCheck,
-                    title: "Exact Quoted Total Guaranteed",
-                    desc: "The estimate you calculate is your final total. Parts, specialized micro-soldering labor, and testing are all included.",
-                  },
-                  {
-                    icon: Award,
-                    title: "Lifetime Workmanship Warranty",
-                    desc: "Comprehensive replacement coverage on both replacement parts and technician labor. You are protected for life.",
-                  },
-                  {
-                    icon: Lock,
-                    title: "Zero Data Loss Protocol",
-                    desc: "Confidential cleanroom handling. Your personal photos, apps, documents, and accounts remain completely untouched.",
-                  },
-                  {
-                    icon: BadgeDollarSign,
-                    title: "No Fix = Absolute $0 Fee",
-                    desc: "If our certified engineers cannot restore your hardware to 100% operational condition, you pay absolutely nothing.",
-                  },
-                ].map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div
-                      key={idx}
-                      className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]/80 transition-all hover:bg-slate-50 hover:border-[#EA580C]/30"
-                    >
-                      <div className="w-9 h-9 rounded-xl bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <h4 className="text-xs font-bold text-[#0F172A]">
-                          {item.title}
-                        </h4>
-                        <p className="text-[11px] text-[#64748B] mt-0.5 leading-relaxed">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
-
-            {/* Bottom 2x2 Metric Grid & Reassurance Strip */}
-            <div className="pt-6 border-t border-[#e2e8f0] space-y-4">
-              <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
-                  <div className="text-xl font-black text-[#0F172A] font-heading">
-                    28 Mins
-                  </div>
-                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
-                    Avg. Turnaround
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
-                  <div className="text-xl font-black text-[#EA580C] font-heading">
-                    4.9 / 5
-                  </div>
-                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
-                    2,400+ Reviews
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
-                  <div className="text-xl font-black text-[#0F172A] font-heading">
-                    100%
-                  </div>
-                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
-                    Data Preserved
-                  </div>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
-                  <div className="text-xl font-black text-[#0F172A] font-heading">
-                    $0 Fee
-                  </div>
-                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
-                    If Not Repaired
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-[#64748B] pt-1">
-                <span className="flex items-center gap-1.5 text-[#0F172A] font-medium">
-                  <CheckCircle2 className="w-4 h-4 text-[#EA580C]" />
-                  <span>Pay only after full testing & approval</span>
-                </span>
-                <span className="font-semibold text-[#0F172A]">Open 8AM - 8PM</span>
-              </div>
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-xs font-bold text-[#0F172A] self-start sm:self-auto">
+              <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
+              <span>Real-Time Parts & Labor Estimation</span>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Column: Interactive Multi-Step Price Calculator (7 Cols) - UNTOUCHED UI & EXACT LOGIC */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-[#e2e8f0] shadow-sm flex flex-col justify-between"
-          >
+          <div className="space-y-8">
+            {/* 1. Device Category Selection */}
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#e2e8f0] mb-8">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
-                    Step-by-Step Diagnostic
-                  </span>
-                  <h3 className="text-2xl font-black text-[#0F172A] font-heading">
-                    Instant Cost & Turnaround Calculator
-                  </h3>
-                </div>
-                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-xs font-bold text-[#0F172A]">
-                  <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
-                  <span>Live Estimates</span>
-                </div>
-              </div>
-
-              <div className="space-y-6">
-                {/* 1. Device Category Selection */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
-                    1. Select Device Family
-                  </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                    {DEVICE_CATEGORIES.map((cat) => (
-                      <button
-                        key={cat.id}
-                        onClick={() => handleCategoryChange(cat)}
-                        className={`py-3 px-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                          selectedCategory.id === cat.id
-                            ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-sm"
-                            : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
-                        }`}
-                      >
-                        <span className="text-xs font-semibold">{cat.name}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 2. Device Model Selection */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
-                    2. Select Exact Model
-                  </label>
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto pr-1">
-                    {modelsForCat.map((model: DeviceModel) => (
-                      <button
-                        key={model.id}
-                        onClick={() => setSelectedModel(model)}
-                        className={`py-2.5 px-3 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                          selectedModel?.id === model.id
-                            ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold"
-                            : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
-                        }`}
-                      >
-                        <div className="truncate font-semibold">{model.name}</div>
-                        <div className="text-[10px] text-[#94A3B8] font-normal">
-                          {model.brand}
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 3. Issue Selection */}
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
-                    3. Select Hardware Issue
-                  </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {issuesForCat.map((issue: RepairIssue) => (
-                      <button
-                        key={issue.id}
-                        onClick={() => setSelectedIssue(issue)}
-                        className={`p-3 rounded-xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                          selectedIssue?.id === issue.id
-                            ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-sm"
-                            : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
-                        }`}
-                      >
-                        <div>
-                          <div className="text-xs font-semibold">{issue.name}</div>
-                          <div className="text-[11px] text-[#94A3B8] font-normal">
-                            {issue.shortDesc}
-                          </div>
-                        </div>
-                        {selectedIssue?.id === issue.id && (
-                          <Check className="w-4 h-4 text-[#EA580C] flex-shrink-0 mt-0.5" />
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* 4. Live Quote Result Card */}
-                <div className="p-6 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] mt-8">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div>
-                      <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8]">
-                        Calculated Estimate
-                      </span>
-                      <div className="flex items-baseline gap-2 mt-0.5">
-                        <span className="text-3xl sm:text-4xl font-black text-[#0F172A] font-heading">
-                          ${calculatedQuote.selectedPrice}
-                        </span>
-                        <span className="text-xs font-semibold text-[#94A3B8]">
-                          / All-Inclusive Parts + Labor
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col sm:items-end text-xs font-semibold text-[#64748B] space-y-1">
-                      <span className="flex items-center gap-1.5 text-[#0F172A]">
-                        <Clock className="w-4 h-4 text-[#EA580C]" />
-                        Turnaround:{" "}
-                        <strong className="text-[#EA580C]">
-                          {calculatedQuote.turnaround}
-                        </strong>
-                      </span>
-                      <span className="flex items-center gap-1.5">
-                        <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
-                        Warranty: {calculatedQuote.warranty}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Book Action Button */}
-                  <div className="mt-6 pt-5 border-t border-[#e2e8f0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                    <div className="text-xs text-[#94A3B8] flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
-                      <span>Free diagnostic. Pay nothing until verified complete.</span>
-                    </div>
-
-                    <button
-                      onClick={() =>
-                        onBookAppointment({
-                          category: selectedCategory,
-                          model: selectedModel,
-                          issue: selectedIssue,
-                          price: calculatedQuote.selectedPrice,
-                          turnaround: calculatedQuote.turnaround,
-                        })
-                      }
-                      className="px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
-                    >
-                      <Calendar className="w-4 h-4" />
-                      <span>Book Repair Slot</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </div>
-                </div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+                1. Select Device Family
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                {DEVICE_CATEGORIES.map((cat) => (
+                  <button
+                    key={cat.id}
+                    onClick={() => handleCategoryChange(cat)}
+                    className={`py-3.5 px-4 rounded-2xl border text-center transition-all duration-200 flex flex-col items-center justify-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                      selectedCategory.id === cat.id
+                        ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
+                        : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
+                    }`}
+                  >
+                    <span className="text-xs font-bold">{cat.name}</span>
+                  </button>
+                ))}
               </div>
             </div>
-          </motion.div>
-        </div>
+
+            {/* 2. Device Model Selection */}
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+                2. Select Exact Model
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 max-h-56 overflow-y-auto pr-1">
+                {modelsForCat.map((model: DeviceModel) => (
+                  <button
+                    key={model.id}
+                    onClick={() => setSelectedModel(model)}
+                    className={`py-3 px-3.5 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                      selectedModel?.id === model.id
+                        ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
+                        : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
+                    }`}
+                  >
+                    <div className="truncate font-semibold">{model.name}</div>
+                    <div className="text-[10px] text-[#94A3B8] font-normal mt-0.5">
+                      {model.brand}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 3. Issue Selection */}
+            <div>
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
+                3. Select Hardware Issue
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {issuesForCat.map((issue: RepairIssue) => (
+                  <button
+                    key={issue.id}
+                    onClick={() => setSelectedIssue(issue)}
+                    className={`p-3.5 rounded-2xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
+                      selectedIssue?.id === issue.id
+                        ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-xs"
+                        : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1] hover:bg-slate-50/50"
+                    }`}
+                  >
+                    <div className="pr-2">
+                      <div className="text-xs font-bold">{issue.name}</div>
+                      <div className="text-[11px] text-[#94A3B8] font-normal mt-0.5 line-clamp-2">
+                        {issue.shortDesc}
+                      </div>
+                    </div>
+                    {selectedIssue?.id === issue.id && (
+                      <Check className="w-4 h-4 text-[#EA580C] flex-shrink-0 mt-0.5" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 4. Full-Width Live Quote Result Card */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] mt-8">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                <div>
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8]">
+                    All-Inclusive Quoted Total
+                  </span>
+                  <div className="flex items-baseline gap-2.5 mt-1">
+                    <span className="text-3xl sm:text-5xl font-black text-[#0F172A] font-heading">
+                      ${calculatedQuote.selectedPrice}
+                    </span>
+                    <span className="text-xs sm:text-sm font-semibold text-[#64748B]">
+                      / Genuine Parts + Micro-Soldering Labor
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 text-xs font-semibold text-[#64748B]">
+                  <div className="p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2">
+                    <Clock className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
+                    <div>
+                      <div className="text-[10px] text-[#94A3B8] uppercase font-bold">Turnaround</div>
+                      <div className="text-xs font-bold text-[#0F172A]">{calculatedQuote.turnaround}</div>
+                    </div>
+                  </div>
+
+                  <div className="p-3 rounded-xl bg-white border border-[#e2e8f0] flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
+                    <div>
+                      <div className="text-[10px] text-[#94A3B8] uppercase font-bold">Warranty</div>
+                      <div className="text-xs font-bold text-[#0F172A]">{calculatedQuote.warranty}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Book Action Button */}
+              <div className="mt-6 pt-6 border-t border-[#e2e8f0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                <div className="text-xs text-[#64748B] flex items-center gap-2 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
+                  <span>Free microscopic inspection. Pay $0 if we cannot repair your hardware.</span>
+                </div>
+
+                <button
+                  onClick={() =>
+                    onBookAppointment({
+                      category: selectedCategory,
+                      model: selectedModel,
+                      issue: selectedIssue,
+                      price: calculatedQuote.selectedPrice,
+                      turnaround: calculatedQuote.turnaround,
+                    })
+                  }
+                  className="px-8 py-3.5 min-h-[48px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>Book Repair Slot</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
