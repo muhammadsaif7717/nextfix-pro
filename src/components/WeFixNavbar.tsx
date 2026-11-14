@@ -9,7 +9,6 @@ import {
   ChevronRight,
   ArrowRight,
   Search,
-  Sparkles,
 } from "lucide-react";
 
 interface WeFixNavbarProps {
@@ -144,7 +143,7 @@ export default function WeFixNavbar({
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl flex-shrink-0"
+            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] rounded-xl flex-shrink-0"
             aria-label="NextFix Pro Home"
           >
             <NextFixLogo size="md" inverted={true} />
@@ -171,7 +170,7 @@ export default function WeFixNavbar({
                   {isActive && (
                     <motion.span
                       layoutId="navbar-active-pill"
-                      className="absolute -bottom-1.5 left-0 right-0 h-[2.5px] bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 rounded-full shadow-[0_0_12px_rgba(56,189,248,0.8)]"
+                      className="absolute -bottom-1.5 left-0 right-0 h-[2.5px] bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-400 rounded-full shadow-[0_0_12px_rgba(16,185,129,0.8)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -185,16 +184,16 @@ export default function WeFixNavbar({
             {/* Quick Track Status Button */}
             <button
               onClick={onOpenTracker}
-              className="px-3.5 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              className="px-3.5 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
             >
-              <Search className="w-3.5 h-3.5 text-blue-400" />
+              <Search className="w-3.5 h-3.5 text-[#34D399]" />
               <span>Track Ticket</span>
             </button>
 
             {/* High-Converting Luxury Book Repair CTA */}
             <button
               onClick={onOpenQuote}
-              className="px-5 py-2.5 min-h-[42px] rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-200 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
+              className="px-5 py-2.5 min-h-[42px] rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/40 transition-all duration-200 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
             >
               <span>Book Repair</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -205,13 +204,13 @@ export default function WeFixNavbar({
           <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <button
               onClick={onOpenQuote}
-              className="px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-bold bg-blue-600 text-white sm:hidden shadow-md"
+              className="px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-bold bg-[#10B981] hover:bg-[#059669] text-white sm:hidden shadow-md"
             >
               Book
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 min-h-[42px] min-w-[42px] rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+              className="p-2 min-h-[42px] min-w-[42px] rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -239,14 +238,14 @@ export default function WeFixNavbar({
                       onClick={(e) => handleNavClick(e, item.id)}
                       className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-semibold transition-all ${
                         isActive
-                          ? "bg-blue-600/20 border-blue-500/40 text-blue-400 font-bold"
+                          ? "bg-[#10B981]/20 border-[#10B981]/40 text-[#34D399] font-bold"
                           : "border-transparent text-slate-300 hover:text-white hover:bg-white/5"
                       }`}
                     >
                       <span>{item.label}</span>
                       <ChevronRight
                         className={`w-4 h-4 ${
-                          isActive ? "text-blue-400" : "text-slate-500"
+                          isActive ? "text-[#34D399]" : "text-slate-500"
                         }`}
                       />
                     </a>
@@ -260,7 +259,7 @@ export default function WeFixNavbar({
                     setMobileMenuOpen(false);
                     onOpenQuote();
                   }}
-                  className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-500 text-white shadow-lg text-center flex items-center justify-center gap-2"
+                  className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg text-center flex items-center justify-center gap-2"
                 >
                   <span>Book Priority Repair</span>
                   <ArrowRight className="w-4 h-4" />
@@ -273,7 +272,7 @@ export default function WeFixNavbar({
                   }}
                   className="w-full py-3 rounded-full text-xs font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 text-center flex items-center justify-center gap-2"
                 >
-                  <Search className="w-3.5 h-3.5 text-blue-400" />
+                  <Search className="w-3.5 h-3.5 text-[#34D399]" />
                   <span>Track Repair Ticket</span>
                 </button>
               </div>

@@ -55,7 +55,7 @@ export default function NextFixWorkflow() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-2">
             Seamless Process
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -78,24 +78,24 @@ export default function NextFixWorkflow() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between p-7 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#2563EB]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative"
+                className="group flex flex-col justify-between p-7 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#10B981]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative"
               >
                 <div>
                   {/* Step Number + Icon */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white border border-[#e8e8e8] group-hover:bg-[#2563EB] group-hover:border-[#2563EB] text-[#2563EB] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-[#e8e8e8] group-hover:bg-[#10B981] group-hover:border-[#10B981] text-[#10B981] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="text-3xl font-black text-[#e0e0e0] group-hover:text-[#2563EB]/40 transition-colors font-mono">
+                    <span className="text-3xl font-black text-[#e0e0e0] group-hover:text-[#10B981]/40 transition-colors font-mono">
                       {step.num}
                     </span>
                   </div>
 
-                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#2563EB] mb-2">
+                  <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-[#10B981] mb-2">
                     {step.highlight}
                   </span>
 
-                  <h3 className="text-lg font-bold text-[#1F1F1F] font-heading mb-3 group-hover:text-[#2563EB] transition-colors">
+                  <h3 className="text-lg font-bold text-[#1F1F1F] font-heading mb-3 group-hover:text-[#10B981] transition-colors">
                     {step.title}
                   </h3>
 
@@ -106,7 +106,7 @@ export default function NextFixWorkflow() {
 
                 <div className="pt-6 mt-6 border-t border-[#f0f0f0] flex items-center justify-between text-xs text-[#888888]">
                   <span>Step {idx + 1} of 4</span>
-                  <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#2563EB] group-hover:translate-x-1.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#10B981] group-hover:translate-x-1.5 transition-transform" />
                 </div>
               </motion.div>
             );

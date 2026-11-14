@@ -70,7 +70,7 @@ export default function WeFixTrackerModal({
         {/* Header */}
         <div className="bg-[#f6f6f6] p-4 sm:p-6 border-b border-[#e8e8e8] flex items-center justify-between flex-shrink-0">
           <div>
-            <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block">
+            <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider block">
               Live Hardware Status
             </span>
             <h3 id="tracker-modal-title" className="text-lg sm:text-xl font-bold text-[#1F1F1F] font-heading mt-0.5">
@@ -81,7 +81,7 @@ export default function WeFixTrackerModal({
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="w-9 h-9 min-h-[36px] min-w-[36px] rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#2563EB] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+            className="w-9 h-9 min-h-[36px] min-w-[36px] rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#10B981] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
           >
             <X className="w-4 h-4" />
           </button>
@@ -100,11 +100,11 @@ export default function WeFixTrackerModal({
                 value={searchTicket}
                 onChange={(e) => setSearchTicket(e.target.value)}
                 placeholder="Enter Ticket # (e.g. NFX-8492)"
-                className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm font-mono focus:outline-none focus:border-[#2563EB]"
+                className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm font-mono focus:outline-none focus:border-[#10B981]"
               />
               <button
                 type="submit"
-                className="px-5 py-3 min-h-[44px] rounded-xl btn-wefix-primary text-xs font-bold uppercase tracking-wider flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+                className="px-5 py-3 min-h-[44px] rounded-xl btn-wefix-primary text-xs font-bold uppercase tracking-wider flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
               >
                 Track
               </button>
@@ -120,7 +120,7 @@ export default function WeFixTrackerModal({
                     setActiveTicket(MOCK_TICKETS[code]);
                     setErrorMsg("");
                   }}
-                  className="font-mono text-[#2563EB] hover:underline px-1 py-0.5 rounded"
+                  className="font-mono text-[#10B981] hover:underline px-1 py-0.5 rounded"
                 >
                   {code}
                 </button>
@@ -139,7 +139,7 @@ export default function WeFixTrackerModal({
             <div className="space-y-4">
               <div className="p-4 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8]">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-[#2563EB]">
+                  <span className="text-xs font-mono font-bold text-[#10B981]">
                     #{activeTicket.ticketNumber}
                   </span>
                   <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded-full bg-[#1F1F1F] text-white">
@@ -165,7 +165,7 @@ export default function WeFixTrackerModal({
                           step.completed
                             ? "bg-emerald-600 text-white"
                             : step.active
-                            ? "bg-[#2563EB] text-white animate-pulse"
+                            ? "bg-[#10B981] text-white animate-pulse"
                             : "bg-[#e0e0e0] text-[#888888]"
                         }`}
                       >
@@ -185,7 +185,7 @@ export default function WeFixTrackerModal({
                         <span
                           className={`font-bold ${
                             step.active
-                              ? "text-[#2563EB]"
+                              ? "text-[#10B981]"
                               : step.completed
                               ? "text-[#1F1F1F]"
                               : "text-[#888888]"

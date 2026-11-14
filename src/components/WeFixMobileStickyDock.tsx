@@ -18,7 +18,7 @@ export default function WeFixMobileStickyDock({
           href="tel:18006578963"
           className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] active:bg-[#eaeaea] transition-colors"
         >
-          <Phone className="w-4 h-4 text-[#2563EB] mb-0.5" />
+          <Phone className="w-4 h-4 text-[#10B981] mb-0.5" />
           <span className="text-[10px] font-bold uppercase tracking-tight">
             Call Shop
           </span>
@@ -40,7 +40,7 @@ export default function WeFixMobileStickyDock({
           href="#contact"
           className="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] active:bg-[#eaeaea] transition-colors"
         >
-          <MapPin className="w-4 h-4 text-[#2563EB] mb-0.5" />
+          <MapPin className="w-4 h-4 text-[#10B981] mb-0.5" />
           <span className="text-[10px] font-bold uppercase tracking-tight">
             Location
           </span>

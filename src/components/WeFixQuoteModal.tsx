@@ -99,7 +99,7 @@ export default function WeFixQuoteModal({
         {/* Header */}
         <div className="bg-[#f6f6f6] p-4 sm:p-6 border-b border-[#e8e8e8] flex items-center justify-between flex-shrink-0">
           <div>
-            <span className="text-[11px] font-bold text-[#2563EB] uppercase tracking-wider block">
+            <span className="text-[11px] font-bold text-[#10B981] uppercase tracking-wider block">
               NextFix Pro Service Appointment
             </span>
             <h3 id="quote-modal-title" className="text-lg sm:text-xl font-bold text-[#1F1F1F] font-heading mt-0.5">
@@ -110,7 +110,7 @@ export default function WeFixQuoteModal({
           <button
             onClick={onClose}
             aria-label="Close dialog"
-            className="w-9 h-9 min-h-[36px] min-w-[36px] rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#2563EB] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+            className="w-9 h-9 min-h-[36px] min-w-[36px] rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#10B981] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
           >
             <X className="w-4 h-4" />
           </button>
@@ -131,7 +131,7 @@ export default function WeFixQuoteModal({
                   value={device}
                   onChange={(e) => setDevice(e.target.value)}
                   placeholder="e.g. iPhone 15 Pro cracked screen or MacBook water spill"
-                  className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm focus:outline-none focus:border-[#10B981]"
                 />
               </div>
 
@@ -144,7 +144,7 @@ export default function WeFixQuoteModal({
                     id="quote-day"
                     value={preferredDay}
                     onChange={(e) => setPreferredDay(e.target.value)}
-                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                   >
                     <option value="Today">Today (Fast-Track)</option>
                     <option value="Tomorrow">Tomorrow</option>
@@ -161,7 +161,7 @@ export default function WeFixQuoteModal({
                     id="quote-slot"
                     value={timeSlot}
                     onChange={(e) => setTimeSlot(e.target.value)}
-                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                   >
                     <option value="10:00 AM – 11:00 AM">10:00 AM – 11:00 AM</option>
                     <option value="1:00 PM – 2:00 PM">1:00 PM – 2:00 PM</option>
@@ -183,7 +183,7 @@ export default function WeFixQuoteModal({
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder="Full Name"
-                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                   />
                 </div>
 
@@ -198,7 +198,7 @@ export default function WeFixQuoteModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(555) 000-0000"
-                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                   />
                 </div>
               </div>
@@ -214,7 +214,7 @@ export default function WeFixQuoteModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="your.email@example.com"
-                  className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                 />
               </div>
 
@@ -228,14 +228,14 @@ export default function WeFixQuoteModal({
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Describe your device symptom or drop circumstances..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-3.5 py-2.5 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs focus:outline-none focus:border-[#10B981]"
                 ></textarea>
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+                  className="w-full py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
                 >
                   <span>Confirm Appointment</span>
                   <ArrowRight className="w-4 h-4" />
@@ -243,13 +243,13 @@ export default function WeFixQuoteModal({
               </div>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-[#888888]">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
+                <ShieldCheck className="w-3.5 h-3.5 text-[#10B981] flex-shrink-0" />
                 <span>Zero upfront fees • Free diagnostic evaluation</span>
               </div>
             </form>
           ) : (
             <div className="text-center py-6 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-[#2563EB]/10 text-[#2563EB] flex items-center justify-center mx-auto">
+              <div className="w-14 h-14 rounded-full bg-[#10B981]/10 text-[#10B981] flex items-center justify-center mx-auto">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
 
@@ -264,7 +264,7 @@ export default function WeFixQuoteModal({
               <div className="p-4 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] max-w-xs mx-auto text-left text-xs space-y-1.5">
                 <div className="flex justify-between border-b border-[#e8e8e8] pb-1.5 mb-1.5 font-bold">
                   <span className="text-[#888888]">APPOINTMENT TICKET</span>
-                  <span className="text-[#2563EB] font-mono">{ticketNumber}</span>
+                  <span className="text-[#10B981] font-mono">{ticketNumber}</span>
                 </div>
                 <div><strong>When:</strong> {preferredDay} ({timeSlot})</div>
                 <div><strong>Location:</strong> 25 Main St, NY 10001</div>
@@ -273,7 +273,7 @@ export default function WeFixQuoteModal({
               <div className="pt-2">
                 <button
                   onClick={onClose}
-                  className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+                  className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
                 >
                   Close & Return
                 </button>

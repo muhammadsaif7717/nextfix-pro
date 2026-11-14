@@ -3,7 +3,14 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Zap, Award, Sparkles, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Award,
+  CheckCircle2,
+  ChevronDown,
+} from "lucide-react";
 
 interface WeFixHeroSliderProps {
   onBookRepair: () => void;
@@ -37,7 +44,7 @@ export default function WeFixHeroSlider({
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 70% 60% at 50% 35%, rgba(37, 99, 235, 0.18) 0%, rgba(15, 23, 42, 0.5) 60%, rgba(2, 6, 23, 0.88) 100%)",
+            "radial-gradient(ellipse 70% 60% at 50% 35%, rgba(16, 185, 129, 0.16) 0%, rgba(15, 23, 42, 0.5) 60%, rgba(2, 6, 23, 0.88) 100%)",
         }}
       />
 
@@ -50,13 +57,13 @@ export default function WeFixHeroSlider({
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/80 border border-white/15 text-slate-200 text-xs font-semibold tracking-wide backdrop-blur-xl mb-6 shadow-xl"
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
           <span>New York Cleanroom Lab</span>
           <span className="text-white/30">•</span>
-          <span className="text-emerald-400 font-bold">Open Today</span>
+          <span className="text-[#34D399] font-bold">Open Today</span>
         </motion.div>
 
-        {/* Grand Headline with Electric Cyan/Blue Gradient Accent */}
+        {/* Grand Headline with Cyber Emerald / Mint Gradient Accent */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,7 +71,7 @@ export default function WeFixHeroSlider({
           className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight leading-[1.08] font-heading drop-shadow-2xl"
         >
           Hardware Restored to
-          <span className="block mt-2 sm:mt-3 bg-gradient-to-r from-blue-400 via-sky-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg">
+          <span className="block mt-2 sm:mt-3 bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200 bg-clip-text text-transparent drop-shadow-lg">
             Factory Perfection.
           </span>
         </motion.h1>
@@ -88,7 +95,7 @@ export default function WeFixHeroSlider({
         >
           <button
             onClick={onBookRepair}
-            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white shadow-xl shadow-blue-600/35 hover:shadow-blue-500/50 flex items-center justify-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[50px] active:scale-95"
+            className="w-full sm:w-auto px-8 py-4 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-xl shadow-emerald-600/35 hover:shadow-emerald-500/50 flex items-center justify-center gap-2 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white min-h-[50px] active:scale-95"
           >
             <span>Book Priority Repair</span>
             <ArrowRight className="w-4 h-4" />
@@ -110,43 +117,43 @@ export default function WeFixHeroSlider({
           className="mt-12 sm:mt-16 inline-flex flex-wrap items-center justify-center gap-4 sm:gap-8 px-6 py-3 rounded-full bg-slate-900/60 border border-white/10 backdrop-blur-md text-xs sm:text-sm text-slate-200/90 font-medium shadow-lg"
         >
           <div className="flex items-center gap-2">
-            <Zap className="w-4 h-4 text-cyan-400" />
+            <Zap className="w-4 h-4 text-[#34D399]" />
             <span>28-Min Turnaround</span>
           </div>
           <span className="hidden sm:inline text-white/20">•</span>
           <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-cyan-400" />
+            <ShieldCheck className="w-4 h-4 text-[#34D399]" />
             <span>Lifetime Warranty</span>
           </div>
           <span className="hidden sm:inline text-white/20">•</span>
           <div className="flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+            <CheckCircle2 className="w-4 h-4 text-[#34D399]" />
             <span>100% Data Preserved</span>
           </div>
           <span className="hidden sm:inline text-white/20">•</span>
           <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-cyan-400" />
+            <Award className="w-4 h-4 text-[#34D399]" />
             <span>No Fix = $0 Fee</span>
           </div>
         </motion.div>
       </div>
 
-      {/* Subtle Scroll Down Cue */}
+      {/* Downward Arrow Scroll Indicator */}
       <a
         href="#about"
         aria-label="Scroll down to About section"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-1.5 text-white/60 hover:text-white transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-1.5 text-white/60 hover:text-[#34D399] transition-colors group"
       >
-        <span className="text-[10px] uppercase font-bold tracking-widest text-white/50">
-          Scroll
+        <span className="text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white transition-colors">
+          Scroll Down
         </span>
-        <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1">
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-1.5 h-1.5 rounded-full bg-cyan-400"
-          />
-        </div>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          className="w-8 h-8 rounded-full border border-white/20 bg-white/5 backdrop-blur-md flex items-center justify-center text-white/70 group-hover:text-white group-hover:border-[#10B981]/50 group-hover:bg-[#10B981]/15 transition-all shadow-md"
+        >
+          <ChevronDown className="w-4 h-4 text-[#34D399]" />
+        </motion.div>
       </a>
     </section>
   );

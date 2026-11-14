@@ -38,7 +38,7 @@ export default function WeFixFooter() {
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-around gap-4 sm:gap-6 text-center">
           {tickerItems.map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 sm:gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#2563EB] flex-shrink-0"></span>
+              <span className="w-2 h-2 rounded-full bg-[#10B981] flex-shrink-0"></span>
               <span className="text-xs sm:text-base font-bold text-white tracking-wide">
                 {item.title}
               </span>
@@ -68,7 +68,7 @@ export default function WeFixFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Facebook page"
-                  className="hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB] rounded"
+                  className="hover:text-[#10B981] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#10B981] rounded"
                 >
                   Fb
                 </a>
@@ -78,7 +78,7 @@ export default function WeFixFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Twitter X profile"
-                  className="hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB] rounded"
+                  className="hover:text-[#10B981] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#10B981] rounded"
                 >
                   Tw
                 </a>
@@ -88,7 +88,7 @@ export default function WeFixFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Instagram profile"
-                  className="hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB] rounded"
+                  className="hover:text-[#10B981] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#10B981] rounded"
                 >
                   In
                 </a>
@@ -98,7 +98,7 @@ export default function WeFixFooter() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn profile"
-                  className="hover:text-[#2563EB] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#2563EB] rounded"
+                  className="hover:text-[#10B981] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#10B981] rounded"
                 >
                   Li
                 </a>
@@ -113,37 +113,37 @@ export default function WeFixFooter() {
             </h4>
             <ul className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <li>
-                <a href="#home" className="hover:text-[#2563EB] transition-colors">
+                <a href="#home" className="hover:text-[#10B981] transition-colors">
                   Home
                 </a>
               </li>
               <li>
-                <a href="#about" className="hover:text-[#2563EB] transition-colors">
+                <a href="#about" className="hover:text-[#10B981] transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Expertise
                 </a>
               </li>
               <li>
-                <a href="#options" className="hover:text-[#2563EB] transition-colors">
+                <a href="#options" className="hover:text-[#10B981] transition-colors">
                   Repair Options
                 </a>
               </li>
               <li>
-                <a href="#reviews" className="hover:text-[#2563EB] transition-colors">
+                <a href="#reviews" className="hover:text-[#10B981] transition-colors">
                   Testimonials
                 </a>
               </li>
               <li>
-                <a href="#blogs" className="hover:text-[#2563EB] transition-colors">
+                <a href="#blogs" className="hover:text-[#10B981] transition-colors">
                   News & Media
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-[#2563EB] transition-colors">
+                <a href="#contact" className="hover:text-[#10B981] transition-colors">
                   Contact Us
                 </a>
               </li>
@@ -157,32 +157,32 @@ export default function WeFixFooter() {
             </h4>
             <ul className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Phone Repair
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Tablet Repair
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Laptop Repair
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Software Repair
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Smart Watch Repair
                 </a>
               </li>
               <li>
-                <a href="#services" className="hover:text-[#2563EB] transition-colors">
+                <a href="#services" className="hover:text-[#10B981] transition-colors">
                   Game Console
                 </a>
               </li>
@@ -196,18 +196,18 @@ export default function WeFixFooter() {
             </h4>
             <div className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#2563EB] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#10B981] flex-shrink-0 mt-0.5" />
                 <span>863 Hope Street, Irving, TX 59080</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <a href="tel:18006578963" className="hover:text-[#2563EB] transition-colors">
+                <Phone className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                <a href="tel:18006578963" className="hover:text-[#10B981] transition-colors">
                   +1 (800) 657-8963
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
-                <a href="mailto:info@example.com" className="hover:text-[#2563EB] transition-colors">
+                <Mail className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                <a href="mailto:info@example.com" className="hover:text-[#10B981] transition-colors">
                   info@example.com
                 </a>
               </div>
@@ -230,12 +230,12 @@ export default function WeFixFooter() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your Mail Address"
-                    className="w-full px-3.5 py-2.5 min-h-[44px] rounded-lg bg-[#2a2a2a] border border-[#3d3d3d] text-white text-xs placeholder-[#777] focus:outline-none focus:border-[#2563EB]"
+                    className="w-full px-3.5 py-2.5 min-h-[44px] rounded-lg bg-[#2a2a2a] border border-[#3d3d3d] text-white text-xs placeholder-[#777] focus:outline-none focus:border-[#10B981]"
                   />
                   <button
                     type="submit"
                     aria-label="Subscribe to newsletter"
-                    className="px-4 py-2.5 min-h-[44px] min-w-[44px] rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-bold uppercase transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+                    className="px-4 py-2.5 min-h-[44px] min-w-[44px] rounded-lg bg-[#10B981] hover:bg-[#059669] text-white text-xs font-bold uppercase transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -254,11 +254,11 @@ export default function WeFixFooter() {
         <div className="mt-12 pt-6 border-t border-[#2e2e2e] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888888]">
           <p>© 2026 NextFix Pro – Smart Device & Gadget Repair. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs">
-            <a href="#" className="hover:text-[#2563EB] transition-colors py-1">
+            <a href="#" className="hover:text-[#10B981] transition-colors py-1">
               Terms & Conditions
             </a>
             <span>•</span>
-            <a href="#" className="hover:text-[#2563EB] transition-colors py-1">
+            <a href="#" className="hover:text-[#10B981] transition-colors py-1">
               Privacy & Cookies Policy
             </a>
           </div>

@@ -137,7 +137,7 @@ export default function WeFixTestimonialSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-12"
         >
-          <span className="text-xs font-bold text-[#2563EB] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-2">
             Verified Customer Reviews
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -158,14 +158,14 @@ export default function WeFixTestimonialSection() {
         >
           {/* Left: Overall Rating */}
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#2563EB] text-white flex flex-col items-center justify-center font-black shadow-md">
+            <div className="w-14 h-14 rounded-2xl bg-[#10B981] text-white flex flex-col items-center justify-center font-black shadow-md">
               <span className="text-xl leading-none">4.9</span>
               <span className="text-[10px] font-bold uppercase tracking-wider opacity-90">
                 Score
               </span>
             </div>
             <div>
-              <div className="flex items-center gap-1 text-[#2563EB] mb-1">
+              <div className="flex items-center gap-1 text-[#10B981] mb-1">
                 {[...Array(5)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 fill-current" />
                 ))}
@@ -191,7 +191,7 @@ export default function WeFixTestimonialSection() {
               <button
                 key={tab.id}
                 onClick={() => setFilter(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] ${
+                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981] ${
                   filter === tab.id
                     ? "bg-[#1F1F1F] text-white shadow-sm"
                     : "bg-[#f6f6f6] text-[#636363] hover:bg-[#e8e8e8] hover:text-[#1F1F1F]"
@@ -215,16 +215,16 @@ export default function WeFixTestimonialSection() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
                 whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between bg-white rounded-2xl p-7 border border-[#e8e8e8] hover:border-[#2563EB]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between bg-white rounded-2xl p-7 border border-[#e8e8e8] hover:border-[#10B981]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
               >
                 {/* Decorative Top Accent Line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-[#2563EB] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#10B981] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 <div>
                   {/* Customer Header */}
                   <div className="flex items-center justify-between gap-3 mb-5">
                     <div className="flex items-center gap-3">
-                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#e8e8e8] group-hover:border-[#2563EB]/40 transition-colors flex-shrink-0">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#e8e8e8] group-hover:border-[#10B981]/40 transition-colors flex-shrink-0">
                         <Image
                           src={item.image}
                           alt={item.name}
@@ -240,7 +240,7 @@ export default function WeFixTestimonialSection() {
                           </h3>
                           {item.verified && (
                             <span title="Verified Customer">
-                              <CheckCircle2 className="w-4 h-4 text-[#2563EB] flex-shrink-0" />
+                              <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
                             </span>
                           )}
                         </div>
@@ -250,12 +250,12 @@ export default function WeFixTestimonialSection() {
                       </div>
                     </div>
 
-                    <Quote className="w-8 h-8 text-[#2563EB]/15 flex-shrink-0 group-hover:text-[#2563EB]/30 transition-colors" />
+                    <Quote className="w-8 h-8 text-[#10B981]/15 flex-shrink-0 group-hover:text-[#10B981]/30 transition-colors" />
                   </div>
 
                   {/* Stars + Date */}
                   <div className="flex items-center justify-between gap-2 mb-4 pt-1">
-                    <div className="flex items-center gap-0.5 text-[#2563EB]">
+                    <div className="flex items-center gap-0.5 text-[#10B981]">
                       {[...Array(item.rating)].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current" />
                       ))}
@@ -268,11 +268,11 @@ export default function WeFixTestimonialSection() {
                   {/* Device & Repair Badges */}
                   <div className="flex flex-wrap items-center gap-1.5 mb-4">
                     <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#f6f6f6] border border-[#e8e8e8] text-[11px] font-bold text-[#1F1F1F]">
-                      <Smartphone className="w-3 h-3 text-[#2563EB]" />
+                      <Smartphone className="w-3 h-3 text-[#10B981]" />
                       <span>{item.device}</span>
                     </span>
 
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#2563EB]/10 border border-[#2563EB]/20 text-[11px] font-bold text-[#2563EB]">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-[#10B981]/10 border border-[#10B981]/20 text-[11px] font-bold text-[#10B981]">
                       <Clock className="w-3 h-3" />
                       <span>{item.turnaround}</span>
                     </span>
@@ -287,10 +287,10 @@ export default function WeFixTestimonialSection() {
                 {/* Card Footer: Verified Service Stamp */}
                 <div className="pt-4 border-t border-[#f0f0f0] flex items-center justify-between text-[11px] text-[#888888] font-semibold">
                   <span className="flex items-center gap-1 text-[#1F1F1F]">
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#10B981]" />
                     <span>{item.repair}</span>
                   </span>
-                  <span className="text-[#2563EB] font-bold">
+                  <span className="text-[#10B981] font-bold">
                     1-Yr Warranty
                   </span>
                 </div>
