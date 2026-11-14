@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
+@theme {
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-sans: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+  --font-heading: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
+}
+
 :root {
   --wefix-primary: #ef644c;
   --wefix-primary-hover: #d94f38;
@@ -17,23 +23,13 @@ html {
   background-color: #ffffff;
 }
 
-body {
-  background-color: #ffffff;
-  color: #636363;
-  font-family: var(--font-sans), var(--font-outfit), system-ui, -apple-system, sans-serif;
-  overflow-x: hidden;
-  min-width: 360px;
-}
-
-/* Modern Geometric Heading Font */
-.font-heading {
-  font-family: var(--font-outfit), var(--font-sans), sans-serif;
-  letter-spacing: -0.025em;
+body, html, *, button, input, select, textarea, .font-heading {
+  font-family: var(--font-jetbrains-mono), "JetBrains Mono", monospace !important;
 }
 
 /* Character split heading spacing */
 .wdt-spaced-heading {
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   text-transform: capitalize;
 }
 
