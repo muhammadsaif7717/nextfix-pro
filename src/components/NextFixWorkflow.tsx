@@ -103,11 +103,6 @@ export default function NextFixWorkflow() {
                     {step.desc}
                   </p>
                 </div>
-
-                <div className="pt-6 mt-6 border-t border-[#f0f0f0] flex items-center justify-between text-xs text-[#888888]">
-                  <span>Step {idx + 1} of 4</span>
-                  <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#EA580C] group-hover:translate-x-1.5 transition-transform" />
-                </div>
               </motion.div>
             );
           })}

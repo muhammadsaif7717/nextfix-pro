@@ -23,31 +23,9 @@ export default function WeFixFooter() {
     }
   };
 
-  const tickerItems = [
-    { title: "20 + Years of Experience" },
-    { title: "20 K+ Happy Customers" },
-    { title: "470 + Delivery Centers" },
-    { title: "1 Year Return Warranty" },
-    { title: "2 L+ Device Repaired" },
-  ];
-
   return (
     <footer id="contact" className="bg-[#1F1F1F] text-white text-xs scroll-mt-24 sm:scroll-mt-28">
-      {/* 1. Top Counter Ticker Strip (Exact WeFix Style) */}
-      <div className="border-b border-[#333333] py-5 px-3 sm:px-4 bg-[#181818]">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-around gap-4 sm:gap-6 text-center">
-          {tickerItems.map((item, idx) => (
-            <div key={idx} className="flex items-center gap-2 sm:gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#EA580C] flex-shrink-0"></span>
-              <span className="text-xs sm:text-base font-bold text-white tracking-wide">
-                {item.title}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* 2. Main 4-Column Footer */}
+      {/* Main 4-Column Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {/* Col 1: Brand & Bio */}

@@ -109,16 +109,6 @@ export default function WeFixIdentitySection() {
                     {item.desc}
                   </p>
                 </div>
-
-                <div className="pt-6 mt-6 border-t border-[#e8e8e8]/80 flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#1F1F1F] group-hover:text-[#EA580C] transition-colors flex items-center gap-1.5">
-                    <span>Learn More</span>
-                    <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#EA580C] group-hover:translate-x-1.5 transition-all duration-300" />
-                  </span>
-                  <span className="text-[11px] font-mono font-semibold text-[#888888]">
-                    0{idx + 1}
-                  </span>
-                </div>
               </motion.div>
             );
           })}

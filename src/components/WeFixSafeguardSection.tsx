@@ -89,19 +89,13 @@ export default function WeFixSafeguardSection({
           className="max-w-5xl mx-auto bg-white p-5 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border border-[#e2e8f0] shadow-sm"
         >
           {/* Top Header Strip */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-5 sm:pb-6 border-b border-[#e2e8f0] mb-6 sm:mb-8 gap-3">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
-                Step-by-Step Diagnostic
-              </span>
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-[#0F172A] font-heading">
-                Calculate Exact Repair Total
-              </h3>
-            </div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-[11px] sm:text-xs font-bold text-[#0F172A] self-start sm:self-auto">
-              <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
-              <span>Real-Time Parts & Labor Estimation</span>
-            </div>
+          <div className="pb-5 sm:pb-6 border-b border-[#e2e8f0] mb-6 sm:mb-8">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
+              Step-by-Step Diagnostic
+            </span>
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-black text-[#0F172A] font-heading">
+              Calculate Exact Repair Total
+            </h3>
           </div>
 
           <div className="space-y-6 sm:space-y-8">

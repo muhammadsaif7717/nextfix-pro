@@ -1,24 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   Star,
   Quote,
-  CheckCircle2,
-  Clock,
   ShieldCheck,
+  CheckCircle2,
   Smartphone,
-  Laptop,
-  Gamepad2,
-  Tablet,
-  Award,
+  Clock,
 } from "lucide-react";
 
 export default function WeFixTestimonialSection() {
-  const [filter, setFilter] = useState("all");
-
   const testimonials = [
     {
       id: 1,
@@ -118,11 +112,6 @@ export default function WeFixTestimonialSection() {
     },
   ];
 
-  const filtered =
-    filter === "all"
-      ? testimonials
-      : testimonials.filter((t) => t.category === filter);
-
   return (
     <section
       id="reviews"
@@ -154,59 +143,32 @@ export default function WeFixTestimonialSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-2xl p-5 sm:p-6 border border-[#e8e8e8] shadow-sm mb-12 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e8e8] shadow-sm mb-10 max-w-md mx-auto flex items-center justify-center gap-4"
         >
-          {/* Left: Overall Rating */}
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-[#EA580C] text-white flex flex-col items-center justify-center font-black shadow-md">
-              <span className="text-xl leading-none">4.9</span>
-              <span className="text-[10px] font-bold uppercase tracking-wider opacity-90">
-                Score
-              </span>
-            </div>
-            <div>
-              <div className="flex items-center gap-1 text-[#EA580C] mb-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <div className="text-xs sm:text-sm font-bold text-[#1F1F1F]">
-                2,400+ Verified Local Device Reviews
-              </div>
-              <div className="text-[11px] text-[#888888]">
-                Google Reviews (4.9/5) • Trustpilot (4.9/5)
-              </div>
-            </div>
+          <div className="w-12 h-12 rounded-xl bg-[#EA580C] text-white flex flex-col items-center justify-center font-black shadow-sm flex-shrink-0">
+            <span className="text-base leading-none">4.9</span>
+            <span className="text-[8px] font-bold uppercase tracking-wider opacity-90">
+              Score
+            </span>
           </div>
-
-          {/* Right: Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {[
-              { id: "all", label: "All Reviews" },
-              { id: "screen", label: "Screen & OLED" },
-              { id: "laptop", label: "MacBook & Laptop" },
-              { id: "microsolder", label: "Micro-Soldering" },
-              { id: "battery", label: "Battery Health" },
-            ].map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setFilter(tab.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                  filter === tab.id
-                    ? "bg-[#1F1F1F] text-white shadow-sm"
-                    : "bg-[#f6f6f6] text-[#636363] hover:bg-[#e8e8e8] hover:text-[#1F1F1F]"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
+          <div>
+            <div className="flex items-center gap-1 text-[#EA580C] mb-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-3.5 h-3.5 fill-current" />
+              ))}
+            </div>
+            <div className="text-xs font-bold text-[#1F1F1F]">
+              2,400+ Verified Customer Reviews
+            </div>
+            <div className="text-[10px] text-[#888888]">
+              Google Reviews (4.9/5) • Trustpilot (4.9/5)
+            </div>
           </div>
         </motion.div>
 
         {/* 6 Modern Cards Grid */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          <AnimatePresence>
-            {filtered.map((item, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {testimonials.map((item, idx) => (
               <motion.div
                 layout
                 key={item.id}
@@ -296,8 +258,7 @@ export default function WeFixTestimonialSection() {
                 </div>
               </motion.div>
             ))}
-          </AnimatePresence>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

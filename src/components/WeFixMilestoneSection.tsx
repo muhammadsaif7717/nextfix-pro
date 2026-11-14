@@ -169,29 +169,6 @@ export default function WeFixMilestoneSection({
                 </motion.div>
               ))}
             </div>
-
-            {/* Bottom Support Callout Box */}
-            <div className="p-7 rounded-2xl bg-[#1F1F1F] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl mt-8">
-              <div>
-                <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-1">
-                  Immediate Help
-                </span>
-                <h4 className="text-xl font-bold font-heading">
-                  Have an emergency device repair?
-                </h4>
-                <p className="text-xs text-slate-300 mt-1">
-                  Walk in today or reserve your bench slot with our priority pass.
-                </p>
-              </div>
-
-              <button
-                onClick={onBookRepair}
-                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary flex items-center gap-2 whitespace-nowrap shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
-              >
-                <span>Book Now</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
           </motion.div>
         </div>
 
