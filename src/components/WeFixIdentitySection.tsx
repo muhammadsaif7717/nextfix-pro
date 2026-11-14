@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import {
   Wrench,
   ShieldCheck,
   HeartHandshake,
-  Gift,
+  Sparkles,
+  Zap,
   Award,
   ArrowRight,
 } from "lucide-react";
@@ -14,77 +16,110 @@ export default function WeFixIdentitySection() {
   const cards = [
     {
       title: "Expert Device Care",
-      desc: "For optimum performance, skilled technicians offer accurate, dependable device maintenance.",
+      desc: "Skilled technicians perform accurate, dependable maintenance and micro-soldering for peak performance.",
       icon: Wrench,
+      tag: "Certified Techs",
     },
     {
       title: "Quality First Always",
-      desc: "Committed to delivering premium repairs with attention to detail, putting your satisfaction above all else.",
+      desc: "Strict adherence to OEM-grade parts, ESD cleanroom handling, and 30-point precision hardware testing.",
       icon: ShieldCheck,
+      tag: "OEM Standards",
     },
     {
       title: "Service You Trust",
-      desc: "Trustworthy and truthful assistance from skilled experts who put your device well-being, peace of mind first.",
+      desc: "Transparent diagnostics, clear upfront pricing, and a zero-risk policy: if we can't fix it, you pay nothing.",
       icon: HeartHandshake,
+      tag: "No Fix = No Fee",
     },
     {
-      title: "Free Repair Bonus",
-      desc: "Take advantage of free service upgrades that are intended to optimize value, conveniently prolong life of your gadget.",
-      icon: Gift,
+      title: "Free Diagnostic Check",
+      desc: "Complimentary multi-point inspection to identify motherboard shorts, battery wear, and display issues.",
+      icon: Sparkles,
+      tag: "100% Free",
     },
     {
-      title: "Years Of Experience",
-      desc: "Dedicated specialists offering unmatched expertise, ensuring every repair is seamless and reliable.",
+      title: "Rapid 28-Min Turnaround",
+      desc: "Walk-in screen swaps and battery replacements completed in under 28 minutes while you relax in our lounge.",
+      icon: Zap,
+      tag: "Express Service",
+    },
+    {
+      title: "20+ Years Experience",
+      desc: "Over two decades of precision electronic repair excellence with more than 200,000 devices restored.",
       icon: Award,
+      tag: "Industry Leader",
     },
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white border-b border-[#e8e8e8]">
+    <section id="about" className="py-20 sm:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
             Our Identity
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
             Trusted Solutions For Your Device Repair
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#636363]">
-            Committed to quality hardware repair, rapid diagnostics, and genuine OEM components.
+          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
+            Committed to quality hardware repair, rapid diagnostics, and genuine OEM components backed by our lifetime workmanship guarantee.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 5 Cards Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        {/* 6 Cards Balanced Grid: 3 cols on lg, 2 cols on md, 1 col on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cards.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="group flex flex-col justify-between p-6 sm:p-7 rounded-2xl bg-[#f6f6f6] hover:bg-white border border-[#e8e8e8] hover:border-[#EF644C]/40 shadow-sm hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EF644C]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
               >
+                {/* Decorative Top Accent Bar on Hover */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-[#EF644C] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
                 <div>
-                  <div className="w-12 h-12 rounded-xl bg-white border border-[#e8e8e8] group-hover:bg-[#EF644C] group-hover:border-[#EF644C] text-[#EF644C] group-hover:text-white flex items-center justify-center mb-5 transition-all duration-300 shadow-sm">
-                    <Icon className="w-6 h-6" />
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="w-14 h-14 rounded-2xl bg-white border border-[#e8e8e8] group-hover:bg-[#EF644C] group-hover:border-[#EF644C] text-[#EF644C] group-hover:text-white flex items-center justify-center transition-all duration-300 shadow-sm">
+                      <Icon className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" />
+                    </div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-white border border-[#e8e8e8] text-[#888888] group-hover:text-[#EF644C] group-hover:border-[#EF644C]/30 transition-colors">
+                      {item.tag}
+                    </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#1f1f1f] mb-2 font-heading group-hover:text-[#EF644C] transition-colors">
+                  <h3 className="text-xl font-bold text-[#1F1F1F] mb-3 font-heading group-hover:text-[#EF644C] transition-colors">
                     {item.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#636363] leading-relaxed">
+                  <p className="text-sm text-[#636363] leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#e8e8e8]/70 flex items-center justify-between">
-                  <span className="text-[11px] font-bold text-[#888888] group-hover:text-[#EF644C] transition-colors">
-                    Read More
+                <div className="pt-6 mt-6 border-t border-[#e8e8e8]/80 flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#1F1F1F] group-hover:text-[#EF644C] transition-colors flex items-center gap-1.5">
+                    <span>Learn More</span>
+                    <ArrowRight className="w-4 h-4 text-[#888888] group-hover:text-[#EF644C] group-hover:translate-x-1.5 transition-all duration-300" />
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#888888] group-hover:text-[#EF644C] group-hover:translate-x-1 transition-all" />
+                  <span className="text-[11px] font-mono font-semibold text-[#888888]">
+                    0{idx + 1}
+                  </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

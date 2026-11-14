@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   DEVICE_CATEGORIES,
   DEVICE_MODELS,
@@ -60,35 +61,21 @@ export default function WeFixSafeguardSection({
     },
     {
       id: 3,
-      title: "48MP Optical Stabilized Camera",
-      desc: "Sapphire crystal lens protection with laser-calibrated autofocus and zero optical image stabilization drift.",
-      x: "32%",
-      y: "15%",
+      title: "Titanium Chassis & Glass",
+      desc: "Laser precision adhesive removal and factory cold-press curing to retain full IP68 water resistance seals.",
+      x: "50%",
+      y: "85%",
     },
   ];
 
-  // Interactive Estimator state
-  const [selectedCategory, setSelectedCategory] = useState<DeviceCategory>(
-    DEVICE_CATEGORIES[0]
-  );
-  const availableModels = DEVICE_MODELS[selectedCategory.id] || [];
-  const [selectedModel, setSelectedModel] = useState<DeviceModel>(
-    availableModels[0] || DEVICE_MODELS.iphone[0]
-  );
-  const availableIssues = getIssuesForCategory(selectedCategory.id);
-  const [selectedIssue, setSelectedIssue] = useState<RepairIssue>(
-    availableIssues[0]
-  );
+  // Price Calculator State
+  const [selectedCategory, setSelectedCategory] = useState<DeviceCategory>(DEVICE_CATEGORIES[0]);
+  const modelsForCat: DeviceModel[] = DEVICE_MODELS[selectedCategory.id] || [];
+  const [selectedModel, setSelectedModel] = useState<DeviceModel>(modelsForCat[0]);
+  const issuesForCat: RepairIssue[] = getIssuesForCategory(selectedCategory.id);
+  const [selectedIssue, setSelectedIssue] = useState<RepairIssue>(issuesForCat[0]);
 
-  const calculation = calculateRepairPrice(
-    selectedCategory.id,
-    selectedModel.id,
-    selectedIssue,
-    true
-  );
-
-  const handleCategoryChange = (catId: string) => {
-    const cat = DEVICE_CATEGORIES.find((c) => c.id === catId) || DEVICE_CATEGORIES[0];
+  const handleCategoryChange = (cat: DeviceCategory) => {
     setSelectedCategory(cat);
     const newModels = DEVICE_MODELS[cat.id] || [];
     setSelectedModel(newModels[0]);
@@ -96,54 +83,62 @@ export default function WeFixSafeguardSection({
     setSelectedIssue(newIssues[0]);
   };
 
-  const handleModelChange = (modelId: string) => {
-    const m = availableModels.find((mod) => mod.id === modelId) || availableModels[0];
-    setSelectedModel(m);
-  };
-
-  const handleIssueChange = (issueId: string) => {
-    const iss = availableIssues.find((i) => i.id === issueId) || availableIssues[0];
-    setSelectedIssue(iss);
-  };
+  const calculatedQuote = calculateRepairPrice(
+    selectedCategory.id,
+    selectedModel ? selectedModel.id : "",
+    selectedIssue
+  );
 
   return (
-    <section id="estimator" className="py-14 sm:py-24 bg-[#f6f6f6] border-b border-[#e8e8e8]">
+    <section id="estimator" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
-            Safeguard
+            Safeguard Device
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
-            Superior Safety For Your Device
+            Device Anatomy & Instant Price Calculator
           </h2>
-          <p className="mt-3 text-xs sm:text-sm md:text-base text-[#636363]">
-            Explore our interactive component breakdown and calculate guaranteed transparent repair costs in real-time.
+          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
+            Explore internal engineering standards or calculate an exact repair estimate with transparent pricing and warranty coverage.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Dual Layout: Hotspot Inspector + Interactive Price Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
-          {/* Left Column: Interactive Hotspot Showcase */}
-          <div className="lg:col-span-5 bg-white rounded-2xl p-5 sm:p-8 border border-[#e8e8e8] shadow-sm flex flex-col justify-between">
+        {/* 2-Column Split: Exploded Hotspots & Calculator */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Left Column: Interactive Exploded Anatomy (5 Cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-[#e8e8e8] shadow-md flex flex-col justify-between"
+          >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold text-[#EF644C] uppercase tracking-wider">
-                  Hardware Inspector
+                <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C]">
+                  Interactive Architecture
                 </span>
-                <span className="text-[11px] font-semibold text-[#888888]">
-                  Tap numbers to inspect
+                <span className="text-xs font-medium text-[#888888]">
+                  Click pins to inspect
                 </span>
               </div>
 
-              {/* Hotspot Device Image Container */}
-              <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-xs mx-auto rounded-xl overflow-hidden bg-[#fafafa] border border-[#e8e8e8] flex items-center justify-center p-4">
+              {/* Exploded Device Container */}
+              <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-[#fafafa] border border-[#e8e8e8] flex items-center justify-center p-4">
                 <Image
-                  src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800"
-                  alt="Device Hardware Breakdown"
-                  width={400}
-                  height={530}
-                  className="w-full h-full object-contain filter drop-shadow-lg"
+                  src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800"
+                  alt="Exploded smartphone hardware assembly"
+                  width={600}
+                  height={800}
+                  className="w-full h-full object-cover rounded-xl filter brightness-95"
                 />
 
                 {/* Hotspot Pins */}
@@ -151,168 +146,208 @@ export default function WeFixSafeguardSection({
                   <button
                     key={pin.id}
                     onClick={() => setActivePin(pin.id)}
-                    style={{ left: pin.x, top: pin.y }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                    style={{ top: pin.y, left: pin.x }}
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
                       activePin === pin.id
-                        ? "bg-[#1f1f1f] text-white scale-125 z-10 border-2 border-white ring-2 ring-[#EF644C]"
-                        : "bg-[#EF644C] text-white animate-hotspot hover:scale-110"
+                        ? "bg-[#EF644C] text-white scale-125 z-20 ring-4 ring-white"
+                        : "bg-white/90 text-[#1f1f1f] hover:bg-[#EF644C] hover:text-white z-10"
                     }`}
-                    aria-label={`Hotspot pin ${pin.id + 1}: ${pin.title}`}
+                    aria-label={`Inspect ${pin.title}`}
                   >
-                    {pin.id + 1}
+                    <span className="text-xs font-black">{pin.id + 1}</span>
                   </button>
                 ))}
               </div>
+
+              {/* Active Hotspot Detail Card */}
+              <div className="mt-6 p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] transition-all duration-300">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-5 h-5 rounded-full bg-[#EF644C] text-white text-[11px] font-bold flex items-center justify-center">
+                    {activePin + 1}
+                  </span>
+                  <h4 className="text-sm font-bold text-[#1f1f1f] font-heading">
+                    {hotspots[activePin].title}
+                  </h4>
+                </div>
+                <p className="text-xs text-[#636363] leading-relaxed">
+                  {hotspots[activePin].desc}
+                </p>
+              </div>
             </div>
 
-            {/* Active Hotspot Info Card */}
-            <div className="mt-5 sm:mt-6 p-4 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8]">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#EF644C] uppercase mb-1">
-                <span>Point #{activePin + 1}:</span>
-                <span className="text-[#1f1f1f]">{hotspots[activePin].title}</span>
-              </div>
-              <p className="text-xs sm:text-sm text-[#636363] leading-relaxed">
-                {hotspots[activePin].desc}
-              </p>
-            </div>
-          </div>
-
-          {/* Right Column: Instant Cost Calculator */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-8 border border-[#e8e8e8] shadow-sm space-y-5 sm:space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-[#e8e8e8]">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C]">
-                  Diagnostic Estimator
-                </span>
-                <h3 className="text-lg sm:text-2xl font-bold text-[#1F1F1F] font-heading mt-0.5">
-                  Calculate Instant Repair Cost
-                </h3>
-              </div>
-              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-200">
-                ● 100% Upfront Pricing
+            {/* Micro Badges */}
+            <div className="mt-6 pt-4 border-t border-[#e8e8e8] flex items-center justify-around text-center text-xs text-[#636363] font-semibold">
+              <span className="flex items-center gap-1">
+                <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
+                ESD Cleanroom
+              </span>
+              <span className="flex items-center gap-1">
+                <Zap className="w-4 h-4 text-[#EF644C]" />
+                OEM Calibrated
               </span>
             </div>
+          </motion.div>
 
-            {/* Select 1: Device Family */}
-            <div>
-              <label className="text-xs font-bold text-[#1F1F1F] uppercase tracking-wider block mb-2">
-                1. Select Device Family:
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {DEVICE_CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    onClick={() => handleCategoryChange(cat.id)}
-                    className={`py-3 px-2 sm:px-3 min-h-[44px] rounded-xl border text-xs font-bold transition-all text-center truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
-                      selectedCategory.id === cat.id
-                        ? "bg-[#EF644C] text-white border-[#EF644C] shadow-sm"
-                        : "bg-[#f6f6f6] text-[#636363] border-[#e8e8e8] hover:border-[#d0d0d0] hover:text-[#1f1f1f]"
-                    }`}
-                  >
-                    {cat.name}
-                  </button>
-                ))}
+          {/* Right Column: Interactive Multi-Step Price Calculator (7 Cols) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-[#e8e8e8] shadow-md"
+          >
+            <div className="flex items-center justify-between pb-6 border-b border-[#e8e8e8] mb-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C] block mb-1">
+                  Step-by-Step Diagnostic
+                </span>
+                <h3 className="text-2xl font-black text-[#1F1F1F] font-heading">
+                  Instant Cost & Turnaround Calculator
+                </h3>
+              </div>
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f6] border border-[#e8e8e8] text-xs font-bold text-[#1F1F1F]">
+                <Clock className="w-3.5 h-3.5 text-[#EF644C]" />
+                <span>Live Estimates</span>
               </div>
             </div>
 
-            {/* Select 2: Device Model */}
-            <div>
-              <label htmlFor="model-select" className="text-xs font-bold text-[#1F1F1F] uppercase tracking-wider block mb-2">
-                2. Select Exact Model:
-              </label>
-              <select
-                id="model-select"
-                value={selectedModel?.id}
-                onChange={(e) => handleModelChange(e.target.value)}
-                className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-sm text-[#1F1F1F] font-medium focus:outline-none focus:border-[#EF644C]"
-              >
-                {availableModels.map((m) => (
-                  <option key={m.id} value={m.id}>
-                    {m.name} ({m.releaseYear || "Current"})
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Select 3: Issue */}
-            <div>
-              <label className="text-xs font-bold text-[#1F1F1F] uppercase tracking-wider block mb-2">
-                3. Select Hardware Issue:
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {availableIssues.map((issue) => {
-                  const isSelected = selectedIssue?.id === issue.id;
-                  return (
+            <div className="space-y-6">
+              {/* 1. Device Category Selection */}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                  1. Select Device Family
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                  {DEVICE_CATEGORIES.map((cat) => (
                     <button
-                      key={issue.id}
-                      type="button"
-                      onClick={() => handleIssueChange(issue.id)}
-                      className={`p-3 min-h-[44px] rounded-xl border text-left flex items-center justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
-                        isSelected
-                          ? "bg-[#1f1f1f] text-white border-[#1f1f1f] shadow-sm"
-                          : "bg-[#f6f6f6] text-[#636363] border-[#e8e8e8] hover:border-[#d0d0d0] hover:text-[#1f1f1f]"
+                      key={cat.id}
+                      onClick={() => handleCategoryChange(cat)}
+                      className={`py-3 px-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                        selectedCategory.id === cat.id
+                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold shadow-sm"
+                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
                       }`}
                     >
-                      <div className="truncate pr-2">
-                        <div className={`text-xs font-bold truncate ${isSelected ? "text-white" : "text-[#1F1F1F]"}`}>
-                          {issue.name}
-                        </div>
-                        <div className={`text-[10px] truncate ${isSelected ? "text-gray-300" : "text-[#888888]"}`}>
-                          {issue.turnaroundText}
-                        </div>
-                      </div>
-                      <div className={`text-xs font-black flex-shrink-0 ${isSelected ? "text-[#EF644C]" : "text-[#1F1F1F]"}`}>
-                        From ${issue.basePrice}
+                      <span className="text-xs font-semibold">{cat.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 2. Device Model Selection */}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                  2. Select Exact Model
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto pr-1">
+                  {modelsForCat.map((model: DeviceModel) => (
+                    <button
+                      key={model.id}
+                      onClick={() => setSelectedModel(model)}
+                      className={`py-2.5 px-3 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                        selectedModel?.id === model.id
+                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold"
+                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
+                      }`}
+                    >
+                      <div className="truncate font-semibold">{model.name}</div>
+                      <div className="text-[10px] text-[#888888] font-normal">
+                        {model.brand}
                       </div>
                     </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Quote Result Box */}
-            <div className="p-4 sm:p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="w-full sm:w-auto text-left">
-                <span className="text-[11px] font-bold uppercase text-[#888888] block">
-                  Guaranteed Estimate For {selectedModel?.name}:
-                </span>
-                <div className="flex items-baseline gap-2 mt-0.5">
-                  <span className="text-3xl sm:text-4xl font-black text-[#1F1F1F] font-heading">
-                    ${calculation.selectedPrice}
-                  </span>
-                  <span className="text-xs text-[#636363]">
-                    USD • Parts & Labor Included
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-[#888888] mt-1">
-                  <span className="flex items-center gap-1 text-[#EF644C] font-semibold">
-                    <Clock className="w-3.5 h-3.5" />
-                    {calculation.turnaround}
-                  </span>
-                  <span>•</span>
-                  <span>1-Year Return Warranty</span>
+                  ))}
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={() =>
-                  onBookAppointment({
-                    category: selectedCategory,
-                    model: selectedModel,
-                    issue: selectedIssue,
-                    price: calculation.selectedPrice,
-                    turnaround: calculation.turnaround,
-                  })
-                }
-                className="w-full sm:w-auto px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
-              >
-                <span>Book Free Diagnostic</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              {/* 3. Issue Selection */}
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                  3. Select Hardware Issue
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {issuesForCat.map((issue: RepairIssue) => (
+                    <button
+                      key={issue.id}
+                      onClick={() => setSelectedIssue(issue)}
+                      className={`p-3 rounded-xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
+                        selectedIssue?.id === issue.id
+                          ? "border-[#EF644C] bg-[#EF644C]/5 text-[#EF644C] font-bold shadow-sm"
+                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
+                      }`}
+                    >
+                      <div>
+                        <div className="text-xs font-semibold">{issue.name}</div>
+                        <div className="text-[11px] text-[#888888] font-normal">
+                          {issue.shortDesc}
+                        </div>
+                      </div>
+                      {selectedIssue?.id === issue.id && (
+                        <Check className="w-4 h-4 text-[#EF644C] flex-shrink-0 mt-0.5" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* 4. Live Quote Result Card */}
+              <div className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] mt-8">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div>
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#888888]">
+                      Calculated Estimate
+                    </span>
+                    <div className="flex items-baseline gap-2 mt-0.5">
+                      <span className="text-3xl sm:text-4xl font-black text-[#1F1F1F] font-heading">
+                        ${calculatedQuote.selectedPrice}
+                      </span>
+                      <span className="text-xs font-semibold text-[#888888]">
+                        / All-Inclusive Parts + Labor
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:items-end text-xs font-semibold text-[#636363] space-y-1">
+                    <span className="flex items-center gap-1.5 text-[#1F1F1F]">
+                      <Clock className="w-4 h-4 text-[#EF644C]" />
+                      Turnaround:{" "}
+                      <strong className="text-[#EF644C]">
+                        {calculatedQuote.turnaround}
+                      </strong>
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
+                      Warranty: {calculatedQuote.warranty}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Book Action Button */}
+                <div className="mt-6 pt-5 border-t border-[#e8e8e8] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  <div className="text-xs text-[#888888] flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                    <span>Free diagnostic. Pay nothing until verified complete.</span>
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      onBookAppointment({
+                        category: selectedCategory,
+                        model: selectedModel,
+                        issue: selectedIssue,
+                        price: calculatedQuote.selectedPrice,
+                        turnaround: calculatedQuote.turnaround,
+                      })
+                    }
+                    className="px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+                  >
+                    <Calendar className="w-4 h-4" />
+                    <span>Book Repair Slot</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

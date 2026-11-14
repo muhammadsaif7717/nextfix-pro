@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote, CheckCircle2 } from "lucide-react";
 
 export default function WeFixTestimonialSection() {
@@ -52,67 +53,138 @@ export default function WeFixTestimonialSection() {
     },
   ];
 
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const prev = () => {
+    setActiveIdx((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const next = () => {
+    setActiveIdx((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const current = testimonials[activeIdx];
+
   return (
-    <section id="reviews" className="py-16 sm:py-24 bg-[#f6f6f6] border-b border-[#e8e8e8]">
+    <section id="reviews" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
-            Testimonial
+            Feedback
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
-            User Opinions
+            Our Loving Customers
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#636363]">
-            Read authentic feedback from local device owners who rely on our certified technical team.
+          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
+            Authentic experiences from individuals and business clients who trust our repair workshop with their critical tech devices.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((t) => (
-            <div
-              key={t.id}
-              className="flex flex-col justify-between p-6 rounded-2xl bg-white border border-[#e8e8e8] shadow-sm hover:shadow-xl transition-all duration-300"
+        {/* Featured Testimonial Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-4xl mx-auto bg-white rounded-3xl p-8 sm:p-12 border border-[#e8e8e8] shadow-xl relative"
+        >
+          <Quote className="absolute top-8 right-8 w-16 h-16 text-[#EF644C]/10 pointer-events-none" />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col sm:flex-row items-center sm:items-start gap-8"
             >
-              <div>
-                {/* Rating Stars */}
-                <div className="flex text-[#EF644C] mb-4">
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#EF644C]" />
+              {/* Customer Avatar */}
+              <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-4 border-[#EF644C]/20 shadow-md flex-shrink-0">
+                <Image
+                  src={current.image}
+                  alt={current.name}
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Text & Meta */}
+              <div className="flex-1 text-center sm:text-left">
+                {/* 5 Stars */}
+                <div className="flex items-center justify-center sm:justify-start gap-1 text-[#EF644C] mb-4">
+                  {[...Array(current.rating)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
                   ))}
                 </div>
 
-                {/* Quote */}
-                <p className="text-xs sm:text-sm text-[#636363] leading-relaxed italic mb-6">
-                  &ldquo;{t.quote}&rdquo;
+                <p className="text-base sm:text-lg text-[#1F1F1F] font-medium leading-relaxed italic mb-6">
+                  &ldquo;{current.quote}&rdquo;
                 </p>
-              </div>
 
-              {/* Author footer */}
-              <div className="pt-4 border-t border-[#f0f0f0] flex items-center gap-3">
-                <div className="w-11 h-11 rounded-full overflow-hidden bg-[#e0e0e0] flex-shrink-0 border border-[#e8e8e8]">
-                  <Image
-                    src={t.image}
-                    alt={t.name}
-                    width={44}
-                    height={44}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="truncate">
-                  <div className="text-sm font-bold text-[#1F1F1F] flex items-center gap-1 font-heading truncate">
-                    <span>{t.name}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[#f0f0f0]">
+                  <div>
+                    <h3 className="text-lg font-bold text-[#1F1F1F] font-heading">
+                      {current.name}
+                    </h3>
+                    <div className="text-xs text-[#888888] font-medium">
+                      {current.role} •{" "}
+                      <span className="text-[#EF644C] font-semibold">
+                        {current.device}
+                      </span>
+                    </div>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f6] border border-[#e8e8e8] text-xs font-semibold text-[#1F1F1F]">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#EF644C]" />
-                  </div>
-                  <div className="text-[11px] text-[#888888] truncate">
-                    {t.device} • {t.repair}
-                  </div>
+                    <span>{current.repair}</span>
+                  </span>
                 </div>
               </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between mt-10 pt-6 border-t border-[#e8e8e8]">
+            <div className="flex items-center gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveIdx(i)}
+                  className={`h-2.5 rounded-full transition-all duration-300 ${
+                    activeIdx === i ? "w-8 bg-[#EF644C]" : "w-2.5 bg-[#e0e0e0]"
+                  }`}
+                  aria-label={`Jump to review ${i + 1}`}
+                />
+              ))}
             </div>
-          ))}
-        </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                onClick={prev}
+                aria-label="Previous Review"
+                className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] text-[#1F1F1F] flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                onClick={next}
+                aria-label="Next Review"
+                className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] text-[#1F1F1F] flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Laptop,
   Smartphone,
@@ -10,6 +11,7 @@ import {
   Camera,
   Layers,
   ArrowRight,
+  Clock,
 } from "lucide-react";
 
 interface WeFixQualityRepairsProps {
@@ -28,6 +30,7 @@ export default function WeFixQualityRepairs({
       icon: Laptop,
       image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800",
       price: "From $99",
+      turnaround: "Same-Day",
     },
     {
       id: "display-service",
@@ -37,6 +40,7 @@ export default function WeFixQualityRepairs({
       icon: Layers,
       image: "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&q=80&w=800",
       price: "From $59",
+      turnaround: "20–35 Mins",
     },
     {
       id: "data-recovery",
@@ -46,6 +50,7 @@ export default function WeFixQualityRepairs({
       icon: HardDrive,
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
       price: "From $69",
+      turnaround: "24–48 Hours",
     },
     {
       id: "os-installation",
@@ -55,6 +60,7 @@ export default function WeFixQualityRepairs({
       icon: Cpu,
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
       price: "From $49",
+      turnaround: "45 Mins",
     },
     {
       id: "smartphone-repair",
@@ -64,6 +70,7 @@ export default function WeFixQualityRepairs({
       icon: Smartphone,
       image: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800",
       price: "From $59",
+      turnaround: "20–30 Mins",
     },
     {
       id: "camera-lens",
@@ -73,32 +80,44 @@ export default function WeFixQualityRepairs({
       icon: Camera,
       image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800",
       price: "From $79",
+      turnaround: "30–45 Mins",
     },
   ];
 
   return (
-    <section id="services" className="py-16 sm:py-24 bg-[#f6f6f6] border-b border-[#e8e8e8]">
+    <section id="services" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
             Issues We Solve
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
             Quality Repairs
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#636363]">
-            Expert technical solutions for consumer smartphones, laptops, tablets, and gaming consoles.
+          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
+            Expert technical solutions for consumer smartphones, laptops, tablets, and gaming consoles with factory precision.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Services Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((item) => {
+          {services.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
                 className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EF644C]/40 shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <div>
@@ -112,7 +131,7 @@ export default function WeFixQualityRepairs({
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 filter brightness-95"
                     />
                     {/* Price Badge */}
-                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-black text-[#1F1F1F] border border-[#e8e8e8] shadow-sm">
+                    <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3.5 py-1.5 rounded-full text-xs font-black text-[#1F1F1F] border border-[#e8e8e8] shadow-sm">
                       {item.price}
                     </div>
 
@@ -130,7 +149,7 @@ export default function WeFixQualityRepairs({
                     <h3 className="text-xl font-bold text-[#1F1F1F] font-heading group-hover:text-[#EF644C] transition-colors">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-xs sm:text-sm text-[#636363] leading-relaxed">
+                    <p className="mt-2.5 text-xs sm:text-sm text-[#636363] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -141,17 +160,18 @@ export default function WeFixQualityRepairs({
                   <div className="pt-4 border-t border-[#f0f0f0] flex items-center justify-between">
                     <button
                       onClick={() => onSelectRepair(item.title)}
-                      className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F] group-hover:text-[#EF644C] flex items-center gap-1.5 transition-colors"
+                      className="text-xs font-bold uppercase tracking-wider text-[#1F1F1F] group-hover:text-[#EF644C] flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded"
                     >
                       <span>Book Service</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
                     </button>
-                    <span className="text-[11px] text-[#888888] font-medium">
-                      20–45 Mins
+                    <span className="text-[11px] text-[#888888] font-medium flex items-center gap-1">
+                      <Clock className="w-3 h-3 text-[#EF644C]" />
+                      <span>{item.turnaround}</span>
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
