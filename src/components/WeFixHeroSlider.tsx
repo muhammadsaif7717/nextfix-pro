@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ChevronLeft,
-  ChevronRight,
   ArrowRight,
   ShieldCheck,
   Zap,
   CheckCircle2,
   Clock,
   Sparkles,
+  MapPin,
+  Flame,
+  Award,
 } from "lucide-react";
 
 interface WeFixHeroSliderProps {
@@ -24,33 +25,32 @@ export default function WeFixHeroSlider({
   onGetQuote,
 }: WeFixHeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const touchStartX = useRef<number | null>(null);
 
   const slides = [
     {
-      subtitle: "Trusted Aid",
-      title: "Bright Solution, A Better Outcomes",
-      desc: "We provide excellence in every service, delivering reliable results through expert care, precise workmanship, and Customer Focus.",
-      bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=85&w=1920",
-      accent: "#EF644C",
+      subtitle: "⚡ Certified OEM Device Restoration",
+      title: "Cracked Screen or Dead Battery?",
+      highlight: "Fixed in Under 28 Minutes.",
+      desc: "Top-rated electronic cleanroom laboratory in New York. We restore iPhones, MacBooks, Samsung, and consoles with 100% genuine OEM components and zero data loss.",
+      bgImage: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=1920",
     },
     {
-      subtitle: "Bright Ideas",
-      title: "Lighting The Way To Solutions",
-      desc: "We guide every service journey with unmatched expertise, ensuring a smooth process, reliable performance, and Overachievement.",
-      bgImage: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=85&w=1920",
-      accent: "#EF644C",
+      subtitle: "🔬 Micro-Soldering & Logic Board Lab",
+      title: "Water Damage or Motherboard Short?",
+      highlight: "Revived with Zero Data Loss.",
+      desc: "Stereomicroscope chip-level diagnostics, BGA rework, and ultrasonic deoxidation baths. Where other shops declare devices unfixable, our master engineers restore them.",
+      bgImage: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1920",
     },
     {
-      subtitle: "Trusted Pros",
-      title: "Clear Solutions For Hidden Problem",
-      desc: "We uncover issues through skillful diagnosis, providing clear, honest, and dependable service solutions that Guaranteed Satisfaction.",
-      bgImage: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=85&w=1920",
-      accent: "#EF644C",
+      subtitle: "🛡️ Lifetime Workmanship Warranty",
+      title: "Fast, Honest & Transparent Repair.",
+      highlight: "No Fix = Zero Fee Guarantee.",
+      desc: "Transparent upfront pricing with zero diagnostic fees. If your hardware cannot be fully restored to factory specifications, you pay absolutely nothing.",
+      bgImage: "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=1920",
     },
   ];
 
-  // Auto-play every 6.5s
+  // Smooth automatic crossfade every 6.5s
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -58,54 +58,21 @@ export default function WeFixHeroSlider({
     return () => clearInterval(timer);
   }, [slides.length]);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") prevSlide();
-      if (e.key === "ArrowRight") nextSlide();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [slides.length]);
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  // Touch handlers
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
-    const diff = touchStartX.current - e.changedTouches[0].clientX;
-    if (diff > 50) nextSlide();
-    else if (diff < -50) prevSlide();
-    touchStartX.current = null;
-  };
-
   const active = slides[currentSlide];
 
   return (
     <section
       id="home"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
       className="relative w-full min-h-[calc(100vh-116px)] min-h-[calc(100dvh-116px)] flex items-center overflow-hidden bg-[#1F1F1F]"
     >
-      {/* 1. Next.js Optimized Image with AnimatePresence & Zoom */}
+      {/* 1. Next.js Optimized Background Image with Smooth Crossfade */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active.bgImage}
           initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          transition={{ duration: 0.9, ease: "easeOut" }}
           className="absolute inset-0"
         >
           <Image
@@ -114,122 +81,190 @@ export default function WeFixHeroSlider({
             fill
             priority={currentSlide === 0}
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-center filter brightness-90"
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* 2. Gradient Overlay for readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/75 to-black/50 z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-10 pointer-events-none" />
+      {/* 2. Filmic High-Contrast Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/85 to-black/60 z-10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40 z-10 pointer-events-none" />
 
-      {/* 3. Hero Content Layered Over Background */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full">
-        <div className="max-w-3xl space-y-6">
-          {/* Subtitle Badge */}
-          <motion.div
-            key={`badge-${currentSlide}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#EF644C] text-white text-xs font-bold uppercase tracking-widest shadow-lg"
-          >
-            <span className="w-2 h-2 rounded-full bg-white animate-ping" />
-            <span>{active.subtitle}</span>
-          </motion.div>
+      {/* 3. Hero Content Container: High-Converting 2-Column Grid */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left Column: Bold Value Hook & Primary Actions (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Live Store Status & Subtitle Badge */}
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span>Open Now Until 8:00 PM</span>
+              </span>
 
-          {/* Grand Heading */}
-          <motion.h1
-            key={`title-${currentSlide}`}
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12] font-heading drop-shadow-md"
-          >
-            {active.title}
-          </motion.h1>
+              <motion.div
+                key={`badge-${currentSlide}`}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EF644C] text-white text-[11px] font-bold uppercase tracking-wider shadow-lg"
+              >
+                <span>{active.subtitle}</span>
+              </motion.div>
+            </div>
 
-          {/* Description */}
-          <motion.p
-            key={`desc-${currentSlide}`}
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-sm sm:text-base lg:text-lg text-slate-200 leading-relaxed max-w-2xl font-normal drop-shadow"
-          >
-            {active.desc}
-          </motion.p>
-
-          {/* Action Buttons */}
-          <motion.div
-            key={`btns-${currentSlide}`}
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2"
-          >
-            <button
-              onClick={onBookRepair}
-              className="px-8 py-4 min-h-[48px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-xl flex items-center justify-center gap-2 text-center"
+            {/* Dynamic Grand Heading */}
+            <motion.div
+              key={`title-${currentSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="space-y-1"
             >
-              <span>Book A Repair</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] font-heading drop-shadow-md">
+                {active.title}
+              </h1>
+              <span className="block text-2xl sm:text-4xl lg:text-5xl font-black text-[#EF644C] tracking-tight font-heading leading-tight drop-shadow-md">
+                {active.highlight}
+              </span>
+            </motion.div>
 
-            <button
-              onClick={onGetQuote}
-              className="px-8 py-4 min-h-[48px] rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white text-white hover:text-[#1F1F1F] border border-white/30 backdrop-blur-md transition-all shadow-md flex items-center justify-center gap-2 text-center"
+            {/* Description */}
+            <motion.p
+              key={`desc-${currentSlide}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal drop-shadow"
             >
-              <span>Get A Quote</span>
-            </button>
-          </motion.div>
+              {active.desc}
+            </motion.p>
 
-          {/* Trust Badges Strip */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="pt-6 border-t border-white/20 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs text-slate-300 font-semibold"
-          >
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#EF644C]" />
-              1-Year Return Warranty
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#EF644C]" />
-              Average 28-Min Turnaround
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle2 className="w-4 h-4 text-[#EF644C]" />
-              100% Certified OEM Parts
-            </span>
-          </motion.div>
-        </div>
-      </div>
+            {/* Primary Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <button
+                onClick={onBookRepair}
+                className="px-8 py-4 min-h-[50px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-xl flex items-center justify-center gap-2 text-center"
+              >
+                <span>Book 30-Min Repair Slot</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
 
-      {/* 4. Controls & Slide Progress (Bottom Right) */}
-      <div className="absolute bottom-6 right-6 sm:bottom-10 sm:right-10 z-30 flex items-center gap-4">
-        {/* Slide Counter */}
-        <div className="hidden sm:block text-xs font-mono font-bold text-white/80 bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
-          0{currentSlide + 1} / 0{slides.length}
-        </div>
+              <button
+                onClick={onGetQuote}
+                className="px-8 py-4 min-h-[50px] rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 hover:bg-white text-white hover:text-[#1F1F1F] border border-white/30 backdrop-blur-md transition-all shadow-md flex items-center justify-center gap-2 text-center"
+              >
+                <span>Instant Cost Calculator</span>
+              </button>
+            </div>
 
-        {/* Prev / Next Buttons */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={prevSlide}
-            aria-label="Previous Slide"
-            className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-full bg-white/20 hover:bg-[#EF644C] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            onClick={nextSlide}
-            aria-label="Next Slide"
-            className="w-11 h-11 min-h-[44px] min-w-[44px] rounded-full bg-white/20 hover:bg-[#EF644C] text-white backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-300 shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
+            {/* Trust Badges Strip */}
+            <div className="pt-6 border-t border-white/15 grid grid-cols-2 sm:grid-cols-4 gap-4 text-[11px] text-slate-300 font-semibold">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <span>1-Yr Warranty</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <span>28-Min Turnaround</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <span>100% Data Safe</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
+                <span>No Fix = $0 Fee</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Live Lab Bench & Fast-Track Drop-Off Card (5 Cols) */}
+          <div className="lg:col-span-5">
+            <div className="bg-white/10 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/20 shadow-2xl space-y-6 text-white">
+              {/* Card Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-white/15">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#EF644C] block">
+                    Fast-Track Walk-In
+                  </span>
+                  <h3 className="text-lg font-bold font-heading text-white mt-0.5">
+                    Live Lab Availability
+                  </h3>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs font-black text-emerald-400">
+                    Est. Wait: 4 Mins
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-medium">
+                    2 Master Techs Free
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Repair Menu Items */}
+              <div className="space-y-2.5 text-xs">
+                {[
+                  {
+                    name: "iPhone OLED Screen",
+                    time: "20–30 Mins",
+                    price: "From $59",
+                    badge: "Most Popular",
+                  },
+                  {
+                    name: "MacBook Battery / Board",
+                    time: "Same-Day",
+                    price: "From $99",
+                    badge: "Apple Certified",
+                  },
+                  {
+                    name: "Samsung Galaxy OLED",
+                    time: "25–40 Mins",
+                    price: "From $69",
+                    badge: "OEM Calibrated",
+                  },
+                  {
+                    name: "PS5 / Console HDMI 2.1",
+                    time: "40 Mins",
+                    price: "From $89",
+                    badge: "Micro-Solder",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    onClick={onGetQuote}
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-[#EF644C]/50 flex items-center justify-between transition-all cursor-pointer group"
+                  >
+                    <div>
+                      <div className="font-bold text-white group-hover:text-[#EF644C] transition-colors">
+                        {item.name}
+                      </div>
+                      <div className="text-[10px] text-slate-400 flex items-center gap-1.5 mt-0.5">
+                        <Clock className="w-3 h-3 text-[#EF644C]" />
+                        <span>{item.time}</span>
+                        <span>•</span>
+                        <span className="text-emerald-400 font-semibold">
+                          {item.badge}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="text-xs font-black text-white bg-white/10 px-2.5 py-1 rounded-lg">
+                      {item.price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Bottom Quick Reserve Button */}
+              <button
+                onClick={onBookRepair}
+                className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary flex items-center justify-center gap-2 shadow-lg"
+              >
+                <span>Reserve Priority Bench Slot</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -250,20 +285,6 @@ export default function WeFixHeroSlider({
           />
         </div>
       </a>
-
-      {/* 5. Slide Dot Indicators (Bottom Center) */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 sm:hidden">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => setCurrentSlide(idx)}
-            className={`h-2 rounded-full transition-all ${
-              currentSlide === idx ? "w-6 bg-[#EF644C]" : "w-2 bg-white/40"
-            }`}
-            aria-label={`Jump to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
     </section>
   );
 }

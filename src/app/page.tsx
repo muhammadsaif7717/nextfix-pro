@@ -5,10 +5,14 @@ import WeFixNavbar from "@/components/WeFixNavbar";
 import WeFixHeroSlider from "@/components/WeFixHeroSlider";
 import WeFixIdentitySection from "@/components/WeFixIdentitySection";
 import WeFixQualityRepairs from "@/components/WeFixQualityRepairs";
-import WeFixRepairOptions from "@/components/WeFixRepairOptions";
+import NextFixBeforeAfter from "@/components/NextFixBeforeAfter";
 import WeFixSafeguardSection from "@/components/WeFixSafeguardSection";
+import WeFixRepairOptions from "@/components/WeFixRepairOptions";
+import NextFixWorkflow from "@/components/NextFixWorkflow";
 import WeFixMilestoneSection from "@/components/WeFixMilestoneSection";
 import WeFixTestimonialSection from "@/components/WeFixTestimonialSection";
+import NextFixLocation from "@/components/NextFixLocation";
+import NextFixFAQ from "@/components/NextFixFAQ";
 import WeFixBlogSection from "@/components/WeFixBlogSection";
 import WeFixFooter from "@/components/WeFixFooter";
 import WeFixMobileStickyDock from "@/components/WeFixMobileStickyDock";
@@ -65,7 +69,7 @@ export default function Home() {
         onOpenTracker={() => setTrackerModalOpen(true)}
       />
 
-      {/* 2. Hero Carousel Slider (Exact WeFix 3-Slide Showcase) */}
+      {/* 2. Hero Section (Split CRO Layout with Live Lab Bench & No Buttons) */}
       <WeFixHeroSlider
         onBookRepair={handleOpenGeneralQuote}
         onGetQuote={handleOpenGeneralQuote}
@@ -77,25 +81,37 @@ export default function Home() {
       {/* 4. Issues We Solve / Quality Repairs Section */}
       <WeFixQualityRepairs onSelectRepair={handleSelectRepairTitle} />
 
-      {/* 5. Safeguard / Superior Safety (Hotspot & Interactive Price Estimator) */}
+      {/* 5. Interactive Before & After Repair Comparison Slider */}
+      <NextFixBeforeAfter />
+
+      {/* 6. Safeguard / Superior Safety (Hotspot & Interactive Price Estimator) */}
       <WeFixSafeguardSection onBookAppointment={handleEstimatorBooking} />
 
-      {/* 6. Service List / Discover Our Repair Options */}
+      {/* 7. Service List / Discover Our Repair Options */}
       <WeFixRepairOptions onSelectOption={handleSelectRepairTitle} />
 
-      {/* 7. Milestone / Reached New Heights In Repair Services */}
+      {/* 8. Our 4-Step Precision Workflow */}
+      <NextFixWorkflow />
+
+      {/* 9. Milestone / Reached New Heights In Repair Services */}
       <WeFixMilestoneSection onBookRepair={handleOpenGeneralQuote} />
 
-      {/* 8. Testimonial / User Opinions */}
+      {/* 10. Testimonials / 6 Verified Review Cards */}
       <WeFixTestimonialSection />
 
-      {/* 9. Our Blogs / Explore Inspiration and Trends */}
+      {/* 11. Store Hours, Walk-In Directions & Mail-In Repair */}
+      <NextFixLocation onOpenQuote={handleOpenGeneralQuote} />
+
+      {/* 12. Frequently Asked Questions (FAQ Accordion) */}
+      <NextFixFAQ />
+
+      {/* 13. Our Blogs / Explore Inspiration and Trends */}
       <WeFixBlogSection />
 
-      {/* 10. Footer (Exact WeFix 4-Column Layout with Counters & Newsletter) */}
+      {/* 14. Footer (4-Column Layout with Counters & Newsletter) */}
       <WeFixFooter />
 
-      {/* 11. Mobile Bottom Sticky Dock */}
+      {/* 15. Mobile Bottom Sticky Dock */}
       <WeFixMobileStickyDock onOpenQuote={handleOpenGeneralQuote} />
 
       {/* Modals */}
