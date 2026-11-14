@@ -1,0 +1,88 @@
+import { ReviewItem } from "@/types";
+
+export const REVIEWS_DATA: ReviewItem[] = [
+  {
+    id: "rev-1",
+    name: "Marcus Vance",
+    location: "Downtown Tech Hub",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
+    rating: 5,
+    date: "2 days ago",
+    device: "iPhone 15 Pro Max",
+    repairType: "Cracked OLED Screen",
+    turnaround: "Fixed in 26 mins",
+    review:
+      "Apple Store told me I needed a full chassis swap and quoted $380 with a 3-day turnaround. NextFix Pro handled it in 26 minutes flat while I grabbed an espresso next door. The screen is 100% indistinguishable from factory original with TrueTone working.",
+    verified: true,
+  },
+  {
+    id: "rev-2",
+    name: "Elena Rostova",
+    location: "Financial District",
+    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400",
+    rating: 5,
+    date: "4 days ago",
+    device: "MacBook Pro 16\" (M2 Max)",
+    repairType: "Liquid Damage & Logic Board",
+    turnaround: "Same-Day (3.5 hours)",
+    review:
+      "Spilled an entire latte directly over my keyboard with unbacked-up client deliverables due that night. The team did an emergency ultrasonic clean and micro-soldered two shorted power rails. Saved all my files and saved my agency thousands.",
+    verified: true,
+  },
+  {
+    id: "rev-3",
+    name: "David Chen",
+    location: "Mission District",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400",
+    rating: 5,
+    date: "1 week ago",
+    device: "Samsung Galaxy S24 Ultra",
+    repairType: "Crushed Back Glass & Camera",
+    turnaround: "Fixed in 40 mins",
+    review:
+      "The laser separation tech they use for back glass replacement is mind-blowing. No pry marks, no heat warping, perfectly sealed back with OEM water gasket. Friendly, knowledgeable engineers who genuinely care about hardware.",
+    verified: true,
+  },
+  {
+    id: "rev-4",
+    name: "Sarah Jenkins",
+    location: "Marina Heights",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
+    rating: 5,
+    date: "1 week ago",
+    device: "Google Pixel 8 Pro",
+    repairType: "Battery Renewal & Port Clean",
+    turnaround: "Fixed in 22 mins",
+    review:
+      "Battery health was down to 74% and shutting down at 20%. They put in a fresh OEM cell and deep cleaned the USB-C port for free. Phone now lasts nearly two full days again! Top notch customer experience.",
+    verified: true,
+  },
+  {
+    id: "rev-5",
+    name: "Julian Rivera",
+    location: "SoMa Tech Corridor",
+    avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=400",
+    rating: 5,
+    date: "2 weeks ago",
+    device: "PlayStation 5 Console",
+    repairType: "HDMI 2.1 Port & Liquid Metal",
+    turnaround: "Fixed in 45 mins",
+    review:
+      "My PS5 HDMI port got yanked during a room move and had no video output. NextFix Pro replaced the port with an upgraded reinforced bracket and refreshed the liquid metal on the APU. Runs colder and quieter than when I bought it.",
+    verified: true,
+  },
+  {
+    id: "rev-6",
+    name: "Dr. Amanda Wright",
+    location: "University Campus",
+    avatar: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800",
+    rating: 5,
+    date: "2 weeks ago",
+    device: "iPad Pro 12.9\" (M2)",
+    repairType: "Digitizer & Glass Assembly",
+    turnaround: "Fixed in 50 mins",
+    review:
+      "As a digital illustrator, pencil latency and pressure sensitivity are everything. I was worried a non-Apple repair would ruin pencil tilt. NextFix Pro's OEM panel was calibrated flawlessly. Apple Pencil 2 feels 100% native.",
+    verified: true,
+  },
+];

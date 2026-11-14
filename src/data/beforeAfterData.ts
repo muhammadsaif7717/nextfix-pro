@@ -1,0 +1,40 @@
+import { BeforeAfterItem } from "@/types";
+
+export const BEFORE_AFTER_ITEMS: BeforeAfterItem[] = [
+  {
+    id: "iphone-screen",
+    title: "Crushed Ceramic Shield & Bleeding OLED",
+    device: "iPhone 15 Pro Max",
+    issue: "Shattered Front Glass & Impact Display Lines",
+    turnaround: "28 Minutes In-Lab",
+    beforeImage: "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&q=80&w=1200",
+    afterImage: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1200",
+    beforeDesc: "Severe corner impact resulting in complete touch digitization failure and vertical green OLED artifacts.",
+    afterDesc: "Precision OEM Super Retina XDR replacement. TrueTone calibrated, 120Hz ProMotion active, and IP68 seal renewed.",
+    specs: ["120Hz ProMotion Verified", "TrueTone Calibrated", "Waterproof Seal Renewed", "Zero Touch Deadzones"],
+  },
+  {
+    id: "macbook-spill",
+    title: "Coffee Spill & Corroded Logic Board",
+    device: "MacBook Pro 16\" (M3 Max)",
+    issue: "Liquid Corrosion & Dead USB-C Power Rails",
+    turnaround: "Same-Day (4.5 Hours)",
+    beforeImage: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
+    afterImage: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
+    beforeDesc: "Heavy mineral oxidation across ISL9240 charging IC and shorted decoupling capacitors on the 12V bus.",
+    afterDesc: "Ultrasonic chemical deoxidation bath, 3 micro-soldered SMD capacitors replaced, power rails restored to factory specs.",
+    specs: ["Short Circuit Neutralized", "All Data 100% Intact", "Sonic Chemical Bath", "Thermal Testing Passed"],
+  },
+  {
+    id: "ps5-hdmi",
+    title: "Destroyed HDMI Port & Overheating APU",
+    device: "Sony PlayStation 5",
+    issue: "Bent Connector Pins & 105°C APU Thermal Throttling",
+    turnaround: "45 Minutes",
+    beforeImage: "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1200",
+    afterImage: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&q=80&w=1200",
+    beforeDesc: "Pins crushed into housing causing instant shutdown. Liquid metal oxidized and dry-spotted on APU silicon.",
+    afterDesc: "Reinforced 4K 120Hz HDMI 2.1 connector installed. APU delidded, polished, and reseated with fresh thermal compound.",
+    specs: ["4K@120Hz HDR Active", "Whisper Quiet Fans", "Sub-62°C Peak Temps", "Lifetime Port Warranty"],
+  },
+];
