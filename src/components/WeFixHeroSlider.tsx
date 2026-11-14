@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronLeft,
@@ -95,19 +96,27 @@ export default function WeFixHeroSlider({
       id="home"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full min-h-[660px] sm:min-h-[740px] lg:min-h-[820px] flex items-center overflow-hidden bg-[#1F1F1F]"
+      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex items-center overflow-hidden bg-[#1F1F1F]"
     >
-      {/* 1. Background Image with AnimatePresence & Ken-Burns Zoom */}
+      {/* 1. Next.js Optimized Image with AnimatePresence & Zoom */}
       <AnimatePresence mode="wait">
         <motion.div
           key={active.bgImage}
-          initial={{ opacity: 0, scale: 1.05 }}
+          initial={{ opacity: 0, scale: 1.04 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-          style={{ backgroundImage: `url(${active.bgImage})` }}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        />
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={active.bgImage}
+            alt={active.title}
+            fill
+            priority={currentSlide === 0}
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+        </motion.div>
       </AnimatePresence>
 
       {/* 2. Gradient Overlay for readability */}
@@ -115,7 +124,7 @@ export default function WeFixHeroSlider({
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 z-10 pointer-events-none" />
 
       {/* 3. Hero Content Layered Over Background */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 lg:pt-48 pb-16 sm:pb-24 w-full">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24 w-full">
         <div className="max-w-3xl space-y-6">
           {/* Subtitle Badge */}
           <motion.div

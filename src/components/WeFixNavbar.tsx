@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import NextFixLogo from "@/components/NextFixLogo";
 import {
   MapPin,
@@ -38,10 +39,17 @@ export default function WeFixNavbar({
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
+  // Prevent scroll-spy from rapidly toggling during programmatic smooth scroll
+  const isNavigatingRef = useRef(false);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   // Dynamic Scroll Spy for active navigation section
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      setScrolled(window.scrollY > 20);
+
+      // If user clicked a nav link and smooth scroll is animating, skip spy
+      if (isNavigatingRef.current) return;
 
       // 1. Top of page -> Home
       if (window.scrollY < 200) {
@@ -52,13 +60,13 @@ export default function WeFixNavbar({
       // 2. Bottom of page -> Contact
       const scrollHeight = document.documentElement.scrollHeight;
       const scrollPos = window.innerHeight + window.scrollY;
-      if (scrollPos >= scrollHeight - 60) {
+      if (scrollPos >= scrollHeight - 80) {
         setActiveSection("contact");
         return;
       }
 
       // 3. Middle sections: check top offset with navbar height compensation
-      const sectionOffset = 140; // Fixed navbar buffer
+      const sectionOffset = 130;
       const currentScroll = window.scrollY + sectionOffset;
 
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
@@ -86,8 +94,16 @@ export default function WeFixNavbar({
     sectionId: string
   ) => {
     e.preventDefault();
+
+    // Lock spy during smooth scroll
+    isNavigatingRef.current = true;
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
+
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = setTimeout(() => {
+      isNavigatingRef.current = false;
+    }, 850);
 
     if (sectionId === "home") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -99,7 +115,7 @@ export default function WeFixNavbar({
 
     const el = document.getElementById(sectionId);
     if (el) {
-      const navOffset = 90; // Compensation for fixed frosted glass navbar
+      const navOffset = 85; // Fixed navbar buffer
       const y = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       if (window.history.pushState) {
@@ -121,16 +137,14 @@ export default function WeFixNavbar({
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* 1. Slim Translucent Top Bar (Collapses smoothly on scroll) */}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white">
+      {/* 1. Crisp Corporate Top Bar */}
       <div
-        className={`transition-all duration-300 overflow-hidden ${
-          scrolled
-            ? "max-h-0 opacity-0 pointer-events-none"
-            : "max-h-12 opacity-100 bg-white/70 backdrop-blur-md border-b border-black/5"
+        className={`transition-all duration-300 overflow-hidden bg-[#f8f9fa] border-b border-[#e8e8e8] ${
+          scrolled ? "max-h-0 opacity-0 pointer-events-none" : "max-h-12 opacity-100"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between text-[11px] sm:text-xs text-[#555555]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between text-[11px] sm:text-xs text-[#636363]">
           {/* Left info items */}
           <div className="flex items-center gap-4 sm:gap-6 whitespace-nowrap overflow-hidden">
             <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
@@ -169,12 +183,12 @@ export default function WeFixNavbar({
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar with Dynamic Active Link Indicator */}
+      {/* 2. Solid High-Contrast Main Navigation Bar */}
       <nav
-        className={`w-full transition-all duration-300 ${
+        className={`w-full bg-white border-b transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-xl shadow-md border-b border-[#e8e8e8]"
-            : "bg-white/75 backdrop-blur-lg border-b border-black/5"
+            ? "border-[#e0e0e0] shadow-md py-0.5"
+            : "border-[#e8e8e8] shadow-xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-22 flex items-center justify-between gap-4">
@@ -188,7 +202,7 @@ export default function WeFixNavbar({
             <NextFixLogo size="md" />
           </a>
 
-          {/* Desktop Nav Links - STRICT whitespace-nowrap with Active State */}
+          {/* Desktop Nav Links - STRICT constant font-bold with sliding layoutId indicator to eliminate jitter */}
           <div className="hidden xl:flex items-center gap-7 2xl:gap-8 text-[15px] font-bold whitespace-nowrap">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
@@ -197,17 +211,21 @@ export default function WeFixNavbar({
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
-                  className={`relative py-2 whitespace-nowrap transition-all duration-200 ${
+                  className={`relative py-2 whitespace-nowrap font-bold transition-colors duration-200 ${
                     isActive
-                      ? "text-[#EF644C] font-black"
+                      ? "text-[#EF644C]"
                       : "text-[#1F1F1F] hover:text-[#EF644C]"
                   }`}
                 >
                   <span>{item.label}</span>
 
-                  {/* Active Underline Pill */}
+                  {/* Smooth Sliding Active Indicator (No layout shift) */}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#EF644C] rounded-full shadow-xs animate-in fade-in zoom-in-75 duration-200" />
+                    <motion.span
+                      layoutId="navbar-active-pill"
+                      className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#EF644C] rounded-full shadow-xs"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
                   )}
                 </a>
               );
@@ -219,7 +237,7 @@ export default function WeFixNavbar({
             {/* Search Icon */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="w-10 h-10 rounded-full bg-white/80 hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#EF644C] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               aria-label="Open search"
             >
               <Search className="w-4 h-4" />
@@ -245,7 +263,7 @@ export default function WeFixNavbar({
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-white/80 border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#f6f6f6] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
+              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#eaeaea] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -255,7 +273,7 @@ export default function WeFixNavbar({
 
         {/* Search Bar Flyout */}
         {searchOpen && (
-          <div className="bg-white/95 backdrop-blur-md border-t border-[#e8e8e8] px-4 py-3">
+          <div className="bg-[#fafafa] border-t border-[#e8e8e8] px-4 py-3">
             <div className="max-w-xl mx-auto flex items-center gap-2">
               <label htmlFor="search-input" className="sr-only">
                 Search
@@ -265,7 +283,7 @@ export default function WeFixNavbar({
                 type="text"
                 autoFocus
                 placeholder="Search repair services, devices or guides..."
-                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-[#f6f6f6] border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#EF644C]"
+                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-white border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#EF644C]"
               />
               <button
                 onClick={() => setSearchOpen(false)}
@@ -279,7 +297,7 @@ export default function WeFixNavbar({
 
         {/* Mobile Navigation Drawer with Dynamic Active Highlight */}
         {mobileMenuOpen && (
-          <div className="xl:hidden bg-white/95 backdrop-blur-xl border-b border-[#e8e8e8] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top-4 duration-300">
+          <div className="xl:hidden bg-white border-b border-[#e8e8e8] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top-4 duration-300">
             <div className="flex flex-col space-y-2 text-sm">
               {NAV_ITEMS.map((item) => {
                 const isActive = activeSection === item.id;
@@ -290,7 +308,7 @@ export default function WeFixNavbar({
                     onClick={(e) => handleNavClick(e, item.id)}
                     className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-bold transition-all ${
                       isActive
-                        ? "bg-[#EF644C]/10 border-[#EF644C]/30 text-[#EF644C] font-black"
+                        ? "bg-[#EF644C]/10 border-[#EF644C]/30 text-[#EF644C]"
                         : "border-transparent text-[#1F1F1F] hover:bg-[#f6f6f6]"
                     }`}
                   >

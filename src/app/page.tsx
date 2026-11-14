@@ -58,7 +58,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-white text-[#636363] overflow-x-hidden min-w-[360px] pb-16 lg:pb-0">
+    <main className="min-h-screen bg-white text-[#636363] overflow-x-hidden min-w-[360px] pb-16 lg:pb-0 pt-[116px]">
       {/* 1. Header & Navigation (Light Mode) */}
       <WeFixNavbar
         onOpenQuote={handleOpenGeneralQuote}
