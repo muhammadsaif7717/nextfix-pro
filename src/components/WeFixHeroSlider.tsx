@@ -96,7 +96,7 @@ export default function WeFixHeroSlider({
       id="home"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full min-h-[580px] sm:min-h-[640px] lg:min-h-[700px] flex items-center overflow-hidden bg-[#1F1F1F]"
+      className="relative w-full min-h-[calc(100vh-116px)] min-h-[calc(100dvh-116px)] flex items-center overflow-hidden bg-[#1F1F1F]"
     >
       {/* 1. Next.js Optimized Image with AnimatePresence & Zoom */}
       <AnimatePresence mode="wait">
@@ -232,6 +232,24 @@ export default function WeFixHeroSlider({
           </button>
         </div>
       </div>
+
+      {/* Scroll Down Indicator */}
+      <a
+        href="#about"
+        aria-label="Scroll down to About section"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 hidden sm:flex flex-col items-center gap-1.5 text-white/60 hover:text-white transition-colors group"
+      >
+        <span className="text-[10px] uppercase font-bold tracking-widest text-white/50 group-hover:text-white transition-colors">
+          Scroll
+        </span>
+        <div className="w-5 h-8 rounded-full border-2 border-white/30 flex items-start justify-center p-1 group-hover:border-[#EF644C] transition-colors">
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+            className="w-1.5 h-1.5 rounded-full bg-[#EF644C]"
+          />
+        </div>
+      </a>
 
       {/* 5. Slide Dot Indicators (Bottom Center) */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2 sm:hidden">
