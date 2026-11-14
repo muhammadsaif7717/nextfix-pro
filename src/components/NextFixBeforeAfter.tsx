@@ -1,17 +1,13 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  Smartphone,
-  Laptop,
-  Flame,
-  CheckCircle2,
+  ChevronsLeftRight,
   Clock,
   ShieldCheck,
-  MoveHorizontal,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function NextFixBeforeAfter() {
@@ -23,185 +19,218 @@ export default function NextFixBeforeAfter() {
   const presets = [
     {
       id: "iphone",
-      title: "iPhone 15 Pro OLED Display",
-      category: "Screen Restoration",
-      time: "Restored in 22 Mins",
+      title: "iPhone 15 Pro",
+      issue: "Shattered OLED & Glitch",
+      solution: "OEM Super Retina XDR",
+      turnaround: "22 Mins",
       warranty: "Lifetime Glass Guarantee",
       beforeImage:
         "https://images.unsplash.com/photo-1636589343867-f1d643baf04c?auto=format&fit=crop&q=80&w=1200",
       afterImage:
         "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Shattered OLED & Touch Glitch",
-      afterText: "Pristine OEM Super Retina XDR",
     },
     {
       id: "macbook",
-      title: "MacBook Pro Liquid Spill Clean",
-      category: "Motherboard Ultrasonic",
-      time: "Completed Same-Day",
+      title: "MacBook Pro M-Series",
+      issue: "Liquid Spill & Board Short",
+      solution: "Ultrasonic Deoxidized",
+      turnaround: "Same-Day",
       warranty: "100% Data Preserved",
       beforeImage:
         "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1200",
       afterImage:
         "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Corroded Logic Board & Short Circuit",
-      afterText: "Ultrasonic Deoxidized & Operational",
     },
     {
       id: "samsung",
-      title: "Galaxy S24 Screen & Housing",
-      category: "Laser Rebuild",
-      time: "Restored in 35 Mins",
+      title: "Galaxy S24 Ultra",
+      issue: "Spiderweb Fracture",
+      solution: "Laser Rebuilt & Sealed",
+      turnaround: "35 Mins",
       warranty: "IP68 Water Seals Kept",
       beforeImage:
         "https://images.unsplash.com/photo-1664735245477-25d862e46cf4?auto=format&fit=crop&q=80&w=1200",
       afterImage:
         "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Spiderweb Fracture & Pixel Bleed",
-      afterText: "Factory Laser Calibrated & Sealed",
     },
   ];
 
   const current = presets[activePreset];
 
-  const handleMove = (clientX: number) => {
+  // Precision pointer position calculator (works across mouse, touch, and trackpad)
+  const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
-    setSliderPosition(percentage);
+    const clampedPercentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(clampedPercentage);
+  }, []);
+
+  // Pointer Down with SetPointerCapture for unbreakable drag experience
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    setIsDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    updatePosition(e.clientX);
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
-    handleMove(e.touches[0].clientX);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDragging) return;
-    handleMove(e.clientX);
+    updatePosition(e.clientX);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDragging(false);
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {
+      // Ignored if capture was already released
+    }
   };
 
   return (
-    <section className="py-20 sm:py-28 bg-[#fafafa] border-b border-[#e8e8e8] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
+    <section className="py-20 sm:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Minimal, Human-Crafted Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
-            Visual Proof of Quality
+            Visual Proof
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
-            Interactive Before & After
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight font-heading">
+            Before & After
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
-            Drag the slider to see how shattered screens and corroded logic boards are restored to pristine factory specification.
+          <p className="mt-3 text-sm sm:text-base text-[#64748B]">
+            Drag the slider horizontally to compare damaged hardware before and after restoration.
           </p>
-        </motion.div>
-
-        {/* Preset Switcher Pills */}
-        <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
-          {presets.map((item, i) => (
-            <button
-              key={item.id}
-              onClick={() => setActivePreset(i)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                activePreset === i
-                  ? "bg-[#EA580C] text-white shadow-md shadow-[#EA580C]/30"
-                  : "bg-white text-[#636363] border border-[#e8e8e8] hover:bg-[#f6f6f6]"
-              }`}
-            >
-              {item.title}
-            </button>
-          ))}
         </div>
 
-        {/* Interactive Comparison Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto bg-white rounded-3xl p-4 sm:p-6 border border-[#e8e8e8] shadow-xl"
-        >
+        {/* Clean Segmented Device Tabs */}
+        <div className="flex items-center justify-center gap-2 mb-8">
+          <div className="inline-flex p-1 rounded-full bg-white border border-[#e2e8f0] shadow-sm">
+            {presets.map((item, i) => (
+              <button
+                key={item.id}
+                onClick={() => {
+                  setActivePreset(i);
+                  setSliderPosition(50);
+                }}
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
+                  activePreset === i
+                    ? "bg-[#EA580C] text-white shadow-md shadow-[#EA580C]/25"
+                    : "text-[#64748B] hover:text-[#0F172A] hover:bg-slate-50"
+                }`}
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Effortless Comparison Canvas (Zero clunky nested boxes) */}
+        <div className="max-w-4xl mx-auto">
           <div
             ref={containerRef}
-            onMouseDown={() => setIsDragging(true)}
-            onMouseUp={() => setIsDragging(false)}
-            onMouseLeave={() => setIsDragging(false)}
-            onMouseMove={handleMouseMove}
-            onTouchMove={handleTouchMove}
-            className="relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl overflow-hidden cursor-ew-resize select-none bg-[#1F1F1F]"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerUp}
+            style={{ touchAction: "none" }}
+            className={`relative aspect-[16/10] sm:aspect-[16/9] w-full rounded-2xl sm:rounded-3xl overflow-hidden select-none bg-slate-950 border border-slate-200/80 shadow-2xl cursor-ew-resize ${
+              isDragging ? "cursor-grabbing" : ""
+            }`}
           >
-            {/* After Image (Full background) */}
+            {/* 1. After Image (Full Background) */}
             <Image
               src={current.afterImage}
-              alt={current.afterText}
+              alt={current.solution}
               fill
-              sizes="(max-width: 1200px) 100vw, 1000px"
+              sizes="(max-width: 1024px) 100vw, 900px"
               className="object-cover object-center pointer-events-none select-none"
               draggable={false}
+              priority
             />
 
-            {/* Before Image (Clipped overlay) */}
+            {/* 2. Before Image (Clipped Left-to-Right Overlay) */}
             <div
               style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-              className="absolute inset-0"
+              className="absolute inset-0 pointer-events-none"
             >
               <Image
                 src={current.beforeImage}
-                alt={current.beforeText}
+                alt={current.issue}
                 fill
-                sizes="(max-width: 1200px) 100vw, 1000px"
-                className="object-cover object-center filter contrast-125 brightness-90 pointer-events-none select-none"
+                sizes="(max-width: 1024px) 100vw, 900px"
+                className="object-cover object-center filter brightness-90 contrast-110 pointer-events-none select-none"
                 draggable={false}
+                priority
               />
             </div>
 
-            {/* Before Badge (Left) */}
-            <div className="absolute top-4 left-4 bg-black/75 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase border border-white/20 shadow-lg pointer-events-none">
-              BEFORE: {current.beforeText}
+            {/* Discreet Floating "Before" Label (Left) */}
+            <div className="absolute top-4 left-4 z-20 pointer-events-none">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-slate-950/75 text-white backdrop-blur-md border border-white/15 shadow-md">
+                Before
+              </span>
             </div>
 
-            {/* After Badge (Right) */}
-            <div className="absolute top-4 right-4 bg-[#EA580C] text-white px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wider uppercase shadow-lg pointer-events-none">
-              AFTER: {current.afterText}
+            {/* Discreet Floating "After" Label (Right) */}
+            <div className="absolute top-4 right-4 z-20 pointer-events-none">
+              <span className="inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#EA580C] text-white backdrop-blur-md shadow-md">
+                After
+              </span>
             </div>
 
-            {/* Drag Handle Bar */}
+            {/* Precision Handle Bar & Floating Grab Circle */}
             <div
               style={{ left: `${sliderPosition}%` }}
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl -translate-x-1/2 flex items-center justify-center pointer-events-none"
+              className="absolute top-0 bottom-0 w-[2px] bg-white shadow-[0_0_10px_rgba(0,0,0,0.5)] -translate-x-1/2 pointer-events-none z-30"
             >
-              <div className="w-10 h-10 rounded-full bg-white text-[#1F1F1F] shadow-2xl flex items-center justify-center border-2 border-[#EA580C] pointer-events-auto">
-                <MoveHorizontal className="w-5 h-5 text-[#EA580C]" />
+              <div
+                className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white text-[#EA580C] shadow-2xl flex items-center justify-center border-2 border-[#EA580C] transition-transform duration-150 ${
+                  isDragging ? "scale-110 shadow-[#EA580C]/50" : "scale-100"
+                }`}
+              >
+                <ChevronsLeftRight className="w-5 h-5" />
               </div>
             </div>
+
+            {/* Accessible Hidden Range Input for Keyboard Control */}
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={sliderPosition}
+              onChange={(e) => setSliderPosition(Number(e.target.value))}
+              aria-label="Before and after comparison slider"
+              className="sr-only"
+            />
           </div>
 
-          {/* Bottom Card Meta Details */}
-          <div className="mt-6 pt-5 border-t border-[#f0f0f0] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-semibold text-[#636363]">
+          {/* Minimal 1-Line Status Footer */}
+          <div className="mt-4 px-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#64748B]">
             <div className="flex items-center gap-3">
-              <span className="flex items-center gap-1.5 text-[#1F1F1F]">
-                <Clock className="w-4 h-4 text-[#EA580C]" />
-                <span>{current.time}</span>
+              <span className="font-semibold text-[#0F172A]">
+                {current.issue}
+              </span>
+              <span className="text-slate-300">→</span>
+              <span className="font-bold text-[#EA580C]">
+                {current.solution}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-4 text-[11px]">
+              <span className="flex items-center gap-1 text-[#0F172A]">
+                <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
+                <span>{current.turnaround}</span>
               </span>
               <span>•</span>
-              <span className="flex items-center gap-1.5 text-[#1F1F1F]">
-                <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
+              <span className="flex items-center gap-1 text-[#0F172A]">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#EA580C]" />
                 <span>{current.warranty}</span>
               </span>
             </div>
-
-            <div className="text-[11px] text-[#888888]">
-              💡 Tip: Click or drag the center handle left/right to compare
-            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
