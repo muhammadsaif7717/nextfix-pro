@@ -45,7 +45,7 @@ export default function NextFixFAQ() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Got Questions?
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -67,11 +67,11 @@ export default function NextFixFAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="rounded-2xl bg-white border border-[#e8e8e8] overflow-hidden shadow-xs hover:border-[#10B981]/30 transition-all duration-200"
+                className="rounded-2xl bg-white border border-[#e8e8e8] overflow-hidden shadow-xs hover:border-[#EA580C]/30 transition-all duration-200"
               >
                 <button
                   onClick={() => setOpenIdx(isOpen ? null : idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
                   aria-expanded={isOpen}
                 >
                   <span className="text-sm sm:text-base font-bold text-[#1F1F1F] font-heading pr-2">
@@ -80,7 +80,7 @@ export default function NextFixFAQ() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-transform duration-300 ${
                       isOpen
-                        ? "bg-[#10B981] text-white rotate-180"
+                        ? "bg-[#EA580C] text-white rotate-180"
                         : "bg-[#f6f6f6] text-[#636363]"
                     }`}
                   >

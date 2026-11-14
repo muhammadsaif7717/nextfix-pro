@@ -31,7 +31,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Visit Our Lab
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -54,7 +54,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
           >
             <div>
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#10B981] text-white flex items-center justify-center shadow-md">
+                <div className="w-12 h-12 rounded-2xl bg-[#EA580C] text-white flex items-center justify-center shadow-md">
                   <MapPin className="w-6 h-6" />
                 </div>
                 <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-bold border border-emerald-500/20">
@@ -88,11 +88,11 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
               {/* Transit & Parking */}
               <div className="grid grid-cols-2 gap-4 text-xs text-[#636363] mb-6">
                 <div className="flex items-start gap-2">
-                  <Train className="w-4 h-4 text-[#10B981] flex-shrink-0 mt-0.5" />
+                  <Train className="w-4 h-4 text-[#EA580C] flex-shrink-0 mt-0.5" />
                   <span>Subway: B, D, F, M to 34th St / Herald Sq</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <Car className="w-4 h-4 text-[#10B981] flex-shrink-0 mt-0.5" />
+                  <Car className="w-4 h-4 text-[#EA580C] flex-shrink-0 mt-0.5" />
                   <span>Validated 1-hour customer parking nearby</span>
                 </div>
               </div>
@@ -118,9 +118,9 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
             <div>
               <div className="flex items-center justify-between mb-6">
                 <div className="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center border border-white/20">
-                  <PackageCheck className="w-6 h-6 text-[#10B981]" />
+                  <PackageCheck className="w-6 h-6 text-[#EA580C]" />
                 </div>
-                <span className="px-3 py-1 rounded-full bg-[#10B981]/20 text-[#10B981] text-xs font-bold border border-[#10B981]/30">
+                <span className="px-3 py-1 rounded-full bg-[#EA580C]/20 text-[#EA580C] text-xs font-bold border border-[#EA580C]/30">
                   Nationwide Express
                 </span>
               </div>
@@ -135,15 +135,15 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
               {/* Mail-In Perks List */}
               <ul className="space-y-3 text-xs text-slate-300 mb-8">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                   <span>Free insured return shipping with signature confirmation</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                   <span>Live HD video inspection & diagnostic recording</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                   <span>24-Hour turnaround upon lab receipt</span>
                 </li>
               </ul>
@@ -151,7 +151,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
 
             <button
               onClick={onOpenQuote}
-              className="w-full py-4 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#1F1F1F] hover:bg-[#10B981] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
+              className="w-full py-4 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#1F1F1F] hover:bg-[#EA580C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 shadow-lg"
             >
               <span>Request Free Mail-In Kit</span>
               <ArrowRight className="w-4 h-4" />

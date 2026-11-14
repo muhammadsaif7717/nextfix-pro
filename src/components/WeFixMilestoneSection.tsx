@@ -86,7 +86,7 @@ export default function WeFixMilestoneSection({
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-2">
+          <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Milestone
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
@@ -132,7 +132,7 @@ export default function WeFixMilestoneSection({
                     Proven Repair Industry Excellence
                   </div>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-[#10B981] text-white flex items-center justify-center font-bold text-lg shadow-md">
+                <div className="w-12 h-12 rounded-full bg-[#EA580C] text-white flex items-center justify-center font-bold text-lg shadow-md">
                   ★
                 </div>
               </motion.div>
@@ -155,9 +155,9 @@ export default function WeFixMilestoneSection({
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 * idx }}
-                  className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] hover:border-[#10B981]/30 hover:bg-white transition-all duration-300"
+                  className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] hover:border-[#EA580C]/30 hover:bg-white transition-all duration-300"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-[#10B981]/10 text-[#10B981] flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-5 h-5" />
                   </div>
                   <h3 className="text-base font-bold text-[#1F1F1F] font-heading mb-2">
@@ -173,7 +173,7 @@ export default function WeFixMilestoneSection({
             {/* Bottom Support Callout Box */}
             <div className="p-7 rounded-2xl bg-[#1F1F1F] text-white flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl mt-8">
               <div>
-                <span className="text-xs font-bold text-[#10B981] uppercase tracking-widest block mb-1">
+                <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-1">
                   Immediate Help
                 </span>
                 <h4 className="text-xl font-bold font-heading">
@@ -186,7 +186,7 @@ export default function WeFixMilestoneSection({
 
               <button
                 onClick={onBookRepair}
-                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary flex items-center gap-2 whitespace-nowrap shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#10B981]"
+                className="px-6 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary flex items-center gap-2 whitespace-nowrap shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
               >
                 <span>Book Now</span>
                 <ArrowRight className="w-4 h-4" />
@@ -216,7 +216,7 @@ export default function WeFixMilestoneSection({
                 key={idx}
                 className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-white transition-colors"
               >
-                <div className="w-11 h-11 rounded-xl bg-white border border-[#e8e8e8] text-[#10B981] flex items-center justify-center mb-3 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-white border border-[#e8e8e8] text-[#EA580C] flex items-center justify-center mb-3 shadow-xs">
                   <Icon className="w-5 h-5" />
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-[#1F1F1F] font-heading tracking-tight">

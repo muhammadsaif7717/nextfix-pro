@@ -37,8 +37,8 @@ export default function NextFixLogo({
       <div
         className={`relative ${iconDimensions} rounded-xl sm:rounded-2xl p-[2px] shadow-lg flex-shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}
         style={{
-          background: "linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%)",
-          boxShadow: "0 8px 20px -4px rgba(16, 185, 129, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4)",
+          background: "linear-gradient(135deg, #EA580C 0%, #F97316 50%, #C2410C 100%)",
+          boxShadow: "0 8px 20px -4px rgba(234, 88, 12, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4)",
         }}
       >
         <svg
@@ -80,7 +80,7 @@ export default function NextFixLogo({
           >
             NextFix
           </span>
-          <span className="px-1.5 py-0.5 rounded-md bg-[#10B981] text-white text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-sm">
+          <span className="px-1.5 py-0.5 rounded-md bg-[#EA580C] text-white text-[11px] sm:text-xs font-black tracking-wider uppercase shadow-sm">
             PRO
           </span>
         </div>

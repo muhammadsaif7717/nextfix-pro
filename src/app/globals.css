@@ -8,8 +8,8 @@
 }
 
 :root {
-  --wefix-primary: #10b981;
-  --wefix-primary-hover: #059669;
+  --wefix-primary: #ea580c;
+  --wefix-primary-hover: #c2410c;
   --wefix-secondary: #0f172a;
   --wefix-tertiary: #f8fafc;
   --wefix-bg: #ffffff;
@@ -60,20 +60,20 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #10b981;
+  background: #ea580c;
 }
 
 /* Primary Button animation */
 .btn-wefix-primary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
   color: #ffffff;
-  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.35);
+  box-shadow: 0 4px 14px 0 rgba(234, 88, 12, 0.35);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-wefix-primary:hover {
-  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: #ffffff;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
   transform: translateY(-2px);
 }
 .btn-wefix-primary:active {
@@ -99,13 +99,13 @@ h1, h2, h3, h4, h5, h6, .font-heading {
 /* Hotspot pulse */
 @keyframes hotspotPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.6);
   }
   70% {
-    box-shadow: 0 0 0 14px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 14px rgba(234, 88, 12, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(234, 88, 12, 0);
   }
 }
 
