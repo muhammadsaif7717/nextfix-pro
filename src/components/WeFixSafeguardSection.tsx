@@ -11,7 +11,6 @@ import {
 import { DeviceCategory, DeviceModel, RepairIssue } from "@/types";
 import {
   ShieldCheck,
-  Zap,
   Clock,
   Check,
   CheckCircle2,
@@ -21,8 +20,6 @@ import {
   Lock,
   BadgeDollarSign,
   Award,
-  Star,
-  Cpu,
 } from "lucide-react";
 
 interface WeFixSafeguardSectionProps {
@@ -81,75 +78,71 @@ export default function WeFixSafeguardSection({
           </p>
         </motion.div>
 
-        {/* 2-Column Split: High-Trust Assurance Panel & Calculator */}
+        {/* 2-Column Split: Clean Light Assurance Panel & Calculator */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          {/* Left Column: Redesigned High-Trust Service Assurance Card (5 Cols) - NO FAKE IMAGES */}
+          {/* Left Column: Redesigned Clean Light Diagnostic Standards Card (5 Cols) - NO BLACK BOXES */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 bg-slate-950 text-white p-7 sm:p-9 rounded-3xl border border-white/10 shadow-2xl flex flex-col justify-between relative overflow-hidden space-y-8"
+            className="lg:col-span-5 bg-white p-7 sm:p-9 rounded-3xl border border-[#e2e8f0] shadow-sm flex flex-col justify-between space-y-8"
           >
-            {/* Ambient Warm Amber Lighting */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-[#EA580C]/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-[#F97316]/10 rounded-full blur-3xl pointer-events-none" />
-
-            <div className="relative z-10">
+            <div>
               {/* Pill Eyebrow */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-[#FB923C] mb-5 backdrop-blur-md">
-                <Sparkles className="w-3.5 h-3.5 text-[#FB923C]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EA580C]/10 border border-[#EA580C]/20 text-xs font-semibold text-[#EA580C] mb-5">
+                <Sparkles className="w-3.5 h-3.5 text-[#EA580C]" />
                 <span>The NextFix Pro Standard</span>
               </div>
 
               {/* Title & Subtitle */}
-              <h3 className="text-2xl sm:text-3xl font-black font-heading text-white tracking-tight">
-                Transparent Pricing,
-                <span className="block text-[#FB923C] mt-1">Zero Hidden Costs.</span>
+              <h3 className="text-2xl sm:text-3xl font-black font-heading text-[#0F172A] tracking-tight">
+                Upfront Pricing,
+                <span className="block text-[#EA580C] mt-1">Zero Hidden Surprises.</span>
               </h3>
 
-              <p className="mt-3 text-sm text-slate-300 leading-relaxed font-normal">
-                Every estimate calculated here includes genuine factory-grade components, ESD cleanroom bench labor, and our lifetime guarantee.
+              <p className="mt-3 text-sm text-[#64748B] leading-relaxed font-normal">
+                Every repair estimate calculated here includes factory-spec hardware, cleanroom technician labor, and our lifetime workmanship guarantee.
               </p>
 
-              {/* 4 Core Value Proposition Cards */}
+              {/* 4 Core Value Proposition Cards (Light & Clean) */}
               <div className="mt-7 space-y-3">
                 {[
                   {
                     icon: ShieldCheck,
-                    title: "100% Genuine OEM Hardware",
-                    desc: "Factory-spec displays, battery cells, and IC chips with original serialization and water seals.",
+                    title: "Exact Quoted Total Guaranteed",
+                    desc: "The estimate you calculate is your final total. Parts, specialized micro-soldering labor, and testing are all included.",
                   },
                   {
                     icon: Award,
-                    title: "Lifetime Glass & Labor Warranty",
-                    desc: "Comprehensive replacement coverage on both parts and workmanship. You are protected for life.",
+                    title: "Lifetime Workmanship Warranty",
+                    desc: "Comprehensive replacement coverage on both replacement parts and technician labor. You are protected for life.",
                   },
                   {
                     icon: Lock,
                     title: "Zero Data Loss Protocol",
-                    desc: "Strict confidentiality. Your personal photos, apps, documents, and accounts remain completely untouched.",
+                    desc: "Confidential cleanroom handling. Your personal photos, apps, documents, and accounts remain completely untouched.",
                   },
                   {
                     icon: BadgeDollarSign,
                     title: "No Fix = Absolute $0 Fee",
-                    desc: "If our certified engineers cannot restore your device to 100% operational condition, you pay nothing.",
+                    desc: "If our certified engineers cannot restore your hardware to 100% operational condition, you pay absolutely nothing.",
                   },
                 ].map((item, idx) => {
                   const Icon = item.icon;
                   return (
                     <div
                       key={idx}
-                      className="flex items-start gap-3 p-3.5 rounded-2xl bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 transition-all"
+                      className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]/80 transition-all hover:bg-slate-50 hover:border-[#EA580C]/30"
                     >
-                      <div className="w-9 h-9 rounded-xl bg-[#EA580C]/20 border border-[#EA580C]/30 text-[#FB923C] flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <div className="w-9 h-9 rounded-xl bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center flex-shrink-0 mt-0.5">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div>
-                        <h4 className="text-xs font-bold text-white">
+                        <h4 className="text-xs font-bold text-[#0F172A]">
                           {item.title}
                         </h4>
-                        <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">
+                        <p className="text-[11px] text-[#64748B] mt-0.5 leading-relaxed">
                           {item.desc}
                         </p>
                       </div>
@@ -160,52 +153,51 @@ export default function WeFixSafeguardSection({
             </div>
 
             {/* Bottom 2x2 Metric Grid & Reassurance Strip */}
-            <div className="relative z-10 pt-6 border-t border-white/15 space-y-4">
+            <div className="pt-6 border-t border-[#e2e8f0] space-y-4">
               <div className="grid grid-cols-2 gap-3 text-center">
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className="text-xl font-black text-white font-heading">
+                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
+                  <div className="text-xl font-black text-[#0F172A] font-heading">
                     28 Mins
                   </div>
-                  <div className="text-[11px] text-slate-400 font-medium mt-0.5">
+                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
                     Avg. Turnaround
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className="text-xl font-black text-[#FB923C] font-heading flex items-center justify-center gap-1">
-                    <Star className="w-4 h-4 fill-[#FB923C]" />
-                    <span>4.9 / 5</span>
+                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
+                  <div className="text-xl font-black text-[#EA580C] font-heading">
+                    4.9 / 5
                   </div>
-                  <div className="text-[11px] text-slate-400 font-medium mt-0.5">
+                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
                     2,400+ Reviews
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className="text-xl font-black text-white font-heading">
+                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
+                  <div className="text-xl font-black text-[#0F172A] font-heading">
                     100%
                   </div>
-                  <div className="text-[11px] text-slate-400 font-medium mt-0.5">
+                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
                     Data Preserved
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-                  <div className="text-xl font-black text-white font-heading">
+                <div className="p-3.5 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0]">
+                  <div className="text-xl font-black text-[#0F172A] font-heading">
                     $0 Fee
                   </div>
-                  <div className="text-[11px] text-slate-400 font-medium mt-0.5">
+                  <div className="text-[11px] text-[#64748B] font-medium mt-0.5">
                     If Not Repaired
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center justify-between text-xs text-slate-400 pt-1">
-                <span className="flex items-center gap-1.5 text-slate-300">
-                  <CheckCircle2 className="w-4 h-4 text-[#FB923C]" />
+              <div className="flex items-center justify-between text-xs text-[#64748B] pt-1">
+                <span className="flex items-center gap-1.5 text-[#0F172A] font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-[#EA580C]" />
                   <span>Pay only after full testing & approval</span>
                 </span>
-                <span className="font-semibold text-white">Open 8AM - 8PM</span>
+                <span className="font-semibold text-[#0F172A]">Open 8AM - 8PM</span>
               </div>
             </div>
           </motion.div>

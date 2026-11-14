@@ -46,7 +46,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
           </p>
         </motion.div>
 
-        {/* Master Unified Service Hub (Seamless Architecture, No Cheap Boxes) */}
+        {/* Master Unified Service Hub (Seamless Architecture) */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -142,43 +142,45 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
                   </div>
                 </div>
 
-                {/* Right: Walk-In Action Card (5 Cols) */}
-                <div className="lg:col-span-5 bg-slate-950 text-white p-7 sm:p-8 rounded-3xl border border-white/10 shadow-xl space-y-6 flex flex-col justify-between">
-                  <div className="space-y-4">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#FB923C] block">
-                      Fast-Track Walk-In
-                    </span>
-                    <h4 className="text-xl font-bold font-heading text-white">
-                      Instant Walk-In Diagnostic
-                    </h4>
-                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                      No appointment required. Walk in anytime to relax in our customer lounge with espresso and Wi-Fi while our master technicians service your device.
-                    </p>
-
-                    <div className="pt-2 space-y-2 text-xs text-slate-300">
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
-                        <span>Average screen swap: 28 Minutes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
-                        <span>Free live testing & microscopic inspection</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
-                        <span>Complimentary device sanitization</span>
-                      </div>
+                {/* Right: Embedded Interactive Google Maps View (5 Cols) */}
+                <div className="lg:col-span-5 flex flex-col space-y-4">
+                  <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-[#e2e8f0] shadow-sm bg-slate-100">
+                    <iframe
+                      title="NextFix Pro Flagship Lab Location Map"
+                      src="https://maps.google.com/maps?q=25+Main+Street,+New+York,+NY+10001&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      className="w-full h-full min-h-[300px]"
+                    />
+                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-[#e2e8f0] shadow-sm text-xs font-bold text-[#0F172A] flex items-center gap-1.5 pointer-events-none">
+                      <MapPin className="w-4 h-4 text-[#EA580C]" />
+                      <span>25 Main St, Manhattan, NY</span>
                     </div>
                   </div>
 
-                  <button
-                    onClick={onOpenQuote}
-                    className="w-full py-4 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white shadow-lg shadow-[#EA580C]/35 flex items-center justify-center gap-2 transition-all active:scale-95 min-h-[48px]"
-                  >
-                    <Navigation className="w-4 h-4" />
-                    <span>Get Directions & Reserve Bench</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <a
+                      href="https://maps.google.com/?q=25+Main+Street,+New+York,+NY+10001"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-white hover:bg-slate-50 text-[#0F172A] border border-[#e2e8f0] shadow-xs flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
+                    >
+                      <Navigation className="w-4 h-4 text-[#EA580C]" />
+                      <span>Open in Maps</span>
+                    </a>
+
+                    <button
+                      onClick={onOpenQuote}
+                      className="flex-1 py-3 px-4 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#EA580C] hover:bg-[#C2410C] text-white shadow-md shadow-[#EA580C]/25 flex items-center justify-center gap-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
+                    >
+                      <span>Book Walk-In</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ) : (
@@ -253,30 +255,30 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
                   </div>
                 </div>
 
-                {/* Right: Request Kit Action Card (5 Cols) */}
-                <div className="lg:col-span-5 bg-slate-950 text-white p-7 sm:p-8 rounded-3xl border border-white/10 shadow-xl space-y-6 flex flex-col justify-between">
+                {/* Right: Request Kit Action Card (5 Cols) - Clean Light Style */}
+                <div className="lg:col-span-5 bg-[#f8fafc] p-7 sm:p-8 rounded-3xl border border-[#e2e8f0] space-y-6 flex flex-col justify-between">
                   <div className="space-y-4">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#FB923C] block">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#EA580C] block">
                       100% Risk Free
                     </span>
-                    <h4 className="text-xl font-bold font-heading text-white">
+                    <h4 className="text-xl font-bold font-heading text-[#0F172A]">
                       Request Your Shipping Box
                     </h4>
-                    <p className="text-xs text-slate-300 leading-relaxed font-normal">
+                    <p className="text-xs text-[#64748B] leading-relaxed font-normal">
                       Zero upfront shipping fees. If our engineers cannot resolve your hardware issue, we ship your device back to you completely free of charge.
                     </p>
 
-                    <div className="pt-2 space-y-2 text-xs text-slate-300">
+                    <div className="pt-2 space-y-2.5 text-xs text-[#64748B]">
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                         <span>Prepaid FedEx Priority Overnight label</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                         <span>Up to $5,000 carrier insurance included</span>
                       </div>
                       <div className="flex items-center gap-2">
-                        <CheckCircle2 className="w-4 h-4 text-[#FB923C] flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                         <span>24-Hour cleanroom lab turnaround</span>
                       </div>
                     </div>
@@ -284,7 +286,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
 
                   <button
                     onClick={onOpenQuote}
-                    className="w-full py-4 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-[#EA580C] to-[#C2410C] hover:from-[#F97316] hover:to-[#EA580C] text-white shadow-lg shadow-[#EA580C]/35 flex items-center justify-center gap-2 transition-all active:scale-95 min-h-[48px]"
+                    className="w-full py-4 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EA580C] hover:bg-[#C2410C] text-white shadow-lg shadow-[#EA580C]/25 flex items-center justify-center gap-2 transition-all active:scale-95 min-h-[48px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C]"
                   >
                     <PackageCheck className="w-4 h-4" />
                     <span>Order Free Mail-In Kit</span>
