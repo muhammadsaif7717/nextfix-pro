@@ -1,17 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import NextFixLogo from "@/components/NextFixLogo";
 import {
-  MapPin,
-  Mail,
-  Clock,
-  Search,
   Menu,
   X,
   ChevronRight,
   ArrowRight,
+  Search,
+  Sparkles,
 } from "lucide-react";
 
 interface WeFixNavbarProps {
@@ -21,12 +19,12 @@ interface WeFixNavbarProps {
 
 export const NAV_ITEMS = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About Us" },
+  { id: "about", label: "About" },
   { id: "services", label: "Services" },
-  { id: "estimator", label: "Price Calculator" },
-  { id: "options", label: "Repair Options" },
-  { id: "reviews", label: "Testimonials" },
-  { id: "blogs", label: "Blog" },
+  { id: "estimator", label: "Calculator" },
+  { id: "options", label: "Repairs" },
+  { id: "reviews", label: "Reviews" },
+  { id: "blogs", label: "Insights" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -35,20 +33,17 @@ export default function WeFixNavbar({
   onOpenTracker,
 }: WeFixNavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
-  // Prevent scroll-spy from rapidly toggling during programmatic smooth scroll
   const isNavigatingRef = useRef(false);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Dynamic Scroll Spy for active navigation section
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 30);
 
-      // If user clicked a nav link and smooth scroll is animating, skip spy
       if (isNavigatingRef.current) return;
 
       // 1. Top of page -> Home
@@ -60,13 +55,13 @@ export default function WeFixNavbar({
       // 2. Bottom of page -> Contact
       const scrollHeight = document.documentElement.scrollHeight;
       const scrollPos = window.innerHeight + window.scrollY;
-      if (scrollPos >= scrollHeight - 80) {
+      if (scrollPos >= scrollHeight - 100) {
         setActiveSection("contact");
         return;
       }
 
-      // 3. Middle sections: check top offset with navbar height compensation
-      const sectionOffset = 130;
+      // 3. Middle sections: check offset
+      const sectionOffset = 140;
       const currentScroll = window.scrollY + sectionOffset;
 
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
@@ -83,7 +78,7 @@ export default function WeFixNavbar({
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check on mount
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -95,7 +90,6 @@ export default function WeFixNavbar({
   ) => {
     e.preventDefault();
 
-    // Lock spy during smooth scroll
     isNavigatingRef.current = true;
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
@@ -115,7 +109,7 @@ export default function WeFixNavbar({
 
     const el = document.getElementById(sectionId);
     if (el) {
-      const navOffset = 85; // Fixed navbar buffer
+      const navOffset = 80;
       const y = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
       window.scrollTo({ top: y, behavior: "smooth" });
       if (window.history.pushState) {
@@ -128,7 +122,6 @@ export default function WeFixNavbar({
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setSearchOpen(false);
         setMobileMenuOpen(false);
       }
     };
@@ -137,73 +130,28 @@ export default function WeFixNavbar({
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white">
-      {/* 1. Crisp Corporate Top Bar */}
-      <div
-        className={`transition-all duration-300 overflow-hidden bg-[#f8f9fa] border-b border-[#e8e8e8] ${
-          scrolled ? "max-h-0 opacity-0 pointer-events-none" : "max-h-12 opacity-100"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between text-[11px] sm:text-xs text-[#636363]">
-          {/* Left info items */}
-          <div className="flex items-center gap-4 sm:gap-6 whitespace-nowrap overflow-hidden">
-            <span className="flex items-center gap-1.5 font-medium whitespace-nowrap">
-              <MapPin className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
-              <span>25 Main St, NY 10001</span>
-            </span>
-
-            <a
-              href="mailto:support@nextfixpro.com"
-              className="hidden sm:flex items-center gap-1.5 font-medium hover:text-[#2563EB] transition-colors whitespace-nowrap"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
-              <span>support@nextfixpro.com</span>
-            </a>
-
-            <span className="hidden md:flex items-center gap-1.5 font-medium whitespace-nowrap">
-              <Clock className="w-3.5 h-3.5 text-[#2563EB] flex-shrink-0" />
-              <span>Mon - Sat: 8:00 AM - 8:00 PM</span>
-            </span>
-          </div>
-
-          {/* Right quick track action */}
-          <div className="flex items-center gap-4 whitespace-nowrap flex-shrink-0">
-            <span className="hidden sm:inline-block text-[11px] font-semibold text-[#888888]">
-              ⚡ Avg. Screen Repair: 28 Mins
-            </span>
-
-            <button
-              onClick={onOpenTracker}
-              className="text-[#2563EB] font-bold hover:underline flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded px-1.5 py-0.5 whitespace-nowrap"
-            >
-              <Search className="w-3.5 h-3.5 flex-shrink-0" />
-              <span>Track Ticket</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. Solid High-Contrast Main Navigation Bar */}
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      {/* Sleek Translucent Frosted Glass Navigation Bar */}
       <nav
-        className={`w-full bg-white border-b transition-all duration-300 ${
+        className={`w-full transition-all duration-300 ${
           scrolled
-            ? "border-[#e0e0e0] shadow-md py-0.5"
-            : "border-[#e8e8e8] shadow-xs"
+            ? "bg-slate-950/85 backdrop-blur-2xl border-b border-white/10 shadow-2xl py-3"
+            : "bg-slate-950/40 backdrop-blur-md border-b border-white/10 py-4 sm:py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-22 flex items-center justify-between gap-4">
-          {/* Bespoke NextFix Pro Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
+          {/* Brand Logo (Inverted for Dark Frosted Surface) */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, "home")}
-            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-xl flex-shrink-0"
+            className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-xl flex-shrink-0"
             aria-label="NextFix Pro Home"
           >
-            <NextFixLogo size="md" />
+            <NextFixLogo size="md" inverted={true} />
           </a>
 
-          {/* Desktop Nav Links - STRICT constant font-bold with sliding layoutId indicator to eliminate jitter */}
-          <div className="hidden xl:flex items-center gap-7 2xl:gap-8 text-[15px] font-bold whitespace-nowrap">
+          {/* Desktop Nav Links (Clean, Centered, No Jitter) */}
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-semibold whitespace-nowrap">
             {NAV_ITEMS.map((item) => {
               const isActive = activeSection === item.id;
               return (
@@ -211,19 +159,19 @@ export default function WeFixNavbar({
                   key={item.id}
                   href={`#${item.id}`}
                   onClick={(e) => handleNavClick(e, item.id)}
-                  className={`relative py-2 whitespace-nowrap font-bold transition-colors duration-200 ${
+                  className={`relative py-1.5 transition-colors duration-200 ${
                     isActive
-                      ? "text-[#2563EB]"
-                      : "text-[#1F1F1F] hover:text-[#2563EB]"
+                      ? "text-white font-bold"
+                      : "text-slate-300 hover:text-white"
                   }`}
                 >
                   <span>{item.label}</span>
 
-                  {/* Smooth Sliding Active Indicator (No layout shift) */}
+                  {/* Luminous Sliding Active Underglow Pill */}
                   {isActive && (
                     <motion.span
                       layoutId="navbar-active-pill"
-                      className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#2563EB] rounded-full shadow-xs"
+                      className="absolute -bottom-1.5 left-0 right-0 h-[2.5px] bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 rounded-full shadow-[0_0_12px_rgba(56,189,248,0.8)]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -232,38 +180,38 @@ export default function WeFixNavbar({
             })}
           </div>
 
-          {/* Right Actions: Search + Get A Quote CTA */}
-          <div className="hidden sm:flex items-center gap-3.5 flex-shrink-0">
-            {/* Search Icon */}
+          {/* Right Action Cluster */}
+          <div className="hidden sm:flex items-center gap-3 flex-shrink-0">
+            {/* Quick Track Status Button */}
             <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="w-10 h-10 rounded-full bg-[#f6f6f6] hover:bg-[#2563EB] hover:text-white border border-[#e8e8e8] flex items-center justify-center text-[#1f1f1f] transition-all duration-200 shadow-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
-              aria-label="Open search"
+              onClick={onOpenTracker}
+              className="px-3.5 py-2 rounded-full text-xs font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/15 transition-all flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
             >
-              <Search className="w-4 h-4" />
+              <Search className="w-3.5 h-3.5 text-blue-400" />
+              <span>Track Ticket</span>
             </button>
 
-            {/* High-Converting Get A Quote Button */}
+            {/* High-Converting Luxury Book Repair CTA */}
             <button
               onClick={onOpenQuote}
-              className="px-6 py-3 min-h-[44px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md hover:shadow-lg whitespace-nowrap flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+              className="px-5 py-2.5 min-h-[42px] rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-500/40 transition-all duration-200 flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-95"
             >
-              <span>Get A Quote</span>
+              <span>Book Repair</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
 
-          {/* Mobile / Tablet Actions */}
-          <div className="flex xl:hidden items-center gap-2.5 flex-shrink-0">
+          {/* Mobile Actions: Compact CTA & Menu Toggle */}
+          <div className="flex lg:hidden items-center gap-2 flex-shrink-0">
             <button
               onClick={onOpenQuote}
-              className="px-4 py-2 min-h-[40px] rounded-full text-[11px] font-bold uppercase tracking-wider btn-wefix-primary sm:hidden whitespace-nowrap"
+              className="px-3.5 py-1.5 min-h-[38px] rounded-full text-xs font-bold bg-blue-600 text-white sm:hidden shadow-md"
             >
-              Quote
+              Book
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 min-h-[44px] min-w-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#eaeaea] transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB]"
+              className="p-2 min-h-[42px] min-w-[42px] rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -271,83 +219,67 @@ export default function WeFixNavbar({
           </div>
         </div>
 
-        {/* Search Bar Flyout */}
-        {searchOpen && (
-          <div className="bg-[#fafafa] border-t border-[#e8e8e8] px-4 py-3">
-            <div className="max-w-xl mx-auto flex items-center gap-2">
-              <label htmlFor="search-input" className="sr-only">
-                Search
-              </label>
-              <input
-                id="search-input"
-                type="text"
-                autoFocus
-                placeholder="Search repair services, devices or guides..."
-                className="flex-1 px-4 py-2.5 text-xs sm:text-sm bg-white border border-[#e8e8e8] rounded-full focus:outline-none focus:border-[#2563EB]"
-              />
-              <button
-                onClick={() => setSearchOpen(false)}
-                className="p-2 text-[#888888] hover:text-[#1f1f1f]"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Navigation Drawer with Dynamic Active Highlight */}
-        {mobileMenuOpen && (
-          <div className="xl:hidden bg-white border-b border-[#e8e8e8] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col space-y-2 text-sm">
-              {NAV_ITEMS.map((item) => {
-                const isActive = activeSection === item.id;
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={(e) => handleNavClick(e, item.id)}
-                    className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-bold transition-all ${
-                      isActive
-                        ? "bg-[#2563EB]/10 border-[#2563EB]/30 text-[#2563EB]"
-                        : "border-transparent text-[#1F1F1F] hover:bg-[#f6f6f6]"
-                    }`}
-                  >
-                    <span>{item.label}</span>
-                    <ChevronRight
-                      className={`w-4 h-4 ${
-                        isActive ? "text-[#2563EB]" : "text-[#888888]"
+        {/* Mobile Navigation Drawer with Frosted Glass Aesthetic */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.25 }}
+              className="lg:hidden bg-slate-950/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 space-y-4 shadow-2xl overflow-hidden"
+            >
+              <div className="flex flex-col space-y-1.5 text-sm">
+                {NAV_ITEMS.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={(e) => handleNavClick(e, item.id)}
+                      className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-semibold transition-all ${
+                        isActive
+                          ? "bg-blue-600/20 border-blue-500/40 text-blue-400 font-bold"
+                          : "border-transparent text-slate-300 hover:text-white hover:bg-white/5"
                       }`}
-                    />
-                  </a>
-                );
-              })}
-            </div>
+                    >
+                      <span>{item.label}</span>
+                      <ChevronRight
+                        className={`w-4 h-4 ${
+                          isActive ? "text-blue-400" : "text-slate-500"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+              </div>
 
-            <div className="pt-4 border-t border-[#e8e8e8] space-y-3">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenQuote();
-                }}
-                className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-md text-center flex items-center justify-center gap-2"
-              >
-                <span>Book A Repair</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="pt-4 border-t border-white/10 space-y-2.5">
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenQuote();
+                  }}
+                  className="w-full py-3.5 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-500 text-white shadow-lg text-center flex items-center justify-center gap-2"
+                >
+                  <span>Book Priority Repair</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
 
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onOpenTracker();
-                }}
-                className="w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#f6f6f6] text-[#1F1F1F] hover:bg-[#eaeaea] text-center flex items-center justify-center gap-2"
-              >
-                <Search className="w-3.5 h-3.5" />
-                <span>Track Repair Status</span>
-              </button>
-            </div>
-          </div>
-        )}
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenTracker();
+                  }}
+                  className="w-full py-3 rounded-full text-xs font-semibold text-slate-300 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 text-center flex items-center justify-center gap-2"
+                >
+                  <Search className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Track Repair Ticket</span>
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </header>
   );
