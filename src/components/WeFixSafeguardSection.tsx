@@ -19,6 +19,10 @@ import {
   Calendar,
   Sparkles,
   ArrowRight,
+  Lock,
+  BadgeDollarSign,
+  Award,
+  Star,
 } from "lucide-react";
 
 interface WeFixSafeguardSectionProps {
@@ -34,41 +38,7 @@ interface WeFixSafeguardSectionProps {
 export default function WeFixSafeguardSection({
   onBookAppointment,
 }: WeFixSafeguardSectionProps) {
-  // Hotspot active pin
-  const [activePin, setActivePin] = useState<number>(0);
-
-  const hotspots = [
-    {
-      id: 0,
-      title: "OEM OLED Display & TrueTone",
-      desc: "Super Retina XDR with original oleophobic coating, TrueTone retention, and 120Hz ProMotion responsiveness.",
-      x: "50%",
-      y: "22%",
-    },
-    {
-      id: 1,
-      title: "Micro-Soldered Logic Board",
-      desc: "Stereomicroscope BGA rework, PMIC power rail tracing, and capacitor short detection in ESD cleanroom.",
-      x: "38%",
-      y: "45%",
-    },
-    {
-      id: 2,
-      title: "0-Cycle High Density Battery",
-      desc: "Brand new OEM specification cell with internal thermal protection fuses, restored to 100% capacity.",
-      x: "62%",
-      y: "65%",
-    },
-    {
-      id: 3,
-      title: "Titanium Chassis & Glass",
-      desc: "Laser precision adhesive removal and factory cold-press curing to retain full IP68 water resistance seals.",
-      x: "50%",
-      y: "85%",
-    },
-  ];
-
-  // Price Calculator State
+  // Price Calculator State (DO NOT TOUCH - EXACT CALCULATION LOGIC PRESERVED)
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory>(DEVICE_CATEGORIES[0]);
   const modelsForCat: DeviceModel[] = DEVICE_MODELS[selectedCategory.id] || [];
   const [selectedModel, setSelectedModel] = useState<DeviceModel>(modelsForCat[0]);
@@ -90,7 +60,7 @@ export default function WeFixSafeguardSection({
   );
 
   return (
-    <section id="estimator" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
+    <section id="estimator" className="py-20 sm:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
         <motion.div
@@ -98,114 +68,141 @@ export default function WeFixSafeguardSection({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-14"
         >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
-            Safeguard Device
+            Transparent Pricing
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
-            Device Anatomy & Instant Price Calculator
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#0F172A] tracking-tight font-heading wdt-spaced-heading">
+            Instant Cost Calculator & Standards
           </h2>
-          <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
-            Explore internal engineering standards or calculate an exact repair estimate with transparent pricing and warranty coverage.
+          <p className="mt-4 text-sm sm:text-base text-[#64748B] max-w-2xl mx-auto">
+            Select your device and repair type for an immediate upfront quote with genuine parts and zero diagnostic fees.
           </p>
         </motion.div>
 
-        {/* 2-Column Split: Exploded Hotspots & Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column: Interactive Exploded Anatomy (5 Cols) */}
+        {/* 2-Column Split: Cleanroom Guarantee Card & Calculator */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          {/* Left Column: Redesigned High-Trust Service Assurance Card (5 Cols) */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-[#e8e8e8] shadow-md flex flex-col justify-between"
+            className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-[#e2e8f0] shadow-sm flex flex-col justify-between space-y-6"
           >
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C]">
-                  Interactive Architecture
-                </span>
-                <span className="text-xs font-medium text-[#888888]">
-                  Click pins to inspect
-                </span>
+            {/* 1. Authentic Cleanroom Visual Preview */}
+            <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-slate-900 border border-slate-200">
+              <Image
+                src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
+                alt="NextFix Pro Cleanroom Technician Lab"
+                fill
+                sizes="(max-width: 1024px) 100vw, 500px"
+                className="object-cover object-center filter brightness-90 contrast-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30 pointer-events-none" />
+
+              {/* Status Pill on Image */}
+              <div className="absolute top-3.5 left-3.5 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[11px] font-bold text-white border border-white/20 flex items-center gap-1.5 shadow-md">
+                <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                <span>ISO Cleanroom Facility</span>
               </div>
 
-              {/* Exploded Device Container */}
-              <div className="relative aspect-[3/4] w-full rounded-2xl overflow-hidden bg-[#fafafa] border border-[#e8e8e8] flex items-center justify-center p-4">
-                <Image
-                  src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=800"
-                  alt="Exploded smartphone hardware assembly"
-                  width={600}
-                  height={800}
-                  className="w-full h-full object-cover rounded-xl filter brightness-95"
-                />
-
-                {/* Hotspot Pins */}
-                {hotspots.map((pin) => (
-                  <button
-                    key={pin.id}
-                    onClick={() => setActivePin(pin.id)}
-                    style={{ top: pin.y, left: pin.x }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
-                      activePin === pin.id
-                        ? "bg-[#EA580C] text-white scale-125 z-20 ring-4 ring-white"
-                        : "bg-white/90 text-[#1f1f1f] hover:bg-[#EA580C] hover:text-white z-10"
-                    }`}
-                    aria-label={`Inspect ${pin.title}`}
-                  >
-                    <span className="text-xs font-black">{pin.id + 1}</span>
-                  </button>
-                ))}
-              </div>
-
-              {/* Active Hotspot Detail Card */}
-              <div className="mt-6 p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] transition-all duration-300">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-5 h-5 rounded-full bg-[#EA580C] text-white text-[11px] font-bold flex items-center justify-center">
-                    {activePin + 1}
-                  </span>
-                  <h4 className="text-sm font-bold text-[#1f1f1f] font-heading">
-                    {hotspots[activePin].title}
-                  </h4>
-                </div>
-                <p className="text-xs text-[#636363] leading-relaxed">
-                  {hotspots[activePin].desc}
-                </p>
+              {/* Bottom Rating strip on Image */}
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-center justify-between text-white text-xs">
+                <span className="font-bold tracking-tight">
+                  Manhattan Cleanroom Bench
+                </span>
+                <span className="flex items-center gap-1 text-amber-300 font-bold text-[11px]">
+                  <Star className="w-3.5 h-3.5 fill-amber-300" />
+                  <span>4.9 / 5 Rating</span>
+                </span>
               </div>
             </div>
 
-            {/* Micro Badges */}
-            <div className="mt-6 pt-4 border-t border-[#e8e8e8] flex items-center justify-around text-center text-xs text-[#636363] font-semibold">
-              <span className="flex items-center gap-1">
-                <ShieldCheck className="w-4 h-4 text-[#EA580C]" />
-                ESD Cleanroom
+            {/* 2. What's Included in Every Repair */}
+            <div>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#EA580C] block mb-1.5">
+                The NextFix Pro Standard
               </span>
-              <span className="flex items-center gap-1">
-                <Zap className="w-4 h-4 text-[#EA580C]" />
-                OEM Calibrated
-              </span>
+              <h3 className="text-xl font-bold text-[#0F172A] font-heading mb-4">
+                What’s Included in Every Repair
+              </h3>
+
+              <div className="space-y-3.5">
+                {[
+                  {
+                    icon: ShieldCheck,
+                    title: "100% Genuine OEM Hardware",
+                    desc: "Factory-spec displays, batteries, and chips with original serialization and water seals.",
+                  },
+                  {
+                    icon: Award,
+                    title: "Lifetime Glass & Labor Warranty",
+                    desc: "Free replacement coverage on parts and workmanship. You are protected for life.",
+                  },
+                  {
+                    icon: Lock,
+                    title: "Zero Data Loss Protocol",
+                    desc: "Confidential handling. Your personal photos, apps, and storage remain untouched.",
+                  },
+                  {
+                    icon: BadgeDollarSign,
+                    title: "No Fix = Absolute $0 Fee",
+                    desc: "If we cannot fully restore your hardware to factory spec, you pay nothing.",
+                  },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-3 p-3 rounded-xl bg-[#f8fafc] border border-[#e2e8f0]/80 transition-all hover:bg-white hover:border-[#EA580C]/30 hover:shadow-xs"
+                    >
+                      <div className="w-8 h-8 rounded-lg bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <h4 className="text-xs font-bold text-[#0F172A]">
+                          {item.title}
+                        </h4>
+                        <p className="text-[11px] text-[#64748B] mt-0.5 leading-relaxed">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 3. Reassurance Trust Strip */}
+            <div className="pt-4 border-t border-[#e2e8f0] flex items-center justify-between text-xs text-[#64748B]">
+              <div className="flex items-center gap-1.5 font-medium">
+                <CheckCircle2 className="w-4 h-4 text-[#EA580C]" />
+                <span>30-Min Fast Walk-In Available</span>
+              </div>
+              <span className="font-bold text-[#0F172A]">Open 8AM - 8PM</span>
             </div>
           </motion.div>
 
-          {/* Right Column: Interactive Multi-Step Price Calculator (7 Cols) */}
+          {/* Right Column: Interactive Multi-Step Price Calculator (7 Cols) - UNTOUCHED UI & EXACT LOGIC */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-[#e8e8e8] shadow-md"
+            className="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-[#e2e8f0] shadow-sm"
           >
-            <div className="flex items-center justify-between pb-6 border-b border-[#e8e8e8] mb-8">
+            <div className="flex items-center justify-between pb-6 border-b border-[#e2e8f0] mb-8">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#EA580C] block mb-1">
                   Step-by-Step Diagnostic
                 </span>
-                <h3 className="text-2xl font-black text-[#1F1F1F] font-heading">
+                <h3 className="text-2xl font-black text-[#0F172A] font-heading">
                   Instant Cost & Turnaround Calculator
                 </h3>
               </div>
-              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f6] border border-[#e8e8e8] text-xs font-bold text-[#1F1F1F]">
+              <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f8fafc] border border-[#e2e8f0] text-xs font-bold text-[#0F172A]">
                 <Clock className="w-3.5 h-3.5 text-[#EA580C]" />
                 <span>Live Estimates</span>
               </div>
@@ -214,7 +211,7 @@ export default function WeFixSafeguardSection({
             <div className="space-y-6">
               {/* 1. Device Category Selection */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
                   1. Select Device Family
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
@@ -225,7 +222,7 @@ export default function WeFixSafeguardSection({
                       className={`py-3 px-3 rounded-xl border text-center transition-all duration-200 flex flex-col items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                         selectedCategory.id === cat.id
                           ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-sm"
-                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
+                          : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
                       }`}
                     >
                       <span className="text-xs font-semibold">{cat.name}</span>
@@ -236,7 +233,7 @@ export default function WeFixSafeguardSection({
 
               {/* 2. Device Model Selection */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
                   2. Select Exact Model
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 max-h-48 overflow-y-auto pr-1">
@@ -247,11 +244,11 @@ export default function WeFixSafeguardSection({
                       className={`py-2.5 px-3 rounded-xl border text-left text-xs transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                         selectedModel?.id === model.id
                           ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold"
-                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
+                          : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
                       }`}
                     >
                       <div className="truncate font-semibold">{model.name}</div>
-                      <div className="text-[10px] text-[#888888] font-normal">
+                      <div className="text-[10px] text-[#94A3B8] font-normal">
                         {model.brand}
                       </div>
                     </button>
@@ -261,7 +258,7 @@ export default function WeFixSafeguardSection({
 
               {/* 3. Issue Selection */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#1F1F1F] mb-3">
+                <label className="block text-xs font-bold uppercase tracking-wider text-[#0F172A] mb-3">
                   3. Select Hardware Issue
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -272,12 +269,12 @@ export default function WeFixSafeguardSection({
                       className={`p-3 rounded-xl border text-left transition-all duration-200 flex items-start justify-between focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EA580C] ${
                         selectedIssue?.id === issue.id
                           ? "border-[#EA580C] bg-[#EA580C]/5 text-[#EA580C] font-bold shadow-sm"
-                          : "border-[#e8e8e8] bg-white text-[#636363] hover:border-[#cccccc]"
+                          : "border-[#e2e8f0] bg-white text-[#64748B] hover:border-[#cbd5e1]"
                       }`}
                     >
                       <div>
                         <div className="text-xs font-semibold">{issue.name}</div>
-                        <div className="text-[11px] text-[#888888] font-normal">
+                        <div className="text-[11px] text-[#94A3B8] font-normal">
                           {issue.shortDesc}
                         </div>
                       </div>
@@ -290,24 +287,24 @@ export default function WeFixSafeguardSection({
               </div>
 
               {/* 4. Live Quote Result Card */}
-              <div className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] mt-8">
+              <div className="p-6 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] mt-8">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#888888]">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-[#94A3B8]">
                       Calculated Estimate
                     </span>
                     <div className="flex items-baseline gap-2 mt-0.5">
-                      <span className="text-3xl sm:text-4xl font-black text-[#1F1F1F] font-heading">
+                      <span className="text-3xl sm:text-4xl font-black text-[#0F172A] font-heading">
                         ${calculatedQuote.selectedPrice}
                       </span>
-                      <span className="text-xs font-semibold text-[#888888]">
+                      <span className="text-xs font-semibold text-[#94A3B8]">
                         / All-Inclusive Parts + Labor
                       </span>
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:items-end text-xs font-semibold text-[#636363] space-y-1">
-                    <span className="flex items-center gap-1.5 text-[#1F1F1F]">
+                  <div className="flex flex-col sm:items-end text-xs font-semibold text-[#64748B] space-y-1">
+                    <span className="flex items-center gap-1.5 text-[#0F172A]">
                       <Clock className="w-4 h-4 text-[#EA580C]" />
                       Turnaround:{" "}
                       <strong className="text-[#EA580C]">
@@ -322,8 +319,8 @@ export default function WeFixSafeguardSection({
                 </div>
 
                 {/* Book Action Button */}
-                <div className="mt-6 pt-5 border-t border-[#e8e8e8] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                  <div className="text-xs text-[#888888] flex items-center gap-1.5">
+                <div className="mt-6 pt-5 border-t border-[#e2e8f0] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  <div className="text-xs text-[#94A3B8] flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-[#EA580C] flex-shrink-0" />
                     <span>Free diagnostic. Pay nothing until verified complete.</span>
                   </div>
