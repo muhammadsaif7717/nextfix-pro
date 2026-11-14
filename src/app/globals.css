@@ -2,22 +2,33 @@
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
 :root {
-  --brand-navy: #0f172a;
-  --brand-blue: #2563eb;
-  --brand-orange: #f97316;
-  --brand-green: #10b981;
-  --brand-dark: #090d16;
+  --wefix-primary: #ef644c;
+  --wefix-primary-hover: #d94f38;
+  --wefix-secondary: #1f1f1f;
+  --wefix-tertiary: #f6f6f6;
+  --wefix-bg: #ffffff;
+  --wefix-text: #636363;
+  --wefix-heading: #1f1f1f;
+  --wefix-border: #e8e8e8;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #ffffff;
 }
 
 body {
-  background-color: #0f172a;
-  color: #f8fafc;
+  background-color: #ffffff;
+  color: #636363;
   font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  min-width: 360px;
+}
+
+/* Character split heading spacing */
+.wdt-spaced-heading {
+  letter-spacing: 0.18em;
+  text-transform: capitalize;
 }
 
 /* Custom scrollbar */
@@ -25,41 +36,52 @@ body {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #f6f6f6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: #d1d5db;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: #ef644c;
 }
 
-/* Smooth ticker animation */
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+/* WeFix Button animation */
+.btn-wefix-primary {
+  background-color: #ef644c;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-wefix-primary:hover {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
-.animate-marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 28s linear infinite;
+.btn-wefix-dark {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-wefix-dark:hover {
+  background-color: #ef644c;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
-.animate-marquee:hover {
-  animation-play-state: paused;
+/* Pulse animation for hotspot pins */
+@keyframes hotspot-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 100, 76, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(239, 100, 76, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 100, 76, 0);
+  }
 }
 
-/* Pulse glow effects */
-.glow-blue {
-  box-shadow: 0 0 25px -5px rgba(37, 99, 235, 0.4);
-}
-
-.glow-orange {
-  box-shadow: 0 0 25px -5px rgba(249, 115, 22, 0.4);
-}
-
-.glow-green {
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.4);
+.animate-hotspot {
+  animation: hotspot-pulse 2s infinite;
 }

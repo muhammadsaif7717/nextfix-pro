@@ -17,23 +17,24 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  minimumScale: 1,
   maximumScale: 5,
 };
 
 export const metadata: Metadata = {
-  title: "NextFix Pro™ | Certified Tech, Phone, Mac & Console Repair Lab",
+  title: "NextFix Pro – Smart Device & Gadget Repair",
   description:
-    "Cracked screen or dead battery? Fixed in under 45 minutes with certified OEM parts. Lifetime workmanship warranty, no fix no fee guarantee, and 100% data security.",
+    "NextFix Pro provides excellence in gadget and smart device repair services, delivering reliable results through expert care, precise workmanship, and customer focus.",
   keywords: [
-    "iPhone Repair",
+    "Phone Repair",
     "Screen Replacement",
-    "MacBook Repair",
-    "Samsung Galaxy Repair",
-    "Console Repair",
-    "Micro-soldering",
-    "Phone Repair Shop",
+    "Laptop Repair",
+    "Tablet Repair",
+    "Gadget Repair",
+    "WeFix Theme",
+    "NextFix Pro",
   ],
-  authors: [{ name: "NextFix Pro Labs" }],
+  authors: [{ name: "NextFix Pro" }],
 };
 
 export default function RootLayout({
@@ -43,7 +44,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
-      <body className="min-h-screen bg-slate-900 text-slate-100 antialiased selection:bg-blue-600 selection:text-white">
+      <body className="min-h-screen bg-white text-[#636363] antialiased selection:bg-[#EF644C] selection:text-white min-w-[360px] overflow-x-hidden">
         {children}
       </body>
     </html>
