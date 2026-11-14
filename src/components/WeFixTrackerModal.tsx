@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MOCK_TICKETS } from "@/data/trackerData";
 import { TrackingTicket } from "@/types";
 import {
@@ -28,6 +28,21 @@ export default function WeFixTrackerModal({
   );
   const [errorMsg, setErrorMsg] = useState("");
 
+  // Handle Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    if (isOpen) {
+      window.addEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handleSearch = (e: React.FormEvent) => {
@@ -42,46 +57,59 @@ export default function WeFixTrackerModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-[#e8e8e8] overflow-hidden my-6">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="tracker-modal-title"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-sm overflow-y-auto animate-fade-in"
+    >
+      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl border border-[#e8e8e8] overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Header */}
-        <div className="bg-[#f6f6f6] p-5 sm:p-6 border-b border-[#e8e8e8] flex items-center justify-between">
+        <div className="bg-[#f6f6f6] p-4 sm:p-6 border-b border-[#e8e8e8] flex items-center justify-between flex-shrink-0">
           <div>
             <span className="text-[11px] font-bold text-[#EF644C] uppercase tracking-wider block">
               Live Hardware Status
             </span>
-            <h3 className="text-xl font-bold text-[#1F1F1F] font-heading mt-0.5">
+            <h3 id="tracker-modal-title" className="text-lg sm:text-xl font-bold text-[#1F1F1F] font-heading mt-0.5">
               Track Your Repair
             </h3>
           </div>
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#EF644C] hover:text-white flex items-center justify-center transition-colors"
+            aria-label="Close dialog"
+            className="w-9 h-9 min-h-[36px] min-w-[36px] rounded-full bg-white border border-[#e8e8e8] text-[#1f1f1f] hover:bg-[#EF644C] hover:text-white flex items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-5 sm:p-6 space-y-5">
+        {/* Content Scrollable Body */}
+        <div className="p-4 sm:p-6 space-y-5 overflow-y-auto">
           <form onSubmit={handleSearch} className="space-y-2">
             <div className="flex gap-2">
+              <label htmlFor="tracker-input" className="sr-only">
+                Ticket Number
+              </label>
               <input
+                id="tracker-input"
                 type="text"
                 value={searchTicket}
                 onChange={(e) => setSearchTicket(e.target.value)}
                 placeholder="Enter Ticket # (e.g. NFX-8492)"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm font-mono focus:outline-none focus:border-[#EF644C]"
+                className="w-full px-3.5 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-[#1F1F1F] text-xs sm:text-sm font-mono focus:outline-none focus:border-[#EF644C]"
               />
               <button
                 type="submit"
-                className="px-5 py-2.5 rounded-xl btn-wefix-primary text-xs font-bold uppercase tracking-wider flex-shrink-0"
+                className="px-5 py-3 min-h-[44px] rounded-xl btn-wefix-primary text-xs font-bold uppercase tracking-wider flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               >
                 Track
               </button>
             </div>
-            <div className="flex gap-2 text-[11px] text-[#888888]">
+            <div className="flex flex-wrap gap-2 text-[11px] text-[#888888]">
               <span>Demo Tickets:</span>
               {["NFX-8492", "NFX-2041", "NFX-9104"].map((code) => (
                 <button
@@ -92,7 +120,7 @@ export default function WeFixTrackerModal({
                     setActiveTicket(MOCK_TICKETS[code]);
                     setErrorMsg("");
                   }}
-                  className="font-mono text-[#EF644C] hover:underline"
+                  className="font-mono text-[#EF644C] hover:underline px-1 py-0.5 rounded"
                 >
                   {code}
                 </button>

@@ -8,11 +8,6 @@ import {
   Mail,
   ArrowRight,
   CheckCircle2,
-  Award,
-  Users,
-  Building,
-  ShieldCheck,
-  Smartphone,
 } from "lucide-react";
 
 export default function WeFixFooter() {
@@ -38,12 +33,12 @@ export default function WeFixFooter() {
   return (
     <footer id="contact" className="bg-[#1F1F1F] text-white text-xs">
       {/* 1. Top Counter Ticker Strip (Exact WeFix Style) */}
-      <div className="border-b border-[#333333] py-6 px-4 bg-[#181818]">
-        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-6 text-center">
+      <div className="border-b border-[#333333] py-5 px-3 sm:px-4 bg-[#181818]">
+        <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-around gap-4 sm:gap-6 text-center">
           {tickerItems.map((item, idx) => (
-            <div key={idx} className="flex items-center gap-3">
-              <span className="w-2 h-2 rounded-full bg-[#EF644C]"></span>
-              <span className="text-sm sm:text-base font-bold text-white tracking-wide">
+            <div key={idx} className="flex items-center gap-2 sm:gap-3">
+              <span className="w-2 h-2 rounded-full bg-[#EF644C] flex-shrink-0"></span>
+              <span className="text-xs sm:text-base font-bold text-white tracking-wide">
                 {item.title}
               </span>
             </div>
@@ -52,8 +47,8 @@ export default function WeFixFooter() {
       </div>
 
       {/* 2. Main 4-Column Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -79,19 +74,43 @@ export default function WeFixFooter() {
                 Follow Us:
               </span>
               <div className="flex items-center gap-3 text-sm text-[#a0a0a0]">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-[#EF644C] transition-colors">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook page"
+                  className="hover:text-[#EF644C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#EF644C] rounded"
+                >
                   Fb
                 </a>
                 <span>/</span>
-                <a href="https://x.com" target="_blank" rel="noreferrer" className="hover:text-[#EF644C] transition-colors">
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Twitter X profile"
+                  className="hover:text-[#EF644C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#EF644C] rounded"
+                >
                   Tw
                 </a>
                 <span>/</span>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-[#EF644C] transition-colors">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram profile"
+                  className="hover:text-[#EF644C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#EF644C] rounded"
+                >
                   In
                 </a>
                 <span>/</span>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-[#EF644C] transition-colors">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="LinkedIn profile"
+                  className="hover:text-[#EF644C] transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#EF644C] rounded"
+                >
                   Li
                 </a>
               </div>
@@ -103,7 +122,7 @@ export default function WeFixFooter() {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider font-heading">
               Company
             </h4>
-            <ul className="space-y-2.5 text-[#a0a0a0] text-xs sm:text-sm">
+            <ul className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <li>
                 <a href="#home" className="hover:text-[#EF644C] transition-colors">
                   Home
@@ -147,7 +166,7 @@ export default function WeFixFooter() {
             <h4 className="text-sm font-bold text-white uppercase tracking-wider font-heading">
               Services
             </h4>
-            <ul className="space-y-2.5 text-[#a0a0a0] text-xs sm:text-sm">
+            <ul className="space-y-2 text-[#a0a0a0] text-xs sm:text-sm">
               <li>
                 <a href="#services" className="hover:text-[#EF644C] transition-colors">
                   Phone Repair
@@ -193,32 +212,41 @@ export default function WeFixFooter() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
-                <span>+1 (800) 657-8963</span>
+                <a href="tel:18006578963" className="hover:text-[#EF644C] transition-colors">
+                  +1 (800) 657-8963
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#EF644C] flex-shrink-0" />
-                <span>info@example.com</span>
+                <a href="mailto:info@example.com" className="hover:text-[#EF644C] transition-colors">
+                  info@example.com
+                </a>
               </div>
             </div>
 
-            {/* Newsletter Subscribe */}
+            {/* Newsletter Subscribe with Accessible Form Controls */}
             <div className="pt-2">
               <span className="text-[11px] font-bold text-white uppercase tracking-wider block mb-2">
                 Subscribe To Newsletter:
               </span>
               {!subscribed ? (
                 <form onSubmit={handleSubscribe} className="flex gap-2">
+                  <label htmlFor="newsletter-email" className="sr-only">
+                    Your Mail Address
+                  </label>
                   <input
+                    id="newsletter-email"
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Your Mail Address"
-                    className="w-full px-3.5 py-2.5 rounded-lg bg-[#2a2a2a] border border-[#3d3d3d] text-white text-xs placeholder-[#777] focus:outline-none focus:border-[#EF644C]"
+                    className="w-full px-3.5 py-2.5 min-h-[44px] rounded-lg bg-[#2a2a2a] border border-[#3d3d3d] text-white text-xs placeholder-[#777] focus:outline-none focus:border-[#EF644C]"
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2.5 rounded-lg bg-[#EF644C] hover:bg-[#d94f38] text-white text-xs font-bold uppercase transition-colors"
+                    aria-label="Subscribe to newsletter"
+                    className="px-4 py-2.5 min-h-[44px] min-w-[44px] rounded-lg bg-[#EF644C] hover:bg-[#d94f38] text-white text-xs font-bold uppercase transition-colors flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
                   >
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -234,14 +262,14 @@ export default function WeFixFooter() {
         </div>
 
         {/* 3. Bottom Copyright Bar */}
-        <div className="mt-16 pt-8 border-t border-[#2e2e2e] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888888]">
+        <div className="mt-12 pt-6 border-t border-[#2e2e2e] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888888]">
           <p>© 2026 WeFix – Smart Device & Gadget Repair. All rights reserved.</p>
           <div className="flex items-center gap-4 text-xs">
-            <a href="#" className="hover:text-[#EF644C] transition-colors">
+            <a href="#" className="hover:text-[#EF644C] transition-colors py-1">
               Terms & Conditions
             </a>
             <span>•</span>
-            <a href="#" className="hover:text-[#EF644C] transition-colors">
+            <a href="#" className="hover:text-[#EF644C] transition-colors py-1">
               Privacy & Cookies Policy
             </a>
           </div>

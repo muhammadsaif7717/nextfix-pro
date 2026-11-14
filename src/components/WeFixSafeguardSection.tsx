@@ -16,10 +16,8 @@ import {
   Check,
   CheckCircle2,
   Calendar,
-  RotateCcw,
   Sparkles,
   ArrowRight,
-  HelpCircle,
 } from "lucide-react";
 
 interface WeFixSafeguardSectionProps {
@@ -27,7 +25,6 @@ interface WeFixSafeguardSectionProps {
     category: DeviceCategory;
     model: DeviceModel;
     issue: RepairIssue;
-    isOem: boolean;
     price: number;
     turnaround: string;
   }) => void;
@@ -70,7 +67,7 @@ export default function WeFixSafeguardSection({
     },
   ];
 
-  // Interactive Estimator state inside this section
+  // Interactive Estimator state
   const [selectedCategory, setSelectedCategory] = useState<DeviceCategory>(
     DEVICE_CATEGORIES[0]
   );
@@ -82,13 +79,12 @@ export default function WeFixSafeguardSection({
   const [selectedIssue, setSelectedIssue] = useState<RepairIssue>(
     availableIssues[0]
   );
-  const [isOem, setIsOem] = useState<boolean>(true);
 
   const calculation = calculateRepairPrice(
     selectedCategory.id,
     selectedModel.id,
     selectedIssue,
-    isOem
+    true
   );
 
   const handleCategoryChange = (catId: string) => {
@@ -111,37 +107,37 @@ export default function WeFixSafeguardSection({
   };
 
   return (
-    <section id="estimator" className="py-16 sm:py-24 bg-[#f6f6f6] border-b border-[#e8e8e8]">
+    <section id="estimator" className="py-14 sm:py-24 bg-[#f6f6f6] border-b border-[#e8e8e8]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
           <span className="text-xs font-bold text-[#EF644C] uppercase tracking-widest block mb-2">
             Safeguard
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black text-[#1F1F1F] tracking-tight font-heading wdt-spaced-heading">
             Superior Safety For Your Device
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-[#636363]">
+          <p className="mt-3 text-xs sm:text-sm md:text-base text-[#636363]">
             Explore our interactive component breakdown and calculate guaranteed transparent repair costs in real-time.
           </p>
         </div>
 
         {/* Dual Layout: Hotspot Inspector + Interactive Price Calculator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Left Column: Interactive Hotspot Showcase */}
-          <div className="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-[#e8e8e8] shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-white rounded-2xl p-5 sm:p-8 border border-[#e8e8e8] shadow-sm flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between mb-4">
                 <span className="text-xs font-bold text-[#EF644C] uppercase tracking-wider">
                   Hardware Inspector
                 </span>
                 <span className="text-[11px] font-semibold text-[#888888]">
-                  Click pins to inspect
+                  Tap numbers to inspect
                 </span>
               </div>
 
               {/* Hotspot Device Image Container */}
-              <div className="relative aspect-[3/4] w-full max-w-xs mx-auto rounded-xl overflow-hidden bg-[#fafafa] border border-[#e8e8e8] flex items-center justify-center p-4">
+              <div className="relative aspect-[3/4] w-full max-w-[280px] sm:max-w-xs mx-auto rounded-xl overflow-hidden bg-[#fafafa] border border-[#e8e8e8] flex items-center justify-center p-4">
                 <Image
                   src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800"
                   alt="Device Hardware Breakdown"
@@ -156,12 +152,12 @@ export default function WeFixSafeguardSection({
                     key={pin.id}
                     onClick={() => setActivePin(pin.id)}
                     style={{ left: pin.x, top: pin.y }}
-                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shadow-xl transition-all duration-300 ${
+                    className={`absolute -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs shadow-xl transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
                       activePin === pin.id
                         ? "bg-[#1f1f1f] text-white scale-125 z-10 border-2 border-white ring-2 ring-[#EF644C]"
                         : "bg-[#EF644C] text-white animate-hotspot hover:scale-110"
                     }`}
-                    aria-label={pin.title}
+                    aria-label={`Hotspot pin ${pin.id + 1}: ${pin.title}`}
                   >
                     {pin.id + 1}
                   </button>
@@ -170,7 +166,7 @@ export default function WeFixSafeguardSection({
             </div>
 
             {/* Active Hotspot Info Card */}
-            <div className="mt-6 p-4 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8]">
+            <div className="mt-5 sm:mt-6 p-4 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8]">
               <div className="flex items-center gap-2 text-xs font-bold text-[#EF644C] uppercase mb-1">
                 <span>Point #{activePin + 1}:</span>
                 <span className="text-[#1f1f1f]">{hotspots[activePin].title}</span>
@@ -181,14 +177,14 @@ export default function WeFixSafeguardSection({
             </div>
           </div>
 
-          {/* Right Column: Instant Cost Calculator (Light Mode) */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-[#e8e8e8] shadow-sm space-y-6">
+          {/* Right Column: Instant Cost Calculator */}
+          <div className="lg:col-span-7 bg-white rounded-2xl p-5 sm:p-8 border border-[#e8e8e8] shadow-sm space-y-5 sm:space-y-6">
             <div className="flex items-center justify-between pb-4 border-b border-[#e8e8e8]">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-[#EF644C]">
                   Diagnostic Estimator
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#1F1F1F] font-heading mt-0.5">
+                <h3 className="text-lg sm:text-2xl font-bold text-[#1F1F1F] font-heading mt-0.5">
                   Calculate Instant Repair Cost
                 </h3>
               </div>
@@ -208,7 +204,7 @@ export default function WeFixSafeguardSection({
                     key={cat.id}
                     type="button"
                     onClick={() => handleCategoryChange(cat.id)}
-                    className={`py-2.5 px-3 rounded-xl border text-xs font-bold transition-all text-center truncate ${
+                    className={`py-3 px-2 sm:px-3 min-h-[44px] rounded-xl border text-xs font-bold transition-all text-center truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
                       selectedCategory.id === cat.id
                         ? "bg-[#EF644C] text-white border-[#EF644C] shadow-sm"
                         : "bg-[#f6f6f6] text-[#636363] border-[#e8e8e8] hover:border-[#d0d0d0] hover:text-[#1f1f1f]"
@@ -222,13 +218,14 @@ export default function WeFixSafeguardSection({
 
             {/* Select 2: Device Model */}
             <div>
-              <label className="text-xs font-bold text-[#1F1F1F] uppercase tracking-wider block mb-2">
+              <label htmlFor="model-select" className="text-xs font-bold text-[#1F1F1F] uppercase tracking-wider block mb-2">
                 2. Select Exact Model:
               </label>
               <select
+                id="model-select"
                 value={selectedModel?.id}
                 onChange={(e) => handleModelChange(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-sm text-[#1F1F1F] font-medium focus:outline-none focus:border-[#EF644C]"
+                className="w-full px-4 py-3 min-h-[44px] rounded-xl bg-[#f6f6f6] border border-[#e8e8e8] text-sm text-[#1F1F1F] font-medium focus:outline-none focus:border-[#EF644C]"
               >
                 {availableModels.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -251,7 +248,7 @@ export default function WeFixSafeguardSection({
                       key={issue.id}
                       type="button"
                       onClick={() => handleIssueChange(issue.id)}
-                      className={`p-3 rounded-xl border text-left flex items-center justify-between transition-all ${
+                      className={`p-3 min-h-[44px] rounded-xl border text-left flex items-center justify-between transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] ${
                         isSelected
                           ? "bg-[#1f1f1f] text-white border-[#1f1f1f] shadow-sm"
                           : "bg-[#f6f6f6] text-[#636363] border-[#e8e8e8] hover:border-[#d0d0d0] hover:text-[#1f1f1f]"
@@ -275,8 +272,8 @@ export default function WeFixSafeguardSection({
             </div>
 
             {/* Quote Result Box */}
-            <div className="p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div>
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#f6f6f6] border border-[#e8e8e8] flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="w-full sm:w-auto text-left">
                 <span className="text-[11px] font-bold uppercase text-[#888888] block">
                   Guaranteed Estimate For {selectedModel?.name}:
                 </span>
@@ -305,12 +302,11 @@ export default function WeFixSafeguardSection({
                     category: selectedCategory,
                     model: selectedModel,
                     issue: selectedIssue,
-                    isOem,
                     price: calculation.selectedPrice,
                     turnaround: calculation.turnaround,
                   })
                 }
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 flex-shrink-0"
+                className="w-full sm:w-auto px-7 py-3.5 min-h-[46px] rounded-full text-xs font-bold uppercase tracking-wider btn-wefix-primary shadow-lg flex items-center justify-center gap-2 flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C]"
               >
                 <span>Book Free Diagnostic</span>
                 <ArrowRight className="w-4 h-4" />
