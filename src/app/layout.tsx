@@ -1,12 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
 });
 
 export const viewport: Viewport = {
@@ -38,9 +45,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jetbrainsMono.variable}>
+    <html
+      lang="en"
+      className={`${plusJakartaSans.variable} ${jetbrainsMono.variable}`}
+    >
       <body
-        className={`${jetbrainsMono.className} min-h-screen bg-white text-[#636363] antialiased selection:bg-[#EF644C] selection:text-white min-w-[360px] overflow-x-hidden`}
+        className={`${plusJakartaSans.className} min-h-screen bg-white text-[#636363] antialiased selection:bg-[#EF644C] selection:text-white min-w-[360px] overflow-x-hidden`}
       >
         {children}
       </body>
