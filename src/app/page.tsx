@@ -77,11 +77,11 @@ export default function Home() {
       {/* 4. Issues We Solve / Quality Repairs Section */}
       <WeFixQualityRepairs onSelectRepair={handleSelectRepairTitle} />
 
-      {/* 5. Service List / Discover Our Repair Options */}
-      <WeFixRepairOptions onSelectOption={handleSelectRepairTitle} />
-
-      {/* 6. Safeguard / Superior Safety (Hotspot & Interactive Price Estimator) */}
+      {/* 5. Safeguard / Superior Safety (Hotspot & Interactive Price Estimator) */}
       <WeFixSafeguardSection onBookAppointment={handleEstimatorBooking} />
+
+      {/* 6. Service List / Discover Our Repair Options */}
+      <WeFixRepairOptions onSelectOption={handleSelectRepairTitle} />
 
       {/* 7. Milestone / Reached New Heights In Repair Services */}
       <WeFixMilestoneSection onBookRepair={handleOpenGeneralQuote} />

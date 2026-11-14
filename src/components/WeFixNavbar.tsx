@@ -11,13 +11,23 @@ import {
   X,
   ChevronRight,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 
 interface WeFixNavbarProps {
   onOpenQuote: () => void;
   onOpenTracker: () => void;
 }
+
+export const NAV_ITEMS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About Us" },
+  { id: "services", label: "Services" },
+  { id: "estimator", label: "Price Calculator" },
+  { id: "options", label: "Repair Options" },
+  { id: "reviews", label: "Testimonials" },
+  { id: "blogs", label: "Blog" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function WeFixNavbar({
   onOpenQuote,
@@ -26,16 +36,79 @@ export default function WeFixNavbar({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>("home");
 
+  // Dynamic Scroll Spy for active navigation section
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
+
+      // 1. Top of page -> Home
+      if (window.scrollY < 200) {
+        setActiveSection("home");
+        return;
+      }
+
+      // 2. Bottom of page -> Contact
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollPos = window.innerHeight + window.scrollY;
+      if (scrollPos >= scrollHeight - 60) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // 3. Middle sections: check top offset with navbar height compensation
+      const sectionOffset = 140; // Fixed navbar buffer
+      const currentScroll = window.scrollY + sectionOffset;
+
+      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
+        const item = NAV_ITEMS[i];
+        const el = document.getElementById(item.id);
+        if (el) {
+          const top = el.offsetTop;
+          if (currentScroll >= top) {
+            setActiveSection(item.id);
+            return;
+          }
+        }
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial check on mount
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close modal/drawer on Escape
+  // Smooth scroll handler on click
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    setActiveSection(sectionId);
+    setMobileMenuOpen(false);
+
+    if (sectionId === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (window.history.pushState) {
+        window.history.pushState(null, "", "#home");
+      }
+      return;
+    }
+
+    const el = document.getElementById(sectionId);
+    if (el) {
+      const navOffset = 90; // Compensation for fixed frosted glass navbar
+      const y = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      if (window.history.pushState) {
+        window.history.pushState(null, "", `#${sectionId}`);
+      }
+    }
+  };
+
+  // Close modals on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -49,7 +122,7 @@ export default function WeFixNavbar({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* 1. Slim Translucent Top Bar (Fades away gracefully on scroll) */}
+      {/* 1. Slim Translucent Top Bar (Collapses smoothly on scroll) */}
       <div
         className={`transition-all duration-300 overflow-hidden ${
           scrolled
@@ -96,7 +169,7 @@ export default function WeFixNavbar({
         </div>
       </div>
 
-      {/* 2. Main Navigation Bar with Glassmorphic Translucent Effect */}
+      {/* 2. Main Navigation Bar with Dynamic Active Link Indicator */}
       <nav
         className={`w-full transition-all duration-300 ${
           scrolled
@@ -107,66 +180,41 @@ export default function WeFixNavbar({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-22 flex items-center justify-between gap-4">
           {/* Bespoke NextFix Pro Logo */}
           <a
-            href="#"
+            href="#home"
+            onClick={(e) => handleNavClick(e, "home")}
             className="group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EF644C] rounded-xl flex-shrink-0"
             aria-label="NextFix Pro Home"
           >
             <NextFixLogo size="md" />
           </a>
 
-          {/* Desktop Nav Links - STRICT whitespace-nowrap */}
-          <div className="hidden xl:flex items-center gap-7 2xl:gap-8 text-[15px] font-bold text-[#1f1f1f] whitespace-nowrap">
-            <a
-              href="#home"
-              className="text-[#EF644C] hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              About Us
-            </a>
-            <a
-              href="#services"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Services
-            </a>
-            <a
-              href="#estimator"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Price Calculator
-            </a>
-            <a
-              href="#options"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Repair Options
-            </a>
-            <a
-              href="#reviews"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Testimonials
-            </a>
-            <a
-              href="#blogs"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Blog
-            </a>
-            <a
-              href="#contact"
-              className="hover:text-[#EF644C] transition-colors py-1 whitespace-nowrap"
-            >
-              Contact
-            </a>
+          {/* Desktop Nav Links - STRICT whitespace-nowrap with Active State */}
+          <div className="hidden xl:flex items-center gap-7 2xl:gap-8 text-[15px] font-bold whitespace-nowrap">
+            {NAV_ITEMS.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`relative py-2 whitespace-nowrap transition-all duration-200 ${
+                    isActive
+                      ? "text-[#EF644C] font-black"
+                      : "text-[#1F1F1F] hover:text-[#EF644C]"
+                  }`}
+                >
+                  <span>{item.label}</span>
+
+                  {/* Active Underline Pill */}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[2.5px] bg-[#EF644C] rounded-full shadow-xs animate-in fade-in zoom-in-75 duration-200" />
+                  )}
+                </a>
+              );
+            })}
           </div>
 
-          {/* Right Actions: Search + Get A Quote CTA (Phone widget completely removed) */}
+          {/* Right Actions: Search + Get A Quote CTA */}
           <div className="hidden sm:flex items-center gap-3.5 flex-shrink-0">
             {/* Search Icon */}
             <button
@@ -229,74 +277,32 @@ export default function WeFixNavbar({
           </div>
         )}
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Drawer with Dynamic Active Highlight */}
         {mobileMenuOpen && (
           <div className="xl:hidden bg-white/95 backdrop-blur-xl border-b border-[#e8e8e8] px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col space-y-3 font-bold text-base text-[#1f1f1f]">
-              <a
-                href="#home"
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Home</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#about"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>About Us</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#services"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Services</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#estimator"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Price Calculator</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#options"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Repair Options</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#reviews"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Testimonials</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#blogs"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Blog</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
-              <a
-                href="#contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="hover:text-[#EF644C] py-2 border-b border-[#f0f0f0] flex items-center justify-between"
-              >
-                <span>Contact</span>
-                <ChevronRight className="w-4 h-4" />
-              </a>
+            <div className="flex flex-col space-y-2 text-sm">
+              {NAV_ITEMS.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={(e) => handleNavClick(e, item.id)}
+                    className={`py-2.5 px-3.5 rounded-xl border flex items-center justify-between font-bold transition-all ${
+                      isActive
+                        ? "bg-[#EF644C]/10 border-[#EF644C]/30 text-[#EF644C] font-black"
+                        : "border-transparent text-[#1F1F1F] hover:bg-[#f6f6f6]"
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronRight
+                      className={`w-4 h-4 ${
+                        isActive ? "text-[#EF644C]" : "text-[#888888]"
+                      }`}
+                    />
+                  </a>
+                );
+              })}
             </div>
 
             <div className="pt-4 border-t border-[#e8e8e8] space-y-3">

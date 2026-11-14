@@ -32,7 +32,7 @@ export default function WeFixFooter() {
   ];
 
   return (
-    <footer id="contact" className="bg-[#1F1F1F] text-white text-xs">
+    <footer id="contact" className="bg-[#1F1F1F] text-white text-xs scroll-mt-24 sm:scroll-mt-28">
       {/* 1. Top Counter Ticker Strip (Exact WeFix Style) */}
       <div className="border-b border-[#333333] py-5 px-3 sm:px-4 bg-[#181818]">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center sm:justify-around gap-4 sm:gap-6 text-center">

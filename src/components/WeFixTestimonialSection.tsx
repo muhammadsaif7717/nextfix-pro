@@ -66,7 +66,7 @@ export default function WeFixTestimonialSection() {
   const current = testimonials[activeIdx];
 
   return (
-    <section id="reviews" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden">
+    <section id="reviews" className="py-20 sm:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Motion */}
         <motion.div
