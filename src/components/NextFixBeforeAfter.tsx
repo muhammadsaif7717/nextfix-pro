@@ -28,10 +28,10 @@ export default function NextFixBeforeAfter() {
       time: "Restored in 22 Mins",
       warranty: "Lifetime Glass Guarantee",
       beforeImage:
-        "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1636589343867-f1d643baf04c?auto=format&fit=crop&q=80&w=1200",
       afterImage:
-        "https://images.unsplash.com/photo-1580910051074-3eb694886505?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Shattered OLED & Liquid Bleed",
+        "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&q=80&w=1200",
+      beforeText: "Shattered OLED & Touch Glitch",
       afterText: "Pristine OEM Super Retina XDR",
     },
     {
@@ -44,21 +44,21 @@ export default function NextFixBeforeAfter() {
         "https://images.unsplash.com/photo-1588508065123-287b28e013da?auto=format&fit=crop&q=80&w=1200",
       afterImage:
         "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Corroded Logic Board Traces",
-      afterText: "Deoxidized & Micro-Soldered",
+      beforeText: "Corroded Logic Board & Short Circuit",
+      afterText: "Ultrasonic Deoxidized & Operational",
     },
     {
       id: "samsung",
-      title: "Galaxy S24 Titanium & Lens",
+      title: "Galaxy S24 Screen & Housing",
       category: "Laser Rebuild",
       time: "Restored in 35 Mins",
       warranty: "IP68 Water Seals Kept",
       beforeImage:
-        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1200",
+        "https://images.unsplash.com/photo-1664735245477-25d862e46cf4?auto=format&fit=crop&q=80&w=1200",
       afterImage:
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200",
-      beforeText: "Cracked Rear Housing & Sensor",
-      afterText: "Factory Laser Cold-Pressed",
+        "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=1200",
+      beforeText: "Spiderweb Fracture & Pixel Bleed",
+      afterText: "Factory Laser Calibrated & Sealed",
     },
   ];
 
@@ -140,10 +140,11 @@ export default function NextFixBeforeAfter() {
             {/* After Image (Full background) */}
             <Image
               src={current.afterImage}
-              alt="Restored Hardware"
+              alt={current.afterText}
               fill
               sizes="(max-width: 1200px) 100vw, 1000px"
-              className="object-cover object-center"
+              className="object-cover object-center pointer-events-none select-none"
+              draggable={false}
             />
 
             {/* Before Image (Clipped overlay) */}
@@ -153,10 +154,11 @@ export default function NextFixBeforeAfter() {
             >
               <Image
                 src={current.beforeImage}
-                alt="Broken Hardware"
+                alt={current.beforeText}
                 fill
                 sizes="(max-width: 1200px) 100vw, 1000px"
-                className="object-cover object-center filter contrast-125 brightness-90"
+                className="object-cover object-center filter contrast-125 brightness-90 pointer-events-none select-none"
+                draggable={false}
               />
             </div>
 
