@@ -88,7 +88,13 @@ export default function WeFixQualityRepairs({
     <section id="services" className="py-16 sm:py-20 lg:py-28 bg-[#f6f6f6] border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Issues We Solve
           </span>
@@ -98,15 +104,19 @@ export default function WeFixQualityRepairs({
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Expert technical solutions for consumer smartphones, laptops, tablets, and gaming consoles with factory precision.
           </p>
-        </div>
+        </motion.div>
 
         {/* 6 Services Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((item) => {
+          {services.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
                 className="group flex flex-col justify-between bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
               >
                 <div>
@@ -162,7 +172,7 @@ export default function WeFixQualityRepairs({
                     </span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

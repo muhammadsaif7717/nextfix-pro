@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Smartphone,
   Laptop,
@@ -97,7 +98,13 @@ export default function WeFixRepairOptions({
     <section id="options" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-12"
+        >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Repair Options
           </span>
@@ -107,10 +114,16 @@ export default function WeFixRepairOptions({
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             From cracked smartphone screens to complex microscope logic-board repairs, choose your equipment category.
           </p>
-        </div>
+        </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-14"
+        >
           {[
             { id: "all", label: "All Services" },
             { id: "mobile", label: "Smartphones" },
@@ -130,15 +143,19 @@ export default function WeFixRepairOptions({
               {tab.label}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Options Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {filtered.map((item) => {
+          {filtered.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
                 className="group flex flex-col sm:flex-row bg-[#fafafa] hover:bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
               >
                 {/* Left Thumbnail */}
@@ -199,7 +216,7 @@ export default function WeFixRepairOptions({
                     </button>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

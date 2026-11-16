@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import {
   Star,
   Quote,
@@ -118,7 +119,13 @@ export default function WeFixTestimonialSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-12"
+        >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Verified Customer Reviews
           </span>
@@ -128,7 +135,7 @@ export default function WeFixTestimonialSection() {
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Real stories and unedited experiences from individuals and businesses who rely on NextFix Pro for mission-critical device care.
           </p>
-        </div>
+        </motion.div>
 
         {/* Trust Badges Strip */}
         <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e8e8] shadow-sm mb-10 max-w-md mx-auto flex items-center justify-center gap-4">
@@ -155,9 +162,13 @@ export default function WeFixTestimonialSection() {
 
         {/* 6 Modern Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {testimonials.map((item) => (
-            <div
+          {testimonials.map((item, idx) => (
+            <motion.div
               key={item.id}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
               className="group flex flex-col justify-between bg-white rounded-2xl p-7 border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden"
             >
                 {/* Decorative Top Accent Line */}
@@ -237,7 +248,7 @@ export default function WeFixTestimonialSection() {
                     1-Yr Warranty
                   </span>
                 </div>
-              </div>
+              </motion.div>
             ))}
         </div>
       </div>

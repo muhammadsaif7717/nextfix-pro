@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   Phone,
   CheckCircle2,
@@ -79,7 +79,13 @@ export default function WeFixMilestoneSection({
     <section id="milestones" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Milestone
           </span>
@@ -89,12 +95,18 @@ export default function WeFixMilestoneSection({
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Setting industry benchmarks with precision engineering, cleanroom protocols, and guaranteed customer satisfaction.
           </p>
-        </div>
+        </motion.div>
 
         {/* Split Grid: Left Image & Right Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           {/* Left Column Image */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#e8e8e8] aspect-[4/5] bg-[#f6f6f6]">
               <Image
                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
@@ -119,10 +131,16 @@ export default function WeFixMilestoneSection({
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column Pillars */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6"
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {pillars.map((pillar, idx) => (
                 <div
@@ -141,11 +159,17 @@ export default function WeFixMilestoneSection({
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom 5 Animated Counters Strip */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm"
+        >
           {[
             { target: 20, suffix: "+", label: "Years Experience", icon: Award },
             { target: 25, suffix: "K+", label: "Happy Customers", icon: Users },
@@ -171,7 +195,7 @@ export default function WeFixMilestoneSection({
               </div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

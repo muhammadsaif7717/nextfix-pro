@@ -92,7 +92,13 @@ export default function NextFixBeforeAfter() {
     <section id="before-after" className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Minimal, Human-Crafted Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto mb-8 sm:mb-10"
+        >
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Visual Proof
           </span>
@@ -102,7 +108,7 @@ export default function NextFixBeforeAfter() {
           <p className="mt-3 text-sm sm:text-base text-[#64748B]">
             Drag the slider horizontally to compare damaged hardware before and after restoration.
           </p>
-        </div>
+        </motion.div>
 
         {/* Clean Segmented Device Tabs */}
         <div className="flex items-center justify-center mb-8">
@@ -127,7 +133,13 @@ export default function NextFixBeforeAfter() {
         </div>
 
         {/* Effortless Comparison Canvas (Zero clunky nested boxes) */}
-        <div className="max-w-4xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-4xl mx-auto"
+        >
           <div
             ref={containerRef}
             onPointerDown={handlePointerDown}
@@ -230,7 +242,7 @@ export default function NextFixBeforeAfter() {
               </span>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
