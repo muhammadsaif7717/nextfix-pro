@@ -1,15 +1,11 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
   PackageCheck,
   SearchCode,
   Cpu,
   CheckCircle2,
-  ArrowRight,
-  ShieldCheck,
-  Zap,
 } from "lucide-react";
 
 export default function NextFixWorkflow() {
@@ -45,16 +41,10 @@ export default function NextFixWorkflow() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden">
+    <section id="workflow" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Seamless Process
           </span>
@@ -64,21 +54,16 @@ export default function NextFixWorkflow() {
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             From the moment your device arrives to the moment it leaves our cleanroom, experience complete transparency and zero guesswork.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 4 Steps Grid with Visual Connecting Progress Line */}
+        {/* 4 Steps Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           {steps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between p-7 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative"
+                className="group flex flex-col justify-between p-7 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative"
               >
                 <div>
                   {/* Step Number + Icon */}
@@ -103,7 +88,7 @@ export default function NextFixWorkflow() {
                     {step.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

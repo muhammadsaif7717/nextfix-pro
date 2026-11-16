@@ -35,16 +35,10 @@ export default function NextFixFAQ() {
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-[#fafafa] border-b border-[#e8e8e8] overflow-hidden">
+    <section id="faq" className="py-16 sm:py-20 lg:py-28 bg-[#fafafa] border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
+        <div className="text-center mb-14">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Got Questions?
           </span>
@@ -54,19 +48,15 @@ export default function NextFixFAQ() {
           <p className="mt-4 text-sm sm:text-base text-[#636363]">
             Everything you need to know about our repair standards, data security, and parts warranty.
           </p>
-        </motion.div>
+        </div>
 
         {/* FAQ Accordion List */}
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIdx === idx;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.05 }}
                 className="rounded-2xl bg-white border border-[#e8e8e8] overflow-hidden shadow-xs hover:border-[#EA580C]/30 transition-all duration-200"
               >
                 <button
@@ -103,7 +93,7 @@ export default function NextFixFAQ() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </motion.div>
+              </div>
             );
           })}
         </div>

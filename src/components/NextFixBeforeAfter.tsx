@@ -89,7 +89,7 @@ export default function NextFixBeforeAfter() {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden">
+    <section id="before-after" className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Minimal, Human-Crafted Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">

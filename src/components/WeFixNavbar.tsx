@@ -35,84 +35,105 @@ export default function WeFixNavbar({
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("home");
 
-  const isNavigatingRef = useRef(false);
-  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const isClickScrollingRef = useRef(false);
+  const clickScrollTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Dynamic Scroll Spy for active navigation section
+  // Dynamic Scroll Spy for active navigation section with focal-point detection
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
 
-      if (isNavigatingRef.current) return;
+          // If user recently clicked a nav link, skip scroll spy recalculation to avoid flickering
+          if (!isClickScrollingRef.current) {
+            let current = "home";
+            if (window.scrollY < 120) {
+              current = "home";
+            } else if (
+              window.innerHeight + window.scrollY >=
+              document.documentElement.scrollHeight - 80
+            ) {
+              // At bottom of page -> select last section
+              current = "contact";
+            } else {
+              const sectionIds = NAV_ITEMS.map((l) => l.id);
+              const focalPoint = 200; // Focal line just below sticky navbar
 
-      // 1. Top of page -> Home
-      if (window.scrollY < 200) {
-        setActiveSection("home");
-        return;
-      }
-
-      // 2. Bottom of page -> Contact
-      const scrollHeight = document.documentElement.scrollHeight;
-      const scrollPos = window.innerHeight + window.scrollY;
-      if (scrollPos >= scrollHeight - 100) {
-        setActiveSection("contact");
-        return;
-      }
-
-      // 3. Middle sections: check offset
-      const sectionOffset = 140;
-      const currentScroll = window.scrollY + sectionOffset;
-
-      for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
-        const item = NAV_ITEMS[i];
-        const el = document.getElementById(item.id);
-        if (el) {
-          const top = el.offsetTop;
-          if (currentScroll >= top) {
-            setActiveSection(item.id);
-            return;
+              // Reverse loop: find deepest section whose top has crossed the focal line
+              for (let i = sectionIds.length - 1; i >= 0; i--) {
+                const el = document.getElementById(sectionIds[i]);
+                if (el) {
+                  const rect = el.getBoundingClientRect();
+                  if (rect.top <= focalPoint) {
+                    current = sectionIds[i];
+                    break;
+                  }
+                }
+              }
+            }
+            setActiveSection((prev) => (prev !== current ? current : prev));
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (clickScrollTimerRef.current) {
+        clearTimeout(clickScrollTimerRef.current);
+      }
+    };
   }, []);
 
-  // Smooth scroll handler on click
+  // Smooth scroll handler on click coordinated with Lenis
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     sectionId: string
   ) => {
     e.preventDefault();
 
-    isNavigatingRef.current = true;
+    // Lock scrollspy immediately to the clicked link
+    isClickScrollingRef.current = true;
     setActiveSection(sectionId);
     setMobileMenuOpen(false);
 
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    scrollTimeoutRef.current = setTimeout(() => {
-      isNavigatingRef.current = false;
-    }, 850);
+    if (clickScrollTimerRef.current) {
+      clearTimeout(clickScrollTimerRef.current);
+    }
+    clickScrollTimerRef.current = setTimeout(() => {
+      isClickScrollingRef.current = false;
+    }, 1100);
+
+    if (window.history.pushState) {
+      window.history.pushState(null, "", `#${sectionId}`);
+    }
+
+    // Scroll smoothly via global Lenis instance
+    const lenis = (window as unknown as { __lenis?: { scrollTo: (t: Element | number, opts?: unknown) => void } }).__lenis;
 
     if (sectionId === "home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      if (window.history.pushState) {
-        window.history.pushState(null, "", "#home");
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(0, { duration: 1.1 });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
       return;
     }
 
-    const el = document.getElementById(sectionId);
-    if (el) {
-      const navOffset = 80;
-      const y = el.getBoundingClientRect().top + window.pageYOffset - navOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      if (window.history.pushState) {
-        window.history.pushState(null, "", `#${sectionId}`);
+    const targetElement = document.getElementById(sectionId);
+    if (targetElement) {
+      if (lenis && typeof lenis.scrollTo === "function") {
+        lenis.scrollTo(targetElement, { offset: 0, duration: 1.1 });
+      } else {
+        targetElement.scrollIntoView({ behavior: "smooth" });
       }
     }
   };

@@ -2,7 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import {
   Star,
   Quote,
@@ -118,14 +117,8 @@ export default function WeFixTestimonialSection() {
       className="py-16 sm:py-20 lg:py-28 bg-[#f8f9fa] border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Motion */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-12"
-        >
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Verified Customer Reviews
           </span>
@@ -135,16 +128,10 @@ export default function WeFixTestimonialSection() {
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Real stories and unedited experiences from individuals and businesses who rely on NextFix Pro for mission-critical device care.
           </p>
-        </motion.div>
+        </div>
 
         {/* Trust Badges Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e8e8] shadow-sm mb-10 max-w-md mx-auto flex items-center justify-center gap-4"
-        >
+        <div className="bg-white rounded-2xl p-4 sm:p-5 border border-[#e8e8e8] shadow-sm mb-10 max-w-md mx-auto flex items-center justify-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-[#EA580C] text-white flex flex-col items-center justify-center font-black shadow-sm flex-shrink-0">
             <span className="text-base leading-none">4.9</span>
             <span className="text-[8px] font-bold uppercase tracking-wider opacity-90">
@@ -164,21 +151,15 @@ export default function WeFixTestimonialSection() {
               Google Reviews (4.9/5) • Trustpilot (4.9/5)
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* 6 Modern Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {testimonials.map((item, idx) => (
-              <motion.div
-                layout
-                key={item.id}
-                initial={{ opacity: 0, y: 30, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, delay: idx * 0.06 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between bg-white rounded-2xl p-7 border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
-              >
+          {testimonials.map((item) => (
+            <div
+              key={item.id}
+              className="group flex flex-col justify-between bg-white rounded-2xl p-7 border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden"
+            >
                 {/* Decorative Top Accent Line */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-[#EA580C] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
@@ -256,7 +237,7 @@ export default function WeFixTestimonialSection() {
                     1-Yr Warranty
                   </span>
                 </div>
-              </motion.div>
+              </div>
             ))}
         </div>
       </div>

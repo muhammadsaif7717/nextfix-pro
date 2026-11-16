@@ -97,7 +97,8 @@ export default function WeFixHeroSlider({
             src={active.bgImage}
             alt={active.title}
             fill
-            priority={currentSlide === 0}
+            priority
+            loading="eager"
             sizes="100vw"
             className="object-cover object-center filter brightness-[0.74] contrast-[1.08]"
           />

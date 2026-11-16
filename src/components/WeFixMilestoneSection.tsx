@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
 import {
   Phone,
   CheckCircle2,
@@ -76,16 +76,10 @@ export default function WeFixMilestoneSection({
   ];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden">
+    <section id="milestones" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Header with Motion */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        {/* Top Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Milestone
           </span>
@@ -95,18 +89,12 @@ export default function WeFixMilestoneSection({
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Setting industry benchmarks with precision engineering, cleanroom protocols, and guaranteed customer satisfaction.
           </p>
-        </motion.div>
+        </div>
 
         {/* Split Grid: Left Image & Right Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
           {/* Left Column Image */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5 relative"
-          >
+          <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-[#e8e8e8] aspect-[4/5] bg-[#f6f6f6]">
               <Image
                 src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800"
@@ -117,13 +105,7 @@ export default function WeFixMilestoneSection({
               />
 
               {/* Float Experience Box */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-md shadow-xl border border-[#e8e8e8] flex items-center justify-between"
-              >
+              <div className="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-white/95 backdrop-blur-md shadow-xl border border-[#e8e8e8] flex items-center justify-between">
                 <div>
                   <div className="text-3xl font-black text-[#1F1F1F] font-heading">
                     <CounterValue target={20} suffix="+" /> Years
@@ -135,27 +117,17 @@ export default function WeFixMilestoneSection({
                 <div className="w-12 h-12 rounded-full bg-[#EA580C] text-white flex items-center justify-center font-bold text-lg shadow-md">
                   ★
                 </div>
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Column Pillars */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-6"
-          >
+          <div className="lg:col-span-7 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {pillars.map((pillar, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.1 * idx }}
-                  className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] hover:border-[#EA580C]/30 hover:bg-white transition-all duration-300"
+                  className="p-6 rounded-2xl bg-[#fafafa] border border-[#e8e8e8] hover:border-[#EA580C]/30 hover:bg-white hover:-translate-y-1 transition-all duration-300"
                 >
                   <div className="w-9 h-9 rounded-xl bg-[#EA580C]/10 text-[#EA580C] flex items-center justify-center mb-4">
                     <CheckCircle2 className="w-5 h-5" />
@@ -166,20 +138,14 @@ export default function WeFixMilestoneSection({
                   <p className="text-xs sm:text-sm text-[#636363] leading-relaxed">
                     {pillar.desc}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom 5 Animated Counters Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-6 p-4 sm:p-8 rounded-2xl sm:rounded-3xl bg-[#fafafa] border border-[#e8e8e8] shadow-sm">
           {[
             { target: 20, suffix: "+", label: "Years Experience", icon: Award },
             { target: 25, suffix: "K+", label: "Happy Customers", icon: Users },
@@ -205,7 +171,7 @@ export default function WeFixMilestoneSection({
               </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

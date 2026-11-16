@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
   Wrench,
   ShieldCheck,
@@ -9,7 +8,6 @@ import {
   Sparkles,
   Zap,
   Award,
-  ArrowRight,
 } from "lucide-react";
 
 export default function WeFixIdentitySection() {
@@ -55,14 +53,8 @@ export default function WeFixIdentitySection() {
   return (
     <section id="about" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Motion */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Our Identity
           </span>
@@ -72,21 +64,16 @@ export default function WeFixIdentitySection() {
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Committed to quality hardware repair, rapid diagnostics, and genuine OEM components backed by our lifetime workmanship guarantee.
           </p>
-        </motion.div>
+        </div>
 
-        {/* 6 Cards Balanced Grid: 3 cols on lg, 2 cols on md, 1 col on mobile */}
+        {/* 6 Cards Balanced Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {cards.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
-                whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="group flex flex-col justify-between p-7 sm:p-8 rounded-2xl bg-[#fafafa] hover:bg-white border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 relative overflow-hidden"
               >
                 {/* Decorative Top Accent Bar on Hover */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-[#EA580C] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -109,7 +96,7 @@ export default function WeFixIdentitySection() {
                     {item.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

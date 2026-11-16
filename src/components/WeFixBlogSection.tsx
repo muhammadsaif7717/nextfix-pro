@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { Calendar, User, ArrowRight, Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blogData";
 
@@ -11,14 +10,8 @@ export default function WeFixBlogSection() {
   return (
     <section id="blogs" className="py-16 sm:py-20 lg:py-28 bg-white border-b border-[#e8e8e8] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header with Motion */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Our Blogs
           </span>
@@ -28,19 +21,14 @@ export default function WeFixBlogSection() {
           <p className="mt-4 text-sm sm:text-base text-[#636363] max-w-2xl mx-auto">
             Expert articles, hardware maintenance insights, and device restoration tutorials from our lab.
           </p>
-        </motion.div>
+        </div>
 
         {/* 4 Posts Responsive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {BLOG_POSTS.map((post, idx) => (
-            <motion.article
+          {BLOG_POSTS.map((post) => (
+            <article
               key={post.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              whileHover={{ y: -6, transition: { duration: 0.2 } }}
-              className="group flex flex-col justify-between bg-[#fafafa] hover:bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group flex flex-col justify-between bg-[#fafafa] hover:bg-white rounded-2xl overflow-hidden border border-[#e8e8e8] hover:border-[#EA580C]/40 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300"
             >
               <Link href={`/blog/${post.id}`} className="flex flex-col h-full justify-between">
                 <div>
@@ -93,7 +81,7 @@ export default function WeFixBlogSection() {
                   </div>
                 </div>
               </Link>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>

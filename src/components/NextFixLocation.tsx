@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
 import {
   MapPin,
   Clock,
@@ -20,13 +19,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
     <section id="contact" className="py-16 sm:py-20 lg:py-28 bg-[#f8fafc] border-b border-[#e2e8f0] overflow-hidden scroll-mt-24 sm:scroll-mt-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-10 sm:mb-14"
-        >
+        <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
           <span className="text-xs font-bold text-[#EA580C] uppercase tracking-widest block mb-2">
             Visit Our Lab
           </span>
@@ -36,16 +29,10 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-[#64748B] max-w-2xl mx-auto">
             Drop by our central cleanroom diagnostic lounge or contact our specialists directly. No appointment required for walk-in testing.
           </p>
-        </motion.div>
+        </div>
 
         {/* Clean 2-Column Grid: Google Map on Left, Studio Schedule on Right */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl mx-auto bg-white rounded-2xl sm:rounded-3xl border border-[#e2e8f0] shadow-sm p-5 sm:p-8 lg:p-12"
-        >
+        <div className="max-w-6xl mx-auto bg-white rounded-2xl sm:rounded-3xl border border-[#e2e8f0] shadow-sm p-5 sm:p-8 lg:p-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
             {/* Left Column: Embedded Interactive Google Map (6 Cols) - Clean, no redundant buttons */}
             <div className="lg:col-span-6 flex flex-col">
@@ -146,7 +133,7 @@ export default function NextFixLocation({ onOpenQuote }: NextFixLocationProps) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
